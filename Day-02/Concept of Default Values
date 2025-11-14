@@ -1,0 +1,58 @@
+Concept of DEFAULT VALUES - 
+
+
+Default Values - 
+
+Jaise humne phle hi decide kiye thee k employees bangalore se hire krege toh hum ye use kr ke table create kr skte jisme location ka Default Value Banglore Aur NOT NULL Rahega. In case agar waha per null dalege toh error dega.
+
+
+6) create table factory (
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL DEFAULT 'mumbai');
+
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| firstname  | varchar(20) | NO   |     | NULL    |       |
+| middlename | varchar(20) | YES  |     | NULL    |       |
+| lastname   | varchar(20) | NO   |     | NULL    |       |
+| age        | int(11)     | NO   |     | NULL    |       |
+| salary     | int(11)     | NO   |     | NULL    |       |
+| location   | varchar(20) | NO   |     | mumbai  |       |
++------------+-------------+------+-----+---------+-------+
+
+
+
+
+7) insert into factory(firstname, middlename, lastname, age, salary, location) VALUES ('ahmed','nasir','khan', 19, 70000, 'bangalore');
+
++-----------+------------+----------+-----+--------+-----------+
+| firstname | middlename | lastname | age | salary | location  |
++-----------+------------+----------+-----+--------+-----------+
+| ahmed     | nasir      | khan     |  19 |  70000 | bangalore |
++-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
+And agar humne table me location nhi dal kr usko aise fire kiye toh By Default Value Bangalore Show krega.
+
+8) insert into factory(firstname, middlename, lastname, age, salary) VALUES ('fatima','nasir','khan', 29, 170000);
+
++-----------+------------+----------+-----+--------+-----------+
+| firstname | middlename | lastname | age | salary | location  |
++-----------+------------+----------+-----+--------+-----------+
+| ahmed     | nasir      | khan     |  19 |  70000 | bangalore |
+| fatima    | nasir      | khan     |  29 | 170000 | bangalore |
++-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
