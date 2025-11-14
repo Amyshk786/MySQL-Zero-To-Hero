@@ -1,0 +1,46 @@
+
+
+1) What is a Database - A Database is a Collection of Data and it holds the Data in the form of Tables.
+
+
+2) What is a Table - A Table is nothing but a way of storing the data in the form of Rows & Columns. It is Similar to Excel Spreadsheet.
+
+
+3) The Database Provides us the capability to Access and Manipulate this Data.
+
+
+4) Type Of Databases 
+======================
+
+A) Relational Database - A Relational Database is the one in which we store the data in the form of Rows & Columns, The data is stored in the form of Rows & Columns like a Excel Spreadsheet. And also Multiple Tables have relation between them (employee table & dept table)
+
+MySQL,  PostgreSQL,  SQL server,  Maria DB,  SQLite, 
+
+
+B) No SQL Database - A NO SQL Database is the one where the data is stored in the form of Key Value, Document Database, Graph DB. And also 2 Tables do not have any relation between them, Each table is different and does not relate to other table.
+
+HBase,  MongoDB,  Cassandra
+
+
+
+
+
+5) SQL - Structured Query Language is used to deal with structured data which is in the form of Rows & Columns. [SQL is a language through which you will be interacting with the DB, For eg if we have MySQL DB and you would write certain SQL query to insert the Data,  to Update the Record,  to Retrive the record from your MYSQL DB]
+
+
+--> MYSQL is a Database 
+
+
+--> SQL is a way to Interact with that MYSQL DB
+
+
+
+
+MYSQL Vs SQL 
+=============
+
+
+MYSQL is a Relational Database which holds the Data.
+
+
+SQL is the way to communicate with this MYSQL and is used to query a Relational DB 
