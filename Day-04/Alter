@@ -1,0 +1,136 @@
+
+ALTER - 
+
+
+
+
+ALTER - Alter deals with Structure or Schema Manuplation of the Table
+
+If Some of the Employee have a very big firstname & we want to increase the size of it Currently it is (20), Here we are not updating the data But we are Updating the Structure Either the Data Type or We are Adding a New Field or Column 
+      
+
+
+
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(20) | NO   |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+
+1) Here we are Adding a Column as Job-Title in our Employee Table
+
+alter table employee add column jobtitle VARCHAR(50);
+
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(20) | NO   |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
+| jobtitle   | varchar(50) | YES  |     | NULL      |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+
+2)  Here we are Dropping/Deleting the Column Job-Title in our Employee Table
+
+alter table employee drop column jobtitle VARCHAR(50);
+
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(20) | NO   |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+
+
+3) We want to Increase the Length of the Firstname Currently it is VARCHAR(20)
+
+alter table employee modify column firstname VARCHAR(30);
+
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(30) | YES  |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+4) There is a Primary Key in ID Column & If we want to remove it use below query
+
+alter table employee drop primary key;
+
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   |     | NULL      |       |
+| firstname  | varchar(30) | YES  |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+
+5) If we want Primary Key on Our ID Column we will use below Query
+
+alter table employee add primary key(id);
+
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(30) | YES  |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+
