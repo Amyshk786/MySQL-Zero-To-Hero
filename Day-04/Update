@@ -1,0 +1,139 @@
+
+
+
+UPDATE - Update Deals with Data Manuplation 
+
+
+
+I have added one more employee name as maneesh sharma
+
+1) insert into employee(id, firstname, lastname, age, salary) VALUES (4, 'maneesh', 'sharma', 32, 12000);
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | bangalore |
+|  4 | maneesh   | NULL       | sharma   |  32 |  12000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+2) For Eg we have incorrectly updated maneesh's surname as 'Sharma' and we want to Update the Surname of maneesh as 'Sinha'
+
+We will use below query
+
+update employee set lastname= 'sinha' where firstname= 'maneesh';
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | bangalore |
+|  4 | maneesh   | NULL       | sinha    |  32 |  12000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+3) For Eg Ahmed has shifted to 'Hyderabad' and Now we want to change his location to Hyderabad
+
+We will use use below query
+
+update employee set location= 'hyderabad' where firstname= 'ahmed';
+
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | hyderabad |
+|  4 | maneesh   | NULL       | sinha    |  32 |  12000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+4) We have changed the location for 'Amir' as well to Mumbai
+
+update employee set location= 'mumbai' where firstname= 'amir';
+
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | mumbai    |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | hyderabad |
+|  4 | maneesh   | NULL       | sinha    |  32 |  12000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+5) We are Increasing the Salary of All the Employees by 5000 [We can check the Salary in 4) & 5) It has increased by 5000]
+
+update employee set salary= salary+5000;
+
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  94000 | mumbai    |
+|  2 | adnan     | NULL       | shaikh   |  20 |  51000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  83000 | hyderabad |
+|  4 | maneesh   | NULL       | sinha    |  32 |  17000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
+6) I have added one more Employee as Ahmed Shaikh
+
+insert into employee(id, firstname, lastname, age, salary) VALUES (5, 'ahmed', 'shaikh', 23, 33000);
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  94000 | mumbai    |
+|  2 | adnan     | NULL       | shaikh   |  20 |  51000 | delhi     |
+|  3 | ahmed     | NULL       | khan     |  19 |  83000 | hyderabad |
+|  4 | maneesh   | NULL       | sinha    |  32 |  17000 | bangalore |
+|  5 | ahmed     | NULL       | shaikh   |  23 |  33000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
+7) If we Want to change the Location of 'Ahmed' 'Shaikh'  from Bangalore to Mumbai & We have 2 Ahmed one is Khan and Shaikh
+
+
+update employee set location= 'mumbai' where firstname= 'ahmed' and lastname= 'shaikh';
+
+ select * from employee;
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  94000 | mumbai    |
+|  2 | adnan     | NULL       | shaikh   |  20 |  51000 | delhi     |
+|  3 | ahmed     | NULL       | khan     |  19 |  83000 | hyderabad |
+|  4 | maneesh   | NULL       | sinha    |  32 |  17000 | bangalore |
+|  5 | ahmed     | NULL       | shaikh   |  23 |  33000 | mumbai    |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
