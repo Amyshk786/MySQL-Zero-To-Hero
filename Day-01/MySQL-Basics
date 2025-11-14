@@ -1,0 +1,65 @@
+-- Basics of MySQL
+
+
+1. To Create a  Database use the below query
+ create database school;
+
+
+2. To check if the Database is created or not use below query
+show databases;
+
+
+3. If we want to Go into a Particular Database use below query
+USE school;
+
+
+4. If we want to check in which Database we are in so we can use below query
+select database();
+
+
+5. To create a Table in a Database
+CREATE TABLE student
+(
+name VARCHAR(50),
+age INT ,
+class INT
+);
+
+
+6. If we want to show the Table which we have created in our Database
+show tables;
+
+
+7. If we want to see the Structure or Schema of the Table
+describe student;
+OR
+desc student;
+
+
+8. If we want to drop the table
+drop table student;
+
+
+9. If we want to Drop Database
+drop database school;
+
+[We were in the school DB, If we drop school DB & if we now check in which DB we are in it will show as NULL. Because uper humne school DB ko drop kr diya h] 
+
+[Agar hum abhi koi table create krege toh error aayega stating "NO DATABASE SELECTED" q ki humne school DB ko Drop kr diye]
+
+
+10. Humne fir se school DB create kiye
+create database school;
+
+
+11. Abhi hum school DB ko use nhi krege and ye query run krege toh q ki humne table k phle school. dale toh wo school DB k andar hi student name ka table create krega 
+CREATE TABLE school.student
+(
+name VARCHAR(50),
+age INT ,
+class INT
+);
+
+
+12. Agar hum check krege k hum abhi konse DB me h toh wo humein NULL kr k hi show krega q ki humne koi DB use nhi kiye
+select database();
