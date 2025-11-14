@@ -1,0 +1,104 @@
+CRUD Operations - CRUD Means Create Read Update Delete
+
+C - Insert Statements
+
+R - Select Statements
+
+U - Update Statements
+
+D - Delete Statements
+
+
+1) CREATE TABLE employee (
+firstname VARCHAR(20),
+middlename VARCHAR(20),
+lastname VARCHAR(20),
+age INT,
+salary INT,
+location VARCHAR(20)
+);
+
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| firstname  | varchar(20) | YES  |     | NULL    |       |
+| middlename | varchar(20) | YES  |     | NULL    |       |
+| lastname   | varchar(20) | YES  |     | NULL    |       |
+| age        | int(11)     | YES  |     | NULL    |       |
+| salary     | int(11)     | YES  |     | NULL    |       |
+| location   | varchar(20) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+Below is the Example on how we insert Data in Table.
+
+
+2) INSERT INTO employee(firstname, middlename, lastname, age, salary, location) VALUES ('adnan','yakub','shaikh', 20, 45000, 'mumbai'),('sufyan','luqman','shaikh', 22, 45000, 'nagpur'),('faizan','usman','shaikh', 22, 45000, 'akola'); 
+
+
+And If we Do  select * from employee;
++-----------+------------+----------+------+--------+-----------+
+| firstname | middlename | lastname | age  | salary | location  |
++-----------+------------+----------+------+--------+-----------+
+| kapil     | kumar      | sharma   |   20 |  10000 | bangalore |
+| ajay      | kumar      | sharma   |   28 |  10000 | bangalore |
+| vijay     | kumar      | sharma   |   22 |  15000 | bangalore |
+| amir      | yakub      | shaikh   |   25 |  50000 | mumbai    |
+| adnan     | yakub      | shaikh   |   20 |  45000 | mumbai    |
+| sufyan    | luqman     | shaikh   |   22 |  45000 | nagpur    |
+| faizan    | usman      | shaikh   |   22 |  45000 | akola     |
++-----------+------------+----------+------+--------+-----------+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Agar Koi record me comma wala name h toh aise query run krne ka [ajit k name k jaisa] & [guddu ka naam pura guddu show krega]
+
+3) INSERT INTO employee(firstname, middlename, lastname, age, salary, location) VALUES ('gudd\u','kumar','sharma', 18, 12000, 'bihar'),("aji't",'manoj','paswan', 33, 33000, 'delhi');
+
+
+
++-----------+------------+----------+------+--------+-----------+
+| firstname | middlename | lastname | age  | salary | location  |
++-----------+------------+----------+------+--------+-----------+
+| kapil     | kumar      | sharma   |   20 |  10000 | bangalore |
+| ajay      | kumar      | sharma   |   28 |  10000 | bangalore |
+| vijay     | kumar      | sharma   |   22 |  15000 | bangalore |
+| amir      | yakub      | shaikh   |   25 |  50000 | mumbai    |
+| adnan     | yakub      | shaikh   |   20 |  45000 | mumbai    |
+| sufyan    | luqman     | shaikh   |   22 |  45000 | nagpur    |
+| faizan    | usman      | shaikh   |   22 |  45000 | akola     |
+| guddu     | kumar      | sharma   |   18 |  12000 | bihar     |
+| aji't     | manoj      | paswan   |   33 |  33000 | delhi     |
++-----------+------------+----------+------+--------+-----------+
+
+
+
+Agar ye niche ki query run krege na toh sud'du aisa name show krega
+
+4) insert into employee(firstname, middlename, lastname, age, salary, location) VALUES ('sud\'du','jayesh','desai', 45, 78000, 'pune');
+
+
++-----------+------------+----------+------+--------+-----------+
+| firstname | middlename | lastname | age  | salary | location  |
++-----------+------------+----------+------+--------+-----------+
+| kapil     | kumar      | sharma   |   20 |  10000 | bangalore |
+| ajay      | kumar      | sharma   |   28 |  10000 | bangalore |
+| vijay     | kumar      | sharma   |   22 |  15000 | bangalore |
+| amir      | yakub      | shaikh   |   25 |  50000 | mumbai    |
+| adnan     | yakub      | shaikh   |   20 |  45000 | mumbai    |
+| sufyan    | luqman     | shaikh   |   22 |  45000 | nagpur    |
+| faizan    | usman      | shaikh   |   22 |  45000 | akola     |
+| guddu     | kumar      | sharma   |   18 |  12000 | bihar     |
+| aji't     | manoj      | paswan   |   33 |  33000 | delhi     |
+| sud'du    | jayesh     | desai    |   45 |  78000 | pune      |
++-----------+------------+----------+------+--------+-----------+
+
+
+
+
+
