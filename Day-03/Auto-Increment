@@ -1,0 +1,79 @@
+
+AUTO_INCREMENT - Means Agar Hum Isme ID nhi enter krege toh wo Automatically Aage ka number lete jyega 
+
+
+
+3) create table wipro (
+id int AUTO_INCREMENT,
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL DEFAULT 'bangalore',
+PRIMARY KEY(id)
+);
+
+
+--> AUTO_INCREMENT krege toh Extra Mein wo Show Karega
+
+desc wipro;
++------------+-------------+------+-----+-----------+----------------+
+| Field      | Type        | Null | Key | Default   | Extra          |
++------------+-------------+------+-----+-----------+----------------+
+| id         | int         | NO   | PRI | NULL      | auto_increment |
+| firstname  | varchar(20) | NO   |     | NULL      |                |
+| middlename | varchar(20) | YES  |     | NULL      |                |
+| lastname   | varchar(20) | NO   |     | NULL      |                |
+| age        | int         | NO   |     | NULL      |                |
+| salary     | int         | NO   |     | NULL      |                |
+| location   | varchar(20) | NO   |     | bangalore |                |
++------------+-------------+------+-----+-----------+----------------+
+
+
+
+
+4) INSERT INTO wipro(firstname, lastname, age, salary) VALUES ('ajay','verma', 23, 12000);
+
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | ajay      | NULL       | verma    |  23 |  12000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+5) A) INSERT INTO wipro(firstname, lastname, age, salary) VALUES ('kapil','sharma', 33, 22000);
+
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | ajay      | NULL       | verma    |  23 |  12000 | bangalore |
+|  2 | kapil     | NULL       | sharma   |  33 |  22000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
+5) B) Amir was Added Previously
+
+insert into wipro (firstname, lastname, age, salary) VALUES ('adnan','shaikh', 21, 45000),('ahmed','khan', 20, 56000),('sufyan','shaikh', 22, 67000);
+
+
+select * from wipro;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  26 |  78000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  21 |  45000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  20 |  56000 | bangalore |
+|  4 | sufyan    | NULL       | shaikh   |  22 |  67000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+
