@@ -1,0 +1,32 @@
+Concept of NULL - 
+
+
+NULL Means Something which is Unknown, 
+
+For eg Middle Name kisi kisi ka middle name nhi rh skta lekin f_name, l_name, age, salaay & location is IMP 
+
+
+Create Table defination 
+
+5) create table worker (
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL);
+
+
+
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| firstname  | varchar(20) | NO   |     | NULL    |       |
+| middlename | varchar(20) | YES  |     | NULL    |       |
+| lastname   | varchar(20) | NO   |     | NULL    |       |
+| age        | int(11)     | NO   |     | NULL    |       |
+| salary     | int(11)     | NO   |     | NULL    |       |
+| location   | varchar(20) | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+
+
