@@ -1,0 +1,143 @@
+
+
+1) We will create a Database
+
+create database infosys;
+
+
+2) Check if the database is created or not 
+
+show databases;
+
+
+3) Use the Database which we have Created 
+
+use database infosys;
+
+
+4) We are creating a Table as Employee and below is the Schema or Structure of the Table.
+
+Create table employee (
+id int PRIMARY KEY,
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL DEFAULT 'bangalore'
+);
+
+
+5) To View the table Description
+
+desc employee;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(20) | NO   |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+6) We are inserting the data in the table
+
+insert into employee(id, firstname, lastname, age, salary) VALUES (1, 'amir','shaikh', 25, 89000),(2, 'adnan','shaikh', 20, 46000);
+
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+7) insert into employee(id, firstname, lastname, age, salary) VALUES (3, 'ahmed','khan', 19, 78000);
+
+
+select * from employee;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+8) Selecting all Columns 
+Select * from employee;
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+9) For Selecting Specific columns fire Below Query
+Select firstname,lastname from employee;
+
++-----------+----------+
+| firstname | lastname |
++-----------+----------+
+| amir      | shaikh   |
+| adnan     | shaikh   |
+| ahmed     | khan     |
++-----------+----------+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+"WHERE" Clause
+
+
+1) select * from employee where age > 19;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+2) select * from employee where firstname= 'ahmed';
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+3) select * from employee where salary > '50000';
+
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  26 |  78000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  20 |  56000 | bangalore |
+|  4 | sufyan    | NULL       | shaikh   |  22 |  67000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
