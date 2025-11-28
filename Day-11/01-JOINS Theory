@@ -1,0 +1,55 @@
+
+
+Session 11 - 
+
+
+
+Joins 
+
+1) Inner Join - 
+
+By Default It is a Inner Join
+
+Only Matching Records are Considered Non Matching Records are Discarded.
+
+
+
+
+2) Left Outer Join - 
+
+All the Matching Records From Left and Right Table  Are Considered
++
+All The Non Matching Records In the Left table which does not have the match in the Right Padded with Null
+
+
+
+
+
+3) Right Outer Join - 
+
+All the Matching Records From Right and Left Table  Are Considered
++
+All The Non Matching Records In the Right table which does not have the match in the Left Padded with Null
+
+
+
+
+
+4) Full Outer Join - 
+
+All Matching Records Are Shown
++
+Non Matching Records From Left
++
+Non Matching Records From Right
+
+
+Important Note - In MySQL We Do Not have a Keyword as "Full Outer Join"  We Use "UNION"
+
+[Left Outer Join & Right Outer Join Ki Query Likh k Beech me UNION Likhne ka]
+
+
+
+
+
+
