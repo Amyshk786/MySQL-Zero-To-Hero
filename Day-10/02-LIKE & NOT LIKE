@@ -1,0 +1,52 @@
+
+
+- Like
+
+
+2)A) Get All the Courses Which have the word "data" In It
+
+--> First we will check the courses table for our Reference
+
+SELECT * FROM courses;
+
++-----------+-----------------+----------+-------+
+| course_id | course_name     | duration | fees  |
++-----------+-----------------+----------+-------+
+|         1 | big data        |        6 | 50000 |
+|         2 | web development |        3 | 20000 |
+|         3 | data science    |        6 | 40000 |
+|         4 | devops          |        1 | 10000 |
++-----------+-----------------+----------+-------+
+
+
+
+SELECT * FROM courses where course_name like '%data%';
+
++-----------+--------------+----------+-------+
+| course_id | course_name  | duration | fees  |
++-----------+--------------+----------+-------+
+|         1 | big data     |        6 | 50000 |
+|         3 | data science |        6 | 40000 |
++-----------+--------------+----------+-------+
+
+
+
+
+
+
+
+
+2)B) Get All the Courses Which Does Not have the word "data" In It
+
+
+SELECT * FROM courses where course_name not like '%data%';
+
++-----------+-----------------+----------+-------+
+| course_id | course_name     | duration | fees  |
++-----------+-----------------+----------+-------+
+|         2 | web development |        3 | 20000 |
+|         4 | devops          |        1 | 10000 |
++-----------+-----------------+----------+-------+
+
+
+
