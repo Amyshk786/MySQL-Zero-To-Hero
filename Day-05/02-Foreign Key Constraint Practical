@@ -1,0 +1,196 @@
+
+
+
+11) Problem Statement Where Foreign Key Comes Into Picture - 
+
+We have only 4 Courses and In the Below query Jasprit Bumrah has Selected Course 5 Which does not Exists
+
+select * from courses;
++-----------+-----------------+------------------------+------------+
+| course_id | course_name     | course_duration_months | course_fee |
++-----------+-----------------+------------------------+------------+
+|         1 | bigdata         |                      6 |      50000 |
+|         2 | web development |                      3 |      20000 |
+|         3 | data science    |                      6 |      40000 |
+|         4 | devops          |                      1 |      10000 |
++-----------+-----------------+------------------------+------------+
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('jasprit','bumrah', 'jasprit@gmail.com', '9891919891', 5, 7, 'vodafone', '5-02-2021', 'google', 'mumbai');
+
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-02-03 20:15:38 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-02-03 20:15:47 |               1 | virat         |            3 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          3 | 2024-02-03 20:15:47 |               1 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          4 | 2024-02-03 20:15:49 |               1 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          5 | 2024-02-03 20:19:20 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-02-03 20:19:20 |               1 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-02-03 20:19:20 |               1 | carl          |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|          8 | 2024-02-03 20:19:20 |               1 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
+|          9 | 2024-02-03 20:24:46 |               5 | jasprit       |            7 | vodafone        | 5-02-2021  | google            | mumbai    |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
+
+12) To Fix the Above Problem First we Need to Drop the Student Table
+
+drop table student;
+
+
+
+13) And we will ReCreate the Student Table & We will Give a Foreign Key Constraint to the "Selected_Course" Column and We have Given REFERENCES Of "courses_id" Column in the "courses" table. So Now if Any Student Joins with the course id which does not exists it will give the below ERROR.
+
+Parent Table = Courses
+
+Child Table = Student
+
+
+create table student (
+student_id int AUTO_INCREMENT,
+student_fname VARCHAR(30) NOT NULL,
+student_lname VARCHAR(30) NOT NULL,
+student_mname VARCHAR(30),
+student_email VARCHAR(30) NOT NULL,
+student_phone VARCHAR(15) NOT NULL,
+student_alternate_phone VARCHAR(15),
+enrollment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+selected_course int NOT NULL DEFAULT 1,
+years_of_exp int NOT NULL,
+student_company VARCHAR(30),
+batch_date VARCHAR(30) NOT NULL,
+source_of_joining VARCHAR(30) NOT NULL,
+location VARCHAR(30) NOT NULL,
+PRIMARY KEY (student_id),
+UNIQUE KEY(student_email),
+FOREIGN KEY (selected_course) REFERENCES courses (course_id)
+);
+
+
+
+
+ desc student;
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| Field                   | Type        | Null | Key | Default           | Extra             |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| student_id              | int         | NO   | PRI | NULL              | auto_increment    |
+| student_fname           | varchar(30) | NO   |     | NULL              |                   |
+| student_lname           | varchar(30) | NO   |     | NULL              |                   |
+| student_mname           | varchar(30) | YES  |     | NULL              |                   |
+| student_email           | varchar(30) | NO   | UNI | NULL              |                   |
+| student_phone           | varchar(15) | NO   |     | NULL              |                   |
+| student_alternate_phone | varchar(15) | YES  |     | NULL              |                   |
+| enrollment_date         | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| selected_course         | int         | NO   | MUL | 1                 |                   |
+| years_of_exp            | int         | NO   |     | NULL              |                   |
+| student_company         | varchar(30) | YES  |     | NULL              |                   |
+| batch_date              | varchar(30) | NO   |     | NULL              |                   |
+| source_of_joining       | varchar(30) | NO   |     | NULL              |                   |
+| location                | varchar(30) | NO   |     | NULL              |                   |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+
+
+
+
+
+
+
+
+14) Single Insert Statements No3 - 
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('rohit','sharma', 'rohit@gmail.com', '9191919191', 2, 6, 'walmart', '5-02-2021', 'linkedin', 'bangalore');
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('virat','kohli', 'virat@gmail.com', '9292929292', 3, 5, 'flipkart', '5-02-2021', 'linkedin', 'hyderabad');
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('shikhar','dhawan', 'shikhar@gmail.com', '9393939393', 1, 12, 'datamatics', '19-02-2021', 'google', 'bangalore');
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('rahul','dravid', 'rahul@gmail.com', '9494949494', 4, 8, 'walmart', '19-02-2021', 'quora', 'chennai');
+
+
+
+--> select student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student;
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-07-21 12:24:48 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-07-21 12:24:48 |               1 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          3 | 2024-07-21 12:24:49 |               4 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          4 | 2024-07-21 12:25:57 |               3 | virat         |            5 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
+15)  Multiple Insert Statements No3 - 
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('kapil','dev', 'kapil@gmail.com', '9291292292', 1, 15, 'microsoft', '5-02-2021', 'friend', 'pune'),
+('brain', 'lara', 'brain@gmail.com', '9291297292', 2, 18, 'tcs', '5-02-2021', 'youtube', 'pune'),
+('carl', 'hooper', 'karl@gmail.com', '9876543212', 3, 20, 'wipro', '19-02-2021', 'youtube', 'pune'),
+('saurabh', 'ganguly', 'saurabh@gmail.com', '9987654321', 4, 12, 'wipro', '19-02-2021', 'google', 'chennai');
+
+
+
+-->  select student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student;
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-07-21 12:24:48 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-07-21 12:24:48 |               1 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          3 | 2024-07-21 12:24:49 |               4 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          4 | 2024-07-21 12:25:57 |               3 | virat         |            5 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          5 | 2024-07-21 12:27:29 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-07-21 12:27:29 |               2 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-07-21 12:27:29 |               3 | carl          |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|          8 | 2024-07-21 12:27:29 |               4 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+--> All the Records have been Successfully Inserted But In the Problem Statement The Student Jasprit was added with Course ID 5 But Now we have Added the Foreign Key Constaraint to the "Selected_Course" Column and We have Given REFERENCES Of "courses_id" Column in the "courses" table. So Now if Any Student Joins with the course id which does not exists it will give the below ERROR.
+
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`trendytech`.`student`, CONSTRAINT `student_ibfk_1` FOREIGN KEY (`selected_course`) REFERENCES `courses` (`course_id`))
+
+
+
+
+
+
+16) Select Statement No3 - 
+
+
+select student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student;
+
+
+
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-07-21 12:24:48 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-07-21 12:24:48 |               1 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          3 | 2024-07-21 12:24:49 |               4 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          4 | 2024-07-21 12:25:57 |               3 | virat         |            5 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          5 | 2024-07-21 12:27:29 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-07-21 12:27:29 |               2 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-07-21 12:27:29 |               3 | carl          |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|          8 | 2024-07-21 12:27:29 |               4 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
