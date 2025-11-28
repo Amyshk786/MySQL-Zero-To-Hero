@@ -1,0 +1,22 @@
+
+
+Session 12 - 
+
+
+WHERE vs HAVING Clause in SQL
+=============================
+
+
+-> WHERE is used before group by and it can do filtering on individual records
+
+-> HAVING is used after group by and it can do filtering on aggregated records.
+
+
+
+Note - We can use where and having in the same query also. Like Below 
+
+[SELECT location,count(*) AS total FROM students WHERE years_of_exp > 10 GROUP BY location HAVING total > 1;]
+
+
+Important Note - WHERE is more performant than HAVING.
+
