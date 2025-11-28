@@ -1,0 +1,115 @@
+
+
+- Inner Join
+=============
+
+
+1) Problem Statement - We Have 2 Tables Courses and Student, We know there is a Student Named as "rahul" & We want to know in which course he has enrolled.
+
+
+SELECT student_fname, selected_course FROM student;
+
++---------------+-----------------+
+| student_fname | selected_course |
++---------------+-----------------+
+| rohit         |               2 |
+| shikhar       |               1 |
+| rahul         |               4 |
+| virat         |               3 |
+| kapil         |               1 |
+| brain         |               2 |
+| carl          |               3 |
+| saurabh       |               4 |
++---------------+-----------------+
+
+
+We can Run the Above Mentioned Query but it will give us the "selected_course" in Number like 1,2,3.... But If we want the name of the course In Which Rahul has Enrolled we can Use the Below Query 
+
+SELECT course_name FROM courses WHERE course_id = (SELECT selected_course FROM student WHERE student_fname = 'rahul');
+
++-------------+
+| course_name |
++-------------+
+| devops      |
++-------------+
+
+
+
+
+Solution Using Join   [Inner Join]
+
+
+SELECT student.student_fname, student.student_lname, courses.course_name FROM student JOIN courses ON student.selected_course = courses.course_id;
+
++---------------+---------------+-----------------+
+| student_fname | student_lname | course_name     |
++---------------+---------------+-----------------+
+| shikhar       | dhawan        | big data        |
+| kapil         | dev           | big data        |
+| rohit         | sharma        | web development |
+| brain         | lara          | web development |
+| virat         | kohli         | data science    |
+| carl          | hooper        | data science    |
+| rahul         | dravid        | devops          |
+| saurabh       | ganguly       | devops          |
++---------------+---------------+-----------------+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+2) When we Want to Create a Copy of the Table Which we Have Already Created Use Below Query
+
+
+A) CREATE TABLE student_latest as SELECT * FROM student;  [New Table Will be Created with All the details but Key Constaraint Nhi Rahege]
+
+desc student_latest;
+
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| Field                   | Type        | Null | Key | Default           | Extra             |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| student_id              | int         | NO   |     | 0                 |                   |
+| student_fname           | varchar(30) | NO   |     | NULL              |                   |
+| student_lname           | varchar(30) | NO   |     | NULL              |                   |
+| student_mname           | varchar(30) | YES  |     | NULL              |                   |
+| student_email           | varchar(30) | NO   |     | NULL              |                   |
+| student_phone           | varchar(15) | NO   |     | NULL              |                   |
+| student_alternate_phone | varchar(15) | YES  |     | NULL              |                   |
+| enrollment_date         | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| selected_course         | int         | NO   |     | 1                 |                   |
+| years_of_exp            | int         | NO   |     | NULL              |                   |
+| student_company         | varchar(30) | YES  |     | NULL              |                   |
+| batch_date              | varchar(30) | NO   |     | NULL              |                   |
+| source_of_joining       | varchar(30) | NO   |     | NULL              |                   |
+| location                | varchar(30) | NO   |     | NULL              |                   |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+
+
+
+
+
+B) CREATE TABLE courses_latest as SELECT * FROM courses;  [New Table Will be Created with All the details but Key Constaraint Nhi Rahege]
+
+
+desc courses_latest;
+
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| course_id   | int         | NO   |     | NULL    |       |
+| course_name | varchar(30) | NO   |     | NULL    |       |
+| duration    | int         | NO   |     | NULL    |       |
+| fees        | int         | NO   |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+
+
+
+
