@@ -1,0 +1,164 @@
+
+
+Session 8 - 
+
+
+
+Aggregate Functions - Aggregate means Clubbing few things and getting the Output [When we do Avg, Sum] The Input can be N numbers of Rows but the Output has to be 1 Row.  [Count, Group By, Min, Max]
+
+
+
+Count -
+
+
+
+1) To Count the Number of Rows in the Table 
+
+SELECT count(*) FROM students;
+
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+
+
+
+
+
+
+
+2) If we have to find from how many different Companies students are joining 
+
+SELECT count(student_company) FROM students;  [But Isme duplicates bhi rahege]
+
++------------------------+
+| count(student_company) |
++------------------------+
+|                      8 |
++------------------------+
+
+
+
+--> Note Wipro and Walmart Repeat Ho rhe h
+
+select student_company from student;
++-----------------+
+| student_company |
++-----------------+
+| walmart         |
+| datamatics      |
+| walmart         |
+| flipkart        |
+| microsoft       |
+| tcs             |
+| wipro           |
+| wipro           |
++-----------------+
+
+
+
+
+
+
+3) If we do not want repeated records use below Query
+
+SELECT count(DISTINCT student_company) FROM student;
++---------------------------------+
+| count(DISTINCT student_company) |
++---------------------------------+
+|                               6 |
++---------------------------------+
+
+
+
+
+
+
+
+4) If we want to check from which different location students are joining us
+
+SELECT count(DISTINCT location) FROM student;
+
+
++--------------------------+
+| count(DISTINCT location) |
++--------------------------+
+|                        4 |
++--------------------------+
+
+
+
+
+
+
+
+
+5) If we want to check from which different source_of_joining students are joining us
+
+
+SELECT count(DISTINCT source_of_joining) FROM student;
++-----------------------------------+
+| count(DISTINCT source_of_joining) |
++-----------------------------------+
+|                                 5 |
++-----------------------------------+
+
+
+
+
+
+
+
+6) To check how many batches are running in Feb Month [Abhi filhal humare [pas Feb ki hi batch hain]
+
+SELECT batch_date FROM students;
+
+
++------------+
+| batch_date |
++------------+
+| 05-02-2021 |
+| 05-02-2021 |
+| 05-02-2021 |
+| 05-02-2021 |
+| 5-02-2021  |
+| 5-02-2021  |
+| 19-02-2021 |
+| 19-02-2021 |
++------------+
+
+
+
+
+
+
+7) If we want to check how many batches are Running in Feb Month
+
+
+select count(*) from student where batch_date like '%-02-%';
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+
+
+
+
+
+
+8) If we want to check how many students have enrolled in 19th Feb Batch
+
+
+select count(*) from student where batch_date like '19-02-%';
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+
+
+
+
+
