@@ -1,0 +1,78 @@
+
+
+Session 7 -
+
+
+Problem Statement - In the Previous Lecture we were not able to execute the below Query
+
+SELECT DISTINCT source_of_joining FROM student ORDER BY enrollment_date desc;
+
+
+
+Example 1 
+
+Order of Execution of a Query
+
+For eg we fire this query 
+
+SELECT source_of_joining FROM student;
+
++-------------------+
+| source_of_joining |
++-------------------+
+| linkedin          |
+| google            |
+| quora             |
+| linkedin          |
+| friend            |
+| youtube           |
+| youtube           |
+| google            |
++-------------------+
+
+Order Of Execution - 
+
+First "FROM" will get Executed it will Load the Table first (Loading the Table)
+
+SELECT We are Projecting source_of_joining from the student table (Projecting source_of_joining)
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Example 2
+
+But when we Add ORDER BY in the Query the Order Of Execution will be 
+
+SELECT source_of_joining, enrollment_date FROM student ORDER BY enrollment_date;
+
++-------------------+---------------------+
+| source_of_joining | enrollment_date     |
++-------------------+---------------------+
+| linkedin          | 2024-07-21 12:24:48 |
+| google            | 2024-07-21 12:24:48 |
+| quora             | 2024-07-21 12:24:49 |
+| linkedin          | 2024-07-21 12:25:57 |
+| friend            | 2024-07-21 12:27:29 |
+| youtube           | 2024-07-21 12:27:29 |
+| youtube           | 2024-07-21 12:27:29 |
+| google            | 2024-07-21 12:27:29 |
++-------------------+---------------------+
+
+
+First "FROM" will get Executed it will Load the Table first (Loading the Table)
+
+SELECT We are Projecting source_of_joining from the student table (Projecting source_of_joining, enrollment_date)
+
+ORDER BY (On the basis of "enrollment_date" it will do ORDER BY)
+
+SELECT source_of_joining, enrollment_date FROM student ORDER BY enrollment_date;
+
+
