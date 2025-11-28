@@ -1,0 +1,186 @@
+
+
+
+3) Get All Students From Bangalore Who Joined Through Linkedin and has Less than 8 Years_Of_Exp
+
+
+SELECT * FROM student where years_of_exp < 8 and source_of_joining = 'linkedin'and location = 'bangalore';
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+4) We Want Students who do not fall between 8 to 12 Years_Of_Exp
+
+
+SELECT * FROM student where years_of_exp < 8 or years_of_exp > 12;
+
+OR
+
+SELECT * FROM student where years_of_exp NOT BETWEEN 8 and 12;
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+5) Get All The Students Who Have Joined Us From Flipkart, Walmart & Microsoft
+
+
+SELECT * FROM student where student_company = 'flipkart' or student_company = 'walmart' or student_company = 'microsoft';
+
+OR 
+
+SELECT * FROM student WHERE student_company IN('flipkart', 'walmart', 'microsoft');
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+6) Get All The Students Who Have Not Joined Us From Flipkart, Walmart & Microsoft
+
+
+SELECT * FROM student WHERE student_company NOT IN('flipkart', 'walmart', 'microsoft');
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+SELECT * FROM courses;
+
++-----------+-----------------+----------+-------+
+| course_id | course_name     | duration | fees  |
++-----------+-----------------+----------+-------+
+|         1 | big data        |        6 | 50000 |
+|         2 | web development |        3 | 20000 |
+|         3 | data science    |        6 | 40000 |
+|         4 | devops          |        1 | 10000 |
++-----------+-----------------+----------+-------+
+
+
+Case Statements - 
+
+
+7) We want to Say that If a Course is Less Than 4 Months It is a "DIPLOMA"  ELSE It is a "MASTERS"
+
+SELECT courses_id, course_name, fees, 
+CASE 
+WHEN duration > 4 THEN 'masters'
+ELSE 'diploma'
+END as course_type
+FROM courses;
+
+
+OR 
+
+SELECT course_id, course_name, fees, CASE WHEN duration > 4 THEN 'masters' ELSE 'diploma' END as course_type FROM courses;
+
+
+
+
++-----------+-----------------+------------+-------------+
+| course_id | course_name     | course_fee | course_type |
++-----------+-----------------+------------+-------------+
+|         1 | web development |      45000 | masters     |
+|         2 | DevOps          |      55000 | masters     |
+|         3 | data science    |      40000 | masters     |
+|         4 | bigdata         |      42000 | masters     |
+|         5 | aws             |      15000 | diploma     |
++-----------+-----------------+------------+-------------+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+8) If We Want to Say "Flipkart", "Walmart" & "Microsoft" Are Product Based Companies and Others Are Service Based Companies
+
+
+SELECT student_id, student_fname, student_lname, student_company,
+CASE
+WHEN student_company IN ('flipkart', 'walmart', 'microsoft') THEN 'product based'
+ELSE 'service based'
+END as company_type
+FROM student;
+
+
++------------+---------------+---------------+-----------------+---------------+
+| student_id | student_fname | student_lname | student_company | company_type  |
++------------+---------------+---------------+-----------------+---------------+
+|          1 | rohit         | sharma        | walmart         | product based |
+|          2 | shikhar       | dhawan        | datamatics      | service based |
+|          3 | rahul         | dravid        | walmart         | product based |
+|          4 | virat         | kohli         | flipkart        | product based |
+|          5 | kapil         | dev           | microsoft       | product based |
+|          6 | brain         | lara          | tcs             | service based |
+|          7 | carl          | hooper        | wipro           | service based |
+|          8 | saurabh       | ganguly       | wipro           | service based |
++------------+---------------+---------------+-----------------+---------------+
+
+
+
+
+
+OR
+
+
+SELECT student_id, student_fname, student_lname, student_company, CASE WHEN student_company IN ('flipkart', 'walmart', 'microsoft') THEN 'product based' ELSE 'service based' END as company_type FROM student;
+
++------------+---------------+---------------+-----------------+---------------+
+| student_id | student_fname | student_lname | student_company | company_type  |
++------------+---------------+---------------+-----------------+---------------+
+|          1 | rohit         | sharma        | walmart         | product based |
+|          2 | shikhar       | dhawan        | datamatics      | service based |
+|          3 | rahul         | dravid        | walmart         | product based |
+|          4 | virat         | kohli         | flipkart        | product based |
+|          5 | kapil         | dev           | microsoft       | product based |
+|          6 | brain         | lara          | tcs             | service based |
+|          7 | carl          | hooper        | wipro           | service based |
+|          8 | saurabh       | ganguly       | wipro           | service based |
++------------+---------------+---------------+-----------------+---------------+
+
+
+
+
