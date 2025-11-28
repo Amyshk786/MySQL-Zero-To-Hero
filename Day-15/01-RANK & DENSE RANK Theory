@@ -1,0 +1,29 @@
+
+
+Session 15 - 
+
+
+RANK & DENSE RANK - 
+===================
+
+
+
+-> We should be using the order by clause
+
+-> We can also use the partition by - But its optional
+
+-> The row number starts from 1 for Every Partition
+
+
+Important Note - 
+================
+
+1) If There Are No Duplicates Then "Row Number", "RANK" & "DENSE RANK" Lead to Similar Results.
+
+2) Only The Difference Comes When There Are Duplicates
+
+3) RANK - For Duplicates Same Rank is Assigned  and For The Next Entry It Skips the Ranks.
+
+4) DENSE RANK - For Duplicates Same Rank is Assigned  and For The Next Entry It Does Not Skips the Ranks.
+
+
