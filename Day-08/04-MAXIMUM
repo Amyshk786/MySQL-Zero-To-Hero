@@ -1,0 +1,74 @@
+
+
+MAX - 
+
+
+Note - List of Students and years_of_exp in Descending Order
+
+SELECT student_fname,years_of_exp FROM student ORDER BY years_of_exp desc;
++---------------+--------------+
+| student_fname | years_of_exp |
++---------------+--------------+
+| carl          |           20 |
+| brain         |           18 |
+| kapil         |           15 |
+| shikhar       |           12 |
+| saurabh       |           12 |
+| rahul         |            8 |
+| rohit         |            6 |
+| virat         |            5 |
++---------------+--------------+
+
+
+
+1) If we want to find out the Minimum years_of_exp
+
+SELECT MAX(years_of_exp) FROM student;
+
++-------------------+
+| MAX(years_of_exp) |
++-------------------+
+|                20 |
++-------------------+
+
+
+
+
+
+
+
+2) If we want to know the name of student which have the Maximum years_of_exp
+
+
+SELECT student_fname FROM student ORDER BY years_of_exp desc LIMIT 1;
+
++---------------+
+| student_fname |
++---------------+
+| carl          |
++---------------+
+
+
+
+
+
+
+
+3) For Each source_of_joining we want Maximum years_of_exp [linkedin se Max years_of_exp kiska same with others]
+
+
+SELECT source_of_joining, MAX(years_of_exp) FROM student GROUP BY source_of_joining;
+
++-------------------+-------------------+
+| source_of_joining | MAX(years_of_exp) |
++-------------------+-------------------+
+| linkedin          |                 6 |
+| google            |                12 |
+| quora             |                 8 |
+| friend            |                15 |
+| youtube           |                20 |
++-------------------+-------------------+
+
+
+
+
