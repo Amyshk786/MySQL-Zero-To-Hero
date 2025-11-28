@@ -1,0 +1,55 @@
+
+
+Session 6 - 
+
+
+1) Distinct - In India There are Multiple Cities and States and If we want to Find out from where the Students are joining the course we can use Distinct.
+
+
+A) select location from student; [Ye Query me poore Students ka Data aayega and wo Repititive Rahega]
+
++-----------+
+| location  |
++-----------+
+| bangalore |
+| bangalore |
+| chennai   |
+| hyderabad |
+| pune      |
+| pune      |
+| pune      |
+| chennai   |
++-----------+
+
+
+
+B) select DISTINCT location from student; [But Hum Jab ye Query use krege toh sirf Un hi State & Cities ka Name aayega but Single Time and Not Repititive]
+
+
++-----------+
+| location  |
++-----------+
+| bangalore |
+| chennai   |
+| hyderabad |
+| pune      |
++-----------+
+
+
+
+C) select DISTINCT student_company from student;  [Hum Jab ye Query use krege toh sirf Un hi Companies ka Name aayega but Single Time and Not Repititive]
+
+
++-----------------+
+| student_company |
++-----------------+
+| walmart         |
+| datamatics      |
+| flipkart        |
+| microsoft       |
+| tcs             |
+| wipro           |
++-----------------+
+
+
+
