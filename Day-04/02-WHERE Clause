@@ -1,0 +1,38 @@
+
+
+"WHERE" Clause
+
+
+1) select * from employee where age > 19;
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  25 |  89000 | bangalore |
+|  2 | adnan     | NULL       | shaikh   |  20 |  46000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+
+2) select * from employee where firstname= 'ahmed';
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  3 | ahmed     | NULL       | khan     |  19 |  78000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+3) select * from employee where salary > '50000';
+
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | amir      | NULL       | shaikh   |  26 |  78000 | bangalore |
+|  3 | ahmed     | NULL       | khan     |  20 |  56000 | bangalore |
+|  4 | sufyan    | NULL       | shaikh   |  22 |  67000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
