@@ -53,3 +53,166 @@ C) select DISTINCT student_company from student;  [Hum Jab ye Query use krege to
 
 
 
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+--Problem Statements of Distinct
+==================================
+
+
+
+
+
+DISTINCT - 
+
+
+1) Problem Statement No 1 - 
+
+[Ye Query me poore Students Ki Location ka Data aayega and wo Bhi Repititive Rahega]
+
+SELECT location FROM student;
+
+
++-----------+
+| location  |
++-----------+
+| bangalore |
+| hyderabad |
+| bangalore |
+| chennai   |
+| pune      |
+| pune      |
+| pune      |
+| chennai   |
++-----------+
+
+
+
+1) Solution Statement No 1 - 
+
+[But Hum Jab ye Query use krege toh sirf Un hi State & Cities ka Name aayega but Single Time and Not Repititive]
+
+select DISTINCT location from student;
+
+
++-----------+
+| location  |
++-----------+
+| bangalore |
+| hyderabad |
+| chennai   |
+| pune      |
++-----------+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+2) Problem Statement No 2 - 
+
+[Ye Query me poore Students Ki Company ka Data aayega and wo Bhi Repititive Rahega]
+
+
+ select student_company from student;
+
+
++-----------------+
+| student_company |
++-----------------+
+| walmart         |
+| flipkart        |
+| datamatics      |
+| walmart         |
+| microsoft       |
+| tcs             |
+| wipro           |
+| wipro           |
++-----------------+
+
+
+
+
+
+2) Solution Statement No 2 - 
+
+[Hum Jab ye Query use krege toh sirf Un hi Companies ka Name aayega but Single Time and Not Repititive]
+
+select DISTINCT student_company from student;
+
+
++-----------------+
+| student_company |
++-----------------+
+| walmart         |
+| flipkart        |
+| datamatics      |
+| microsoft       |
+| tcs             |
+| wipro           |
++-----------------+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3) Problem Statement No 3 - 
+
+[Ye Query me poore Students Ki Source_of_Joining ka Data aayega and wo Bhi Repititive Rahega]
+
+select source_of_joining from student;
+
+
++-------------------+
+| source_of_joining |
++-------------------+
+| linkedin          |
+| linkedin          |
+| google            |
+| quora             |
+| friend            |
+| youtube           |
+| youtube           |
+| google            |
++-------------------+
+
+
+
+
+
+3) Solution Statement No 3 - 
+
+[Hum Jab ye Query use krege toh sirf Un hi Source_of_Joining ka Name aayega but Single Time and Not Repititive]
+
+
+select DISTINCT source_of_joining from student;
+
+
++-------------------+
+| source_of_joining |
++-------------------+
+| linkedin          |
+| google            |
+| quora             |
+| friend            |
+| youtube           |
++-------------------+
+
+
+
+
