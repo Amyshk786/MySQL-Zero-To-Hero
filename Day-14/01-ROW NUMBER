@@ -1,0 +1,96 @@
+
+
+Session 14 - 
+
+
+Row Number - Things which are Mandatory While Using Row Number 
+==============================================================
+
+-> We should be using the order by clause
+
+-> We can also use the partition by - But its optional
+
+-> The row number starts from 1 for Every Partition
+
+-> We Must Use Row Number If There are No Duplicates
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------
+
+
+1) We Have The "employe" Table which we have Created Earlier 
+
+
+Problem Statement 1 - We want to Give Row Number on the Basis of Salary in DESC ORDER
+
+
+Solution - SELECT firstname, lastname, salary, row_number() OVER (order by salary desc) AS row_num FROM employe;
+
++-----------+----------+--------+---------+
+| firstname | lastname | salary | row_num |
++-----------+----------+--------+---------+
+| rohit     | sharma   |  30000 |       1 |
+| rahul     | dravid   |  30000 |       2 |
+| shikhar   | dhawan   |  25000 |       3 |
+| shane     | warne    |  20000 |       4 |
+| saurabh   | ganguly  |  15000 |       5 |
+| sachin    | sharma   |  10000 |       6 |
+| kapil     | dev      |  10000 |       7 |
++-----------+----------+--------+---------+
+
+
+
+
+
+
+
+
+
+
+
+2) Problem Statement 2 - We Want to Assign Row Number and Partitions Based on Salary & Each Location [Bangalore, Hyderabad and Pune]
+
+
+Solution - SELECT firstname, lastname, salary, location, row_number() OVER (PARTITION BY location ORDER BY salary desc) AS row_num FROM employe;
+
++-----------+----------+--------+-----------+---------+
+| firstname | lastname | salary | location  | row_num |
++-----------+----------+--------+-----------+---------+
+| rahul     | dravid   |  30000 | bangalore |       1 |
+| shane     | warne    |  20000 | bangalore |       2 |
+| sachin    | sharma   |  10000 | bangalore |       3 |
+| rohit     | sharma   |  30000 | hyderabad |       1 |
+| shikhar   | dhawan   |  25000 | hyderabad |       2 |
+| saurabh   | ganguly  |  15000 | pune      |       1 |
+| kapil     | dev      |  10000 | pune      |       2 |
++-----------+----------+--------+-----------+---------+
+
+
+
+
+
+
+
+
+
+
+3) Problem Statement - We Want to get Highest Salary Getter From Each Location
+
+
+Solution - SELECT * FROM (SELECT firstname, lastname, salary, location, row_number() OVER (PARTITION BY location ORDER BY salary desc) AS row_num FROM employe) temptable WHERE row_num = 1;
+
++-----------+----------+--------+-----------+---------+
+| firstname | lastname | salary | location  | row_num |
++-----------+----------+--------+-----------+---------+
+| rahul     | dravid   |  30000 | bangalore |       1 |
+| rohit     | sharma   |  30000 | hyderabad |       1 |
+| saurabh   | ganguly  |  15000 | pune      |       1 |
++-----------+----------+--------+-----------+---------+
+
+
+
+
+
