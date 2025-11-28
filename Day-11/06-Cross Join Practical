@@ -1,0 +1,44 @@
+
+
+Cross Join - Fpr Eg In the Left Table we Have 4 Records and In the Right Table we Have 7 Records. Then It will Try to Combine Each Record On the Left Table with Each Record On The Right Table. That Will be 8x4= 32
+
+
+6) Cross Join Will Multiply The Values of Both The tables.
+
+
+SELECT count(*) FROM student_latest, courses_latest;
+
++----------+
+| count(*) |
++----------+
+|       32 |
++----------+
+
+
+
+
+If We Check Count In student_latest and courses_latest Individually 
+
+
+SELECT count(*) FROM student_latest;
+
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+
+
+
+SELECT count(*) FROM courses_latest;
+
++----------+
+| count(*) |
++----------+
+|        4 |
++----------+
+
+
+
+
+
