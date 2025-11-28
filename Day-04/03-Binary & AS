@@ -1,0 +1,34 @@
+
+
+"Binary" -
+
+Agar Hum ye search krege toh nhi aayega kuch bhi q ki humne ahmed ka A small rkha h 
+
+["Binary" Keyword is used when we want to Retrive the Exact Match and to make SQL Case Sensitive]
+
+1) select * from employee where binary firstname= 'Ahmed';
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+"AS" - 
+
+If we want the Firstname as Name and Lastname as Surname we can use below Query
+
+["as" keyword is used For Changing the ALIAS]
+
+2) Select firstname as name, lastname as surname from employee;
+
+
++-------+---------+
+| name  | surname |
++-------+---------+
+| amir  | shaikh  |
+| adnan | shaikh  |
+| ahmed | khan    |
++-------+---------+
+
+
