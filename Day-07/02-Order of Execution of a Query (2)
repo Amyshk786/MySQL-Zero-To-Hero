@@ -1,0 +1,93 @@
+
+
+Example 3 - If we use the below Query
+
+
+SELECT source_of_joining FROM student ORDER BY enrollment_date;
+
++-------------------+
+| source_of_joining |
++-------------------+
+| linkedin          |
+| google            |
+| quora             |
+| linkedin          |
+| friend            |
+| youtube           |
+| youtube           |
+| google            |
++-------------------+
+
+
+First "FROM" will get Executed it will Load the Table first (Loading the Table)
+
+SELECT We are Projecting source_of_joining, enrollment_date from the student table (Projecting source_of_joining, enrollment_date as system knows we have added ORDER BY on enrollment_date so it will use that but jab Result show karega tab enrollment_date nhi show hogi)  [Refer Example 2 & Example 3]
+
+ORDER BY (On the basis of "enrollment_date" it will do ORDER BY)
+
+SELECT source_of_joining, FROM student ORDER BY enrollment_date;
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Example 4 - 
+
+SELECT DISTINCT source_of_joining FROM student ORDER BY enrollment_date desc;
+
+
+
+First "FROM" will get Executed it will Load the Table first (Loading the Table)
+
+SELECT We are Projecting source_of_joining, enrollment_date from the student table (Projecting source_of_joining, enrollment_date)
+
+DISTINCT [Note 1 & Note 2 me jo query fire kiye h usme Note 1 me 5 Results show kr raha h & Note 2 me 7 Results Is wajah se ye Query me error aa rha h q ki system Wrong result dene k bajaye Error de rha h]
+
+
+
+
+
+Note 1 - SELECT DISTINCT source_of_joining FROM student;
++-------------------+
+| source_of_joining |
++-------------------+
+| linkedin          |
+| google            |
+| quora             |
+| friend            |
+| youtube           |
++-------------------+
+
+
+
+
+
+
+
+Note 2 - SELECT DISTINCT source_of_joining, enrollment_date FROM student;
++-------------------+---------------------+
+| source_of_joining | enrollment_date     |
++-------------------+---------------------+
+| linkedin          | 2024-07-21 12:24:48 |
+| google            | 2024-07-21 12:24:48 |
+| quora             | 2024-07-21 12:24:49 |
+| linkedin          | 2024-07-21 12:25:57 |
+| friend            | 2024-07-21 12:27:29 |
+| youtube           | 2024-07-21 12:27:29 |
+| google            | 2024-07-21 12:27:29 |
++-------------------+---------------------+
+
+
+ORDER BY (On the basis of "enrollment_date" it will do ORDER BY)
+
+SELECT source_of_joining, FROM student ORDER BY enrollment_date;
+
+
+
+
