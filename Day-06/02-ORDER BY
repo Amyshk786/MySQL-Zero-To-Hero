@@ -1,0 +1,112 @@
+
+
+2) ORDER BY - 
+
+
+A) select id, enrollment_date, selected_course, fname, years_of_exp, student_company, batch_date, source_of_joining, location from students;
+
+
+
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+| id | enrollment_date     | selected_course | fname   | years_of_exp | student_company | batch_date | source_of_joining | location  |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+|  1 | 2024-07-21 12:01:42 |               2 | rohit   |            5 | walmart         | 05-02-2021 | linkedin          | mumbai    |
+|  2 | 2024-07-21 12:03:24 |               2 | virat   |            3 | flipkart        | 05-02-2021 | linkedin          | hyderabad |
+|  3 | 2024-07-21 12:04:44 |               3 | shikhar |            3 | datamatics      | 05-02-2021 | google            | bangalore |
+|  4 | 2024-07-21 12:07:17 |               4 | rahul   |            8 | amazon          | 05-02-2021 | quora             | delhi     |
+|  5 | 2024-07-21 12:13:20 |               4 | kapil   |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|  6 | 2024-07-21 12:13:20 |               1 | brain   |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|  7 | 2024-07-21 12:13:20 |               1 | carl    |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|  8 | 2024-07-21 12:13:20 |               3 | saurabh |           12 | wipro           | 19-02-2021 | google            | chennai   |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+
+
+The Above Data is not in a Specific Order 
+
+
+B) select id, enrollment_date, selected_course, fname, years_of_exp, student_company, batch_date, source_of_joining, location from students ORDER BY years_of_exp;
+
+
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+| id | enrollment_date     | selected_course | fname   | years_of_exp | student_company | batch_date | source_of_joining | location  |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+|  2 | 2024-07-21 12:03:24 |               2 | virat   |            3 | flipkart        | 05-02-2021 | linkedin          | hyderabad |
+|  3 | 2024-07-21 12:04:44 |               3 | shikhar |            3 | datamatics      | 05-02-2021 | google            | bangalore |
+|  1 | 2024-07-21 12:01:42 |               2 | rohit   |            5 | walmart         | 05-02-2021 | linkedin          | mumbai    |
+|  4 | 2024-07-21 12:07:17 |               4 | rahul   |            8 | amazon          | 05-02-2021 | quora             | delhi     |
+|  8 | 2024-07-21 12:13:20 |               3 | saurabh |           12 | wipro           | 19-02-2021 | google            | chennai   |
+|  5 | 2024-07-21 12:13:20 |               4 | kapil   |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|  6 | 2024-07-21 12:13:20 |               1 | brain   |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|  7 | 2024-07-21 12:13:20 |               1 | carl    |           20 | wipro           | 19-02-2021 | youtube           | pune      |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+
+
+Now the Data is showing In Order if you see "years_of_exp" Column it is in Ascending Order.
+
+
+
+
+C) select id, enrollment_date, selected_course, fname, years_of_exp, student_company, batch_date, source_of_joining, location from students ORDER BY fname;
+
+
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+| id | enrollment_date     | selected_course | fname   | years_of_exp | student_company | batch_date | source_of_joining | location  |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+|  6 | 2024-07-21 12:13:20 |               1 | brain   |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|  7 | 2024-07-21 12:13:20 |               1 | carl    |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|  5 | 2024-07-21 12:13:20 |               4 | kapil   |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|  4 | 2024-07-21 12:07:17 |               4 | rahul   |            8 | amazon          | 05-02-2021 | quora             | delhi     |
+|  1 | 2024-07-21 12:01:42 |               2 | rohit   |            5 | walmart         | 05-02-2021 | linkedin          | mumbai    |
+|  8 | 2024-07-21 12:13:20 |               3 | saurabh |           12 | wipro           | 19-02-2021 | google            | chennai   |
+|  3 | 2024-07-21 12:04:44 |               3 | shikhar |            3 | datamatics      | 05-02-2021 | google            | bangalore |
+|  2 | 2024-07-21 12:03:24 |               2 | virat   |            3 | flipkart        | 05-02-2021 | linkedin          | hyderabad |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+
+
+Now the Data is showing In Order if you see "fname" Column it is in Ascending Order.
+
+
+
+
+D) To Show the Data in Descending Order Use below Query 
+
+select id, enrollment_date, selected_course, fname, years_of_exp, student_company, batch_date, source_of_joining, location from students ORDER BY fname desc;
+
+
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+| id | enrollment_date     | selected_course | fname   | years_of_exp | student_company | batch_date | source_of_joining | location  |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+|  2 | 2024-07-21 12:03:24 |               2 | virat   |            3 | flipkart        | 05-02-2021 | linkedin          | hyderabad |
+|  3 | 2024-07-21 12:04:44 |               3 | shikhar |            3 | datamatics      | 05-02-2021 | google            | bangalore |
+|  8 | 2024-07-21 12:13:20 |               3 | saurabh |           12 | wipro           | 19-02-2021 | google            | chennai   |
+|  1 | 2024-07-21 12:01:42 |               2 | rohit   |            5 | walmart         | 05-02-2021 | linkedin          | mumbai    |
+|  4 | 2024-07-21 12:07:17 |               4 | rahul   |            8 | amazon          | 05-02-2021 | quora             | delhi     |
+|  5 | 2024-07-21 12:13:20 |               4 | kapil   |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|  7 | 2024-07-21 12:13:20 |               1 | carl    |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|  6 | 2024-07-21 12:13:20 |               1 | brain   |           18 | tcs             | 5-02-2021  | youtube           | pune      |
++----+---------------------+-----------------+---------+--------------+-----------------+------------+-------------------+-----------+
+
+[Data is showing in Descending order on the basis of "fname"]  [Hum aise hi dusre Columns ka name de k kr skte h like years_of_exp]
+
+
+
+
+
+E) Double Level Sorting 1st on the basis of years_of_exp & 2nd on the basis of fname [virat & shikhar dono ko 3 yrs ka exp h but "S" comes 1st toh shikhar ka name phla aya]
+
+ select fname, years_of_exp from students order by years_of_exp,fname;
+
++---------+--------------+
+| fname   | years_of_exp |
++---------+--------------+
+| shikhar |            3 |
+| virat   |            3 |
+| rohit   |            5 |
+| rahul   |            8 |
+| saurabh |           12 |
+| kapil   |           15 |
+| brain   |           18 |
+| carl    |           20 |
++---------+--------------+
+
+
