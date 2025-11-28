@@ -1,0 +1,77 @@
+
+
+Session 13 - 
+
+OVER Clause
+
+PARTITION By Clause
+
+
+1) We Have Created a Table Named as "employe"
+
+CREATE TABLE employe (
+firstname VARCHAR(20),
+lastname VARCHAR(20),
+age INT,
+salary INT,
+location VARCHAR(20)
+);
+
+
+
+
+
+2) We Have Inserted Some Records In the Table
+
+INSERT INTO employe VALUES ('sachin', 'sharma', 28, 10000, 'bangalore'), INSERT INTO employe VALUES ('shane', 'warne', 30, 20000, 'bangalore'), INSERT INTO employe VALUES ('rohit', 'sharma', 32, 30000, 'hyderabad'), INSERT INTO employe VALUES ('shikhar', 'dhawan', 32, 25000, 'hyderabad'), INSERT INTO employe VALUES ('rahul', 'dravid', 31, 30000, 'bangalore'), INSERT INTO employe VALUES ('saurabh', 'ganguly', 32, 15000, 'pune'), INSERT INTO employe VALUES ('kapil', 'dev', 34, 10000, 'pune');
+
+
+
+
+
+
+
+Problem Statement - If We Want the Records In the form "fname", "lname", "location", "avg_salary" We will have to use the below mentioned Query [But ye Bohot Complex hai]
+
+
+select firstname, lastname, employe.location, total_count, avg_salary from employe join (select location, count(location) as total_count, avg(salary) as avg_salary from employe group by location) temptable on employe.location = temptable.location;
+
++-----------+----------+-----------+-------------+------------+
+| firstname | lastname | location  | total_count | avg_salary |
++-----------+----------+-----------+-------------+------------+
+| sachin    | sharma   | bangalore |           3 | 20000.0000 |
+| shane     | warne    | bangalore |           3 | 20000.0000 |
+| rohit     | sharma   | hyderabad |           2 | 27500.0000 |
+| shikhar   | dhawan   | hyderabad |           2 | 27500.0000 |
+| rahul     | dravid   | bangalore |           3 | 20000.0000 |
+| saurabh   | ganguly  | pune      |           2 | 12500.0000 |
+| kapil     | dev      | pune      |           2 | 12500.0000 |
++-----------+----------+-----------+-------------+------------+
+
+
+
+
+
+
+
+Solution - We Can Do This By Using OVER & PARTITION By Clause As Shown Below It is Very Easy to Understand.
+
+
+
+SELECT firstname, lastname, location, count(location) OVER (PARTITION BY location) AS total, avg(salary) OVER (PARTITION BY location) AS average FROM employe;
+
++-----------+----------+-----------+-------+------------+
+| firstname | lastname | location  | total | average    |
++-----------+----------+-----------+-------+------------+
+| sachin    | sharma   | bangalore |     3 | 20000.0000 |
+| shane     | warne    | bangalore |     3 | 20000.0000 |
+| rahul     | dravid   | bangalore |     3 | 20000.0000 |
+| rohit     | sharma   | hyderabad |     2 | 27500.0000 |
+| shikhar   | dhawan   | hyderabad |     2 | 27500.0000 |
+| saurabh   | ganguly  | pune      |     2 | 12500.0000 |
+| kapil     | dev      | pune      |     2 | 12500.0000 |
++-----------+----------+-----------+-------+------------+
+
+
+
+
