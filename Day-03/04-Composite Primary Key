@@ -1,0 +1,48 @@
+
+
+COMPOSITE PRIMARY KEY - 
+
+Ye Table k Under Humne F_name + L_name ke Combination ko Primary key banaya h, Agar Kapil Sharma ya kapil Sinha Name Repeat hua toh error aayega Duplicate entry ka Q ki Primary Key F_name + L_name k combination per hai.
+
+6) create table shakti (
+firstname VARCHAR(20) NOT NULL,
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+PRIMARY KEY(firstname, lastname)
+);
+
+
+7) insert into shakti values ('kapil','sharma', 28);
+
+
+8) select * from shakti;
++-----------+----------+-----+
+| firstname | lastname | age |
++-----------+----------+-----+
+| kapil     | sharma   |  28 |
++-----------+----------+-----+
+
+
+Note - Abhi Humne Kapil Sharma Age 28 ka 1 record Add kiye h agar dusra Add krege toh ERROR Dega [Q ki Primary Key fname & lname k Combination per h]
+
+
+insert into shakti values ('kapil','sharma', 45);
+ERROR 1062 (23000): Duplicate entry 'kapil-sharma' for key 'shakti.PRIMARY'
+
+
+
+
+
+9) insert into shakti values ('kapil','sinha', 28);
+
+
++-----------+----------+-----+
+| firstname | lastname | age |
++-----------+----------+-----+
+| kapil     | sharma   |  28 |
+| kapil     | sinha    |  28 |
++-----------+----------+-----+
+
+
+
+
