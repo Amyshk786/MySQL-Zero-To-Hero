@@ -1,0 +1,18 @@
+
+
+Session 10 - 
+
+
+1)A) If we want to know the students who have joined us from location Bangalore we will use below Query
+
+SELECT * FROM student WHERE location = 'bangalore';
+
+
+
+
+
+1)B) But If we want to know the students who have Not joined us from location Bangalore we will use below Query
+
+SELECT * FROM student WHERE location != 'bangalore';
+
+
