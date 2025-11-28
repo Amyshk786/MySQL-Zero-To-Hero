@@ -1,0 +1,107 @@
+
+
+Problem Statement 1 - We Want to get the Data of students on the Basis of source_of_joining and Total of That [Konse source se Kitne students Ne Join Kiye hain] So we can use below Query.
+
+
+SELECT source_of_joining, count(*) FROM student AS total GROUP BY source_of_joining;
+
++-------------------+----------+
+| source_of_joining | count(*) |
++-------------------+----------+
+| linkedin          |        2 |
+| google            |        2 |
+| quora             |        1 |
+| friend            |        1 |
+| youtube           |        2 |
++-------------------+----------+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Problem Statement 2 - We want to know the lead sources through with more than 1 Student has Joined Our Course. Here is when "HAVING" Comes In
+
+
+Note - Yaha per Hum "WHERE" Clause Nhi Use Kar Sakte Q ki "WHERE Clause is Used to Filter the Individual Records Before Aggregation"
+
+Aur Agar Hum Use Karte Hai Toh Error Aaayega As Shown Below - 
+
+SELECT source_of_joining,count(*) as total FROM students GROUP BY source_of_joining WHERE total > 1;
+ 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE total > 1' at line 1
+
+
+
+
+Solution - SELECT source_of_joining,count(*) as total FROM students GROUP BY source_of_joining HAVING total > 1;
+
++-------------------+-------+
+| source_of_joining | total |
++-------------------+-------+
+| linkedin          |     2 |
+| google            |     2 |
+| youtube           |     2 |
++-------------------+-------+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Problem Statement 3 - // We want to know the count of people who registered through linkedin
+
+
+
+Solution - SELECT source_of_joining,count(*) AS total FROM students WHERE source_of_joining = 'linkedin' GROUP BY source_of_joining;
+
+OR 
+
+SELECT source_of_joining, count(*) AS total FROM students GROUP BY source_of_joining HAVING source_of_joining = 'linkedin';
+
++-------------------+-------+
+| source_of_joining | total |
++-------------------+-------+
+| linkedin          |     2 |
++-------------------+-------+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Problem Statement 4 - We want to know the locations from which more than 1 student has joined & the students experience is more than 10 years
+
+
+
+Solution - SELECT location,count(*) AS total FROM students WHERE years_of_exp > 10 GROUP BY location HAVING total > 1;
+
+
++----------+-------+
+| location | total |
++----------+-------+
+| pune     |     3 |
++----------+-------+
+
+
+
+
+
