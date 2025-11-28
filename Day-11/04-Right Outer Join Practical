@@ -1,0 +1,42 @@
+
+
+Right Outer Join - 
+
+
+4) Abhi Humne courses_latest Table me Ek Aur Course Add Kiya Hai "Data Structure" Jo Kisi Bhi Student Ne Join nhi Kiya Hai toh jab hum Right Outer Join Use Karege toh Student_fname & student_lname Me "NULL" Show Karega Q ki wo Course Kisi Bhi Student Ne Nhi Liya Hai.
+
+
+INSERT INTO courses_latest VALUES (5, 'data structure', 9, 85000);
+
+
+select * from courses_latest;
++-----------+----------------+----------+-------+
+| course_id | course_name    | duration | fees  |
++-----------+----------------+----------+-------+
+|         1 | big data       |        6 | 50000 |
+|         3 | data science   |        6 | 40000 |
+|         4 | devops         |        1 | 10000 |
+|         5 | data structure |        9 | 85000 |
++-----------+----------------+----------+-------+
+
+
+
+
+SELECT student_latest.student_fname, student_latest.student_lname, courses_latest.course_name FROM student_latest RIGHT JOIN courses_latest ON student_latest.selected_course = courses_latest.course_id;
+
++---------------+---------------+----------------+
+| student_fname | student_lname | course_name    |
++---------------+---------------+----------------+
+| kapil         | dev           | big data       |
+| shikhar       | dhawan        | big data       |
+| carl          | hooper        | data science   |
+| virat         | kohli         | data science   |
+| saurabh       | ganguly       | devops         |
+| rahul         | dravid        | devops         |
+| NULL          | NULL          | data structure |
++---------------+---------------+----------------+
+
+
+
+
+
