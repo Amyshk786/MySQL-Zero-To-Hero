@@ -1,0 +1,76 @@
+
+
+4) LIKE - 
+
+Note -  "%" is a Wild card Character Indicating the name can contain Alphabetes before and after "ra" like [virat, brain, saurabh and rahul]
+
+Note -  (_) Underscore is the next Wild Card ek Underscore means Only 1 character no matter it should be [Niche ki Query me humne 5 Underscore diye h and humein sare students mil gye jinke name 5 Character k hain]
+
+
+
+1) SELECT student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student WHERE student_fname LIKE '%ra%';
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          3 | 2024-07-21 12:24:49 |               4 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          4 | 2024-07-21 12:25:57 |               3 | virat         |            5 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          6 | 2024-07-21 12:27:29 |               2 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          8 | 2024-07-21 12:27:29 |               4 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+2) We want name of students whose names ends with '%at' Start me kuch bhi rahe chalega but end me 'at' aana chahiye only 'virat has that in his name'
+
+SELECT student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student WHERE student_fname LIKE '%at';
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          4 | 2024-07-21 12:25:57 |               3 | virat         |            5 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3) We want all Names who have 5 Character in their firstname (_) Underscore is the next Wild Card ek Underscore means Only 1 character no matter it should be [Niche ki Query me humne 5 Underscore diye h and humein sare students mil gye jinke name 5 Character k hain]
+
+
+SELECT student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student WHERE student_fname LIKE '_____';
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-07-21 12:24:48 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          3 | 2024-07-21 12:24:49 |               4 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          4 | 2024-07-21 12:25:57 |               3 | virat         |            5 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          5 | 2024-07-21 12:27:29 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-07-21 12:27:29 |               2 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
