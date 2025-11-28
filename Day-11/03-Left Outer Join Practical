@@ -1,0 +1,54 @@
+
+
+Left Outer Join - 
+
+
+
+Note - Humne Jo 2 New Tables Create Kiye h student_latest & courses_latest Usme se Humne Jo courses_latest Table Hain Usme se Course_id 2 ko Delete Kar diye Left Outer Join Dekhne k Liye Jiski Wajah se 3B Table k course_name Column me "NULL" dikh raha h Q ki Jo Course Tha wo Delete Ho Gya.
+
+
+3) Inner Join In The New Tables Which We have Created 
+
+
+A) SELECT student_latest.student_fname, student_latest.student_lname, courses_latest.course_name FROM student_latest JOIN courses_latest ON student_latest.selected_course = courses_latest.course_id;
+
++---------------+---------------+-----------------+
+| student_fname | student_lname | course_name     |
++---------------+---------------+-----------------+
+| rohit         | sharma        | web development |
+| shikhar       | dhawan        | big data        |
+| rahul         | dravid        | devops          |
+| virat         | kohli         | data science    |
+| kapil         | dev           | big data        |
+| brain         | lara          | web development |
+| carl          | hooper        | data science    |
+| saurabh       | ganguly       | devops          |
++---------------+---------------+-----------------+
+
+
+
+
+
+
+B) Left Outer Join In The New Tables Which We have Created
+
+
+SELECT student_latest.student_fname, student_latest.student_lname, courses_latest.course_name FROM student_latest LEFT JOIN courses_latest ON student_latest.selected_course = courses_latest.course_id;
+
++---------------+---------------+--------------+
+| student_fname | student_lname | course_name  |
++---------------+---------------+--------------+
+| rohit         | sharma        | NULL         |
+| shikhar       | dhawan        | big data     |
+| rahul         | dravid        | devops       |
+| virat         | kohli         | data science |
+| kapil         | dev           | big data     |
+| brain         | lara          | NULL         |
+| carl          | hooper        | data science |
+| saurabh       | ganguly       | devops       |
++---------------+---------------+--------------+
+
+
+
+
+
