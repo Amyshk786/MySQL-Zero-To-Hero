@@ -1,0 +1,76 @@
+
+
+
+MIN - 
+
+
+Note - List of Students and years_of_exp in Ascending Order
+
+SELECT student_fname,years_of_exp FROM student ORDER BY years_of_exp;
++---------------+--------------+
+| student_fname | years_of_exp |
++---------------+--------------+
+| virat         |            5 |
+| rohit         |            6 |
+| rahul         |            8 |
+| shikhar       |           12 |
+| saurabh       |           12 |
+| kapil         |           15 |
+| brain         |           18 |
+| carl          |           20 |
++---------------+--------------+
+
+
+
+
+
+1) If we want to find out the Minimum years_of_exp
+
+ SELECT MIN(years_of_exp) FROM student;
++-------------------+
+| MIN(years_of_exp) |
++-------------------+
+|                 5 |
++-------------------+
+
+
+
+
+
+
+2) If we want to know the name of student which have the Minimum years_of_exp
+
+
+SELECT student_fname FROM student ORDER BY years_of_exp LIMIT 1;
+
++---------------+
+| student_fname |
++---------------+
+| virat         |
++---------------+
+
+
+
+
+
+
+
+3) For Each source_of_joining we want Minimum years_of_exp [linkedin se Min years_of_exp kiska same with others]
+
+
+SELECT source_of_joining, MIN(years_of_exp) FROM student GROUP BY source_of_joining;
+
++-------------------+-------------------+
+| source_of_joining | MIN(years_of_exp) |
++-------------------+-------------------+
+| linkedin          |                 5 |
+| google            |                12 |
+| quora             |                 8 |
+| friend            |                15 |
+| youtube           |                18 |
++-------------------+-------------------+
+
+
+
+
+
