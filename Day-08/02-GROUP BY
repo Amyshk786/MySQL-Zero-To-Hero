@@ -1,0 +1,158 @@
+
+
+Group By - 
+
+
+1) We want to find out how many candidates have joined us using source_of_joining and group people who are from similar sources.
+
+
+SELECT source_of_joining FROM student;
++-------------------+
+| source_of_joining |
++-------------------+
+| linkedin          |
+| google            |
+| quora             |
+| linkedin          |
+| friend            |
+| youtube           |
+| youtube           |
+| google            |
++-------------------+
+
+
+
+SELECT source_of_joining, count(*) FROM student GROUP BY source_of_joining;
++-------------------+----------+
+| source_of_joining | count(*) |
++-------------------+----------+
+| linkedin          |        2 |
+| google            |        2 |
+| quora             |        1 |
+| friend            |        1 |
+| youtube           |        2 |
++-------------------+----------+
+
+
+
+
+
+
+
+
+2) We want to find out how many candidates have joined us from which Location and group people who are from similar Location.
+
+
+ SELECT location FROM student;
++-----------+
+| location  |
++-----------+
+| bangalore |
+| bangalore |
+| chennai   |
+| hyderabad |
+| pune      |
+| pune      |
+| pune      |
+| chennai   |
++-----------+
+
+
+
+SELECT location, count(*) FROM student GROUP BY location;
+
++-----------+----------+
+| location  | count(*) |
++-----------+----------+
+| bangalore |        2 |
+| chennai   |        2 |
+| hyderabad |        1 |
+| pune      |        3 |
++-----------+----------+
+
+
+
+
+
+
+
+3) If we want to do Grouping On the Basis of "Location" and "source_of_joining"
+
+Note first we will check which all similar records we have 
+
+SELECT location,source_of_joining FROM student;
+
++-----------+-------------------+
+| location  | source_of_joining |
++-----------+-------------------+
+| bangalore | linkedin          |
+| bangalore | google            |
+| chennai   | quora             |
+| hyderabad | linkedin          |
+| pune      | friend            |
+| pune      | youtube           |
+| pune      | youtube           |
+| chennai   | google            |
++-----------+-------------------+
+
+
+
+SELECT location,source_of_joining,count(*) FROM student GROUP BY location,source_of_joining;
++-----------+-------------------+----------+
+| location  | source_of_joining | count(*) |
++-----------+-------------------+----------+
+| bangalore | linkedin          |        1 |
+| bangalore | google            |        1 |
+| chennai   | quora             |        1 |
+| hyderabad | linkedin          |        1 |
+| pune      | friend            |        1 |
+| pune      | youtube           |        2 |
+| chennai   | google            |        1 |
++-----------+-------------------+----------+
+
+
+
+
+
+
+
+
+4) Selected Course k Basis per Grouping krna h toh use below Query
+
+
+SELECT selected_course,count(*) FROM student GROUP BY selected_course;
++-----------------+----------+
+| selected_course | count(*) |
++-----------------+----------+
+|               1 |        2 |
+|               2 |        2 |
+|               3 |        2 |
+|               4 |        2 |
++-----------------+----------+
+
+
+
+
+
+
+
+5) 5th Feb and 19th Feb k Batch me kitne Students ne konse Course k liye Enroll kiye 
+
+SELECT batch_date,selected_course,count(*) FROM student GROUP BY batch_date,selected_course;
+
++------------+-----------------+----------+
+| batch_date | selected_course | count(*) |
++------------+-----------------+----------+
+| 5-02-2021  |               2 |        2 |
+| 19-02-2021 |               1 |        1 |
+| 19-02-2021 |               4 |        2 |
+| 5-02-2021  |               3 |        1 |
+| 5-02-2021  |               1 |        1 |
+| 19-02-2021 |               3 |        1 |
++------------+-----------------+----------+
+
+
+
+
+
+
