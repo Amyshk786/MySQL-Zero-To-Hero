@@ -1,7 +1,0 @@
-"Binary" -
-
-Agar Hum ye search krege toh nhi aayega kuch bhi q ki humne ahmed ka A small rkha h 
-
-["Binary" Keyword is used when we want to Retrive the Exact Match and to make SQL Case Sensitive]
-
-1) select * from employee where binary firstname= 'Ahmed';
