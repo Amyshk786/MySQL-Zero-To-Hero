@@ -1,0 +1,298 @@
+
+
+Session 5 - 
+
+
+
+Foreign Key Constraint - The Foreign key Constraint is used to prevent Actions that would destroy links between Two Tables..
+
+- A Foreign Key is a Field in One Table That Refers to the Primary Key in Another Table.
+
+- selected_course is a Foreign Key in Student Table which refers to course_id which is (Primary Key) in Courses Table. 
+
+- The Table with the Foreign Key is called the Child Table & The Table with Primary Key is called Parent Table or Reference Table.
+
+
+
+NOT NULL
+UNIQUE KEY
+PRIMARY KEY
+FOREIGN KEY
+CHECK CONSTRAINT (It is Not Supported in MYSQL )
+
+--> Constraints are Used to Limit the Type of Data that can Go Into a Table.
+
+- This Ensures the Accuracy and Reliability of the Data is Maintained in the Table
+
+- If there is any Violation then the Action is Aborted.
+
+
+
+
+
+1) We have Created a Table for our Students  
+
+create table students (
+student_id int AUTO_INCREMENT,
+student_fname VARCHAR(30) NOT NULL,
+student_lname VARCHAR(30) NOT NULL,
+student_mname VARCHAR(30),
+student_email VARCHAR(30) NOT NULL,
+student_phone VARCHAR(15) NOT NULL,
+student_alternate_phone VARCHAR(15),
+enrollment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+years_of_exp int NOT NULL,
+student_company VARCHAR(30),
+batch_date VARCHAR(30) NOT NULL,
+source_of_joining VARCHAR(30) NOT NULL,
+location VARCHAR(30) NOT NULL,
+PRIMARY KEY (student_id),
+UNIQUE KEY(student_email)
+);
+
+
+
+desc students;
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| Field                   | Type        | Null | Key | Default           | Extra             |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| student_id              | int         | NO   | PRI | NULL              | auto_increment    |
+| student_fname           | varchar(30) | NO   |     | NULL              |                   |
+| student_lname           | varchar(30) | NO   |     | NULL              |                   |
+| student_mname           | varchar(30) | YES  |     | NULL              |                   |
+| student_email           | varchar(30) | NO   | UNI | NULL              |                   |
+| student_phone           | varchar(15) | NO   |     | NULL              |                   |
+| student_alternate_phone | varchar(15) | YES  |     | NULL              |                   |
+| enrollment_date         | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| years_of_exp            | int         | NO   |     | NULL              |                   |
+| student_company         | varchar(30) | YES  |     | NULL              |                   |
+| batch_date              | varchar(30) | NO   |     | NULL              |                   |
+| source_of_joining       | varchar(30) | NO   |     | NULL              |                   |
+| location                | varchar(30) | NO   |     | NULL              |                   |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+
+
+
+
+
+
+
+2) Single Insert Statements No1 -
+
+insert into students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('rohit','sharma', 'rohit@gmail.com', '9191919191', 6, 'walmart', '5-02-2021', 'linkedin', 'bangalore');
+
+
+insert into students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('virat','kohli', 'virat@gmail.com', '9292929292', 3, 'flipkart', '5-02-2021', 'linkedin', 'hyderabad');
+
+
+insert into students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('shikhar','dhawan', 'shikhar@gmail.com', '9393939393', 12, 'datamatics', '19-02-2021', 'google', 'bangalore');
+
+
+insert into students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('rahul','dravid', 'rahul@gmail.com', '9494949494', 8, 'walmart', '19-02-2021', 'quora', 'chennai');
+
+
+
+
+
+
+3) Multiple Insert Statements No1 - 
+
+
+insert into students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('kapil','dev', 'kapil@gmail.com', '9291292292', 15, 'microsoft', '5-02-2021', 'friend', 'pune'),
+('brain', 'lara', 'brain@gmail.com', '9291297292', 18, 'tcs', '5-02-2021', 'youtube', 'pune'),
+('carl', 'hooper', 'karl@gmail.com', '9876543212', 20, 'wipro', '19-02-2021', 'youtube', 'pune'),
+('saurabh', 'ganguly', 'saurabh@gmail.com', '9987654321', 12, 'wipro', '19-02-2021', 'google', 'chennai');
+
+
+
+
+
+4) Select Statement No1 - 
+
+
+select student_id, enrollment_date, student_fname, student_email, years_of_exp, student_company, batch_date, source_of_joining, location from students;
+
+
+
++------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | student_fname | student_email     | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-02-03 17:36:42 | rohit         | rohit@gmail.com   |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-02-03 17:36:51 | virat         | virat@gmail.com   |            3 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          3 | 2024-02-03 17:36:51 | shikhar       | shikhar@gmail.com |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          4 | 2024-02-03 17:36:53 | rahul         | rahul@gmail.com   |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          5 | 2024-02-03 17:38:26 | kapil         | kapil@gmail.com   |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-02-03 17:38:26 | brain         | brain@gmail.com   |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-02-03 17:38:26 | carl          | karl@gmail.com    |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|          8 | 2024-02-03 17:38:26 | saurabh       | saurabh@gmail.com |           12 | wipro           | 19-02-2021 | google            | chennai   |
++------------+---------------------+---------------+-------------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+5) As a EDTech Startup we have Multiple Courses, Their Duration & Fees 
+
+Course Table - 
+
+create table courses (
+course_id int NOT NULL,
+course_name VARCHAR(30) NOT NULL,
+course_duration_months int NOT NULL,
+course_fee int NOT NULL,
+primary key (course_id)
+);
+
+
+desc courses;
++------------------------+-------------+------+-----+---------+-------+
+| Field                  | Type        | Null | Key | Default | Extra |
++------------------------+-------------+------+-----+---------+-------+
+| course_id              | int         | NO   | PRI | NULL    |       |
+| course_name            | varchar(30) | NO   |     | NULL    |       |
+| course_duration_months | int         | NO   |     | NULL    |       |
+| course_fee             | int         | NO   |     | NULL    |       |
++------------------------+-------------+------+-----+---------+-------+
+
+
+
+
+
+
+
+6) Seed Data - 
+
+insert into courses(course_id, course_name, course_duration_months, course_fee) VALUES (1, 'bigdata', 6, 50000);
+
+insert into courses(course_id, course_name, course_duration_months, course_fee) VALUES (2, 'web development', 3, 20000);
+
+insert into courses(course_id, course_name, course_duration_months, course_fee) VALUES (3, 'data science', 6, 40000);
+
+insert into courses(course_id, course_name, course_duration_months, course_fee) VALUES (4, 'devops', 1, 10000);
+
+
+
+
+select * from courses;
++-----------+-----------------+------------------------+------------+
+| course_id | course_name     | course_duration_months | course_fee |
++-----------+-----------------+------------------------+------------+
+|         1 | bigdata         |                      6 |      50000 |
+|         2 | web development |                      3 |      20000 |
+|         3 | data science    |                      6 |      40000 |
+|         4 | devops          |                      1 |      10000 |
++-----------+-----------------+------------------------+------------+
+
+
+
+
+
+7) We have Created a Student Table & We have Added "Selected_Course" Cloumn
+
+create table student (
+student_id int AUTO_INCREMENT,
+student_fname VARCHAR(30) NOT NULL,
+student_lname VARCHAR(30) NOT NULL,
+student_mname VARCHAR(30),
+student_email VARCHAR(30) NOT NULL,
+student_phone VARCHAR(15) NOT NULL,
+student_alternate_phone VARCHAR(15),
+enrollment_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+selected_course int NOT NULL DEFAULT 1,
+years_of_exp int NOT NULL,
+student_company VARCHAR(30),
+batch_date VARCHAR(30) NOT NULL,
+source_of_joining VARCHAR(30) NOT NULL,
+location VARCHAR(30) NOT NULL,
+PRIMARY KEY (student_id),
+UNIQUE KEY(student_email)
+);
+
+
+
+
+ desc student;
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| Field                   | Type        | Null | Key | Default           | Extra             |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+| student_id              | int         | NO   | PRI | NULL              | auto_increment    |
+| student_fname           | varchar(30) | NO   |     | NULL              |                   |
+| student_lname           | varchar(30) | NO   |     | NULL              |                   |
+| student_mname           | varchar(30) | YES  |     | NULL              |                   |
+| student_email           | varchar(30) | NO   | UNI | NULL              |                   |
+| student_phone           | varchar(15) | NO   |     | NULL              |                   |
+| student_alternate_phone | varchar(15) | YES  |     | NULL              |                   |
+| enrollment_date         | timestamp   | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+| selected_course         | int         | NO   |     | 1                 |                   |
+| years_of_exp            | int         | NO   |     | NULL              |                   |
+| student_company         | varchar(30) | YES  |     | NULL              |                   |
+| batch_date              | varchar(30) | NO   |     | NULL              |                   |
+| source_of_joining       | varchar(30) | NO   |     | NULL              |                   |
+| location                | varchar(30) | NO   |     | NULL              |                   |
++-------------------------+-------------+------+-----+-------------------+-------------------+
+
+
+
+
+
+8) Single Insert Statements No2 - 
+
+insert into student(student_fname, student_lname, student_email, student_phone, selected_course, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('rohit','sharma', 'rohit@gmail.com', '9191919191', 2, 6, 'walmart', '5-02-2021', 'linkedin', 'bangalore');
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('virat','kohli', 'virat@gmail.com', '9292929292', 3, 'flipkart', '5-02-2021', 'linkedin', 'hyderabad');
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('shikhar','dhawan', 'shikhar@gmail.com', '9393939393', 12, 'datamatics', '19-02-2021', 'google', 'bangalore');
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('rahul','dravid', 'rahul@gmail.com', '9494949494', 8, 'walmart', '19-02-2021', 'quora', 'chennai');
+
+
+
+
+
+
+
+9) Multiple Insert Statements No2 - 
+
+
+
+insert into student(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location) VALUES ('kapil','dev', 'kapil@gmail.com', '9291292292', 15, 'microsoft', '5-02-2021', 'friend', 'pune'),
+('brain', 'lara', 'brain@gmail.com', '9291297292', 18, 'tcs', '5-02-2021', 'youtube', 'pune'),
+('carl', 'hooper', 'karl@gmail.com', '9876543212', 20, 'wipro', '19-02-2021', 'youtube', 'pune'),
+('saurabh', 'ganguly', 'saurabh@gmail.com', '9987654321', 12, 'wipro', '19-02-2021', 'google', 'chennai');
+
+
+
+
+
+
+
+10) Select Statement No2 - 
+
+
+select student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student;
+
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-02-03 20:15:38 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-02-03 20:15:47 |               1 | virat         |            3 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          3 | 2024-02-03 20:15:47 |               1 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          4 | 2024-02-03 20:15:49 |               1 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          5 | 2024-02-03 20:19:20 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-02-03 20:19:20 |               1 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-02-03 20:19:20 |               1 | carl          |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|          8 | 2024-02-03 20:19:20 |               1 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
