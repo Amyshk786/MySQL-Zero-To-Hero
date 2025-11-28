@@ -1,0 +1,94 @@
+
+
+SUM - 
+
+1) If want to know the combined exp of all the students who have joined us from different sources [linkedin se jitne aye un sub ka Total exp kitna]\
+
+
+SELECT source_of_joining, SUM(years_of_exp) FROM student GROUP BY source_of_joining;
+
++-------------------+-------------------+
+| source_of_joining | SUM(years_of_exp) |
++-------------------+-------------------+
+| linkedin          |                11 |
+| google            |                24 |
+| quora             |                 8 |
+| friend            |                15 |
+| youtube           |                38 |
++-------------------+-------------------+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+AVG - 
+
+
+1) We want to know the AVG of the students who have joined us using different sources [google, friend, quora & Oth]
+
+
+SELECT source_of_joining, AVG(years_of_exp) FROM student GROUP BY source_of_joining;
+
++-------------------+-------------------+
+| source_of_joining | AVG(years_of_exp) |
++-------------------+-------------------+
+| linkedin          |            5.5000 |
+| google            |           12.0000 |
+| quora             |            8.0000 |
+| friend            |           15.0000 |
+| youtube           |           19.0000 |
++-------------------+-------------------+
+
+
+
+
+
+
+
+2) We want to know the AVG of the students who have joined us using different location
+
+
+SELECT location, AVG(years_of_exp) FROM student GROUP BY location;
+
++-----------+-------------------+
+| location  | AVG(years_of_exp) |
++-----------+-------------------+
+| bangalore |            9.0000 |
+| chennai   |           10.0000 |
+| hyderabad |            5.0000 |
+| pune      |           17.6667 |
++-----------+-------------------+
+
+
+
+
+
+
+
+3) We want to know the AVG of the students who have joined us from Different Companies
+
+
+SELECT student_company, AVG(years_of_exp) FROM student GROUP BY student_company;
+
++-----------------+-------------------+
+| student_company | AVG(years_of_exp) |
++-----------------+-------------------+
+| walmart         |            7.0000 |
+| datamatics      |           12.0000 |
+| flipkart        |            5.0000 |
+| microsoft       |           15.0000 |
+| tcs             |           18.0000 |
+| wipro           |           16.0000 |
++-----------------+-------------------+
+
+
+
+
+
