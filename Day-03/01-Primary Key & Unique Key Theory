@@ -1,0 +1,69 @@
+
+
+
+Session 3 - 
+
+
+1. Primary Key - Agar humri org e 2 Employee Same name Age and Salary k h toh unko Differentiate krne k liye Primary key ka Conecpt h.
+
+-> It Helps us to Uniquely Identify Each Record in the table. For a Primary Key NULL Value is not Allowed & Duplicate values are also Not Allowed.
+
+-> We can have Only One Primary Key & The PRIMARY KEY Cannot Hold Any NULL Value.
+
+-> We Should Use the PRIMARY KEY when we have to Uniquely Identify Each Record.
+
+-> Can be Used in Customer ID, Employee ID, Roll Number Etc..
+
+
+
+
+
+2. Auto Increment Keys - Means Agar Hum Isme ID nhi enter krege toh wo Automatically Aage ka number lete jyega 
+
+
+
+
+
+3. Unique Key - UNIQUE KEY Also Cannot Hold Any Duplicates, But Unique Key can Hold NULL.
+
+For Eg- In MYSQL A Unique Key can Hold Any Number of NULL Values, But in Some of the Other Databases Unique Key Can Hold Only One NULL Value.
+
+-> Purpose of Unique is to Make Sure that we do not get Duplicate Values.  
+
+-> We Can have Unique Keys on More than One Column.
+
+-> We can Have Only One Primary Key But Multiple Unique Keys in a Table.
+
+-> Employee ID Can be a Primary Key & Employee Email Can be a Unique Key. 
+
+
+
+
+
+4. Primary Key VS Unique Key 
+
+
+
+The primary differences between a primary key and a unique key in a relational database are as follows:
+
+1. *Uniqueness*:
+   - *Primary Key*: Ensures that all the values in a column are unique and not null.
+   - *Unique Key*: Ensures that all the values in a column are unique but can contain a single null value.
+
+2. *Null Values*:
+   - *Primary Key*: Cannot contain null values.
+   - *Unique Key*: Can contain a single null value (in most database systems).
+
+3. *Number of Keys*:
+   - *Primary Key*: There can only be one primary key per table.
+   - *Unique Key*: There can be multiple unique keys per table.
+
+4. *Purpose*:
+   - *Primary Key*: Primarily used to uniquely identify each record in a table.
+   - *Unique Key*: Ensures data integrity by preventing duplicate values in a column or combination of columns.
+
+
+Note - Both primary and unique keys play important roles in maintaining the integrity and efficiency of a database.
+
+
+
