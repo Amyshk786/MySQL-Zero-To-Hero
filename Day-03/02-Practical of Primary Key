@@ -1,0 +1,110 @@
+
+
+Primary Key Practical
+=====================
+
+
+--> Humne ek Table Create kiye h Wipro name se and usme ID column add kiye aur agar humari org me 2 Employee Same name Age and Salary k aur agar humne add kiye toh wo duplicates show krega. Niche Example Hai usko Differentiate krne k liye we have a Concept of Primary Key.
+
+1) create table wipro (
+id int,
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL DEFAULT 'bangalore');
+
+
+DESC wipro;
+
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int(11)     | YES  |     | NULL      |       |
+| firstname  | varchar(20) | NO   |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int(11)     | NO   |     | NULL      |       |
+| salary     | int(11)     | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+2) insert into wipro(id, firstname, lastname, age, salary) VALUES (1, 'rajesh','sharma', 28, 10000);
+
+ insert into wipro(id, firstname, lastname, age, salary) VALUES (1, 'rajesh','sharma', 28, 10000);
+
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | rajesh    | NULL       | sharma   |  28 |  10000 | bangalore |
+|  1 | rajesh    | NULL       | sharma   |  28 |  10000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+PRIMARY KEY
+
+Abhi Humne jo table create kiye h usme ID ko Primary key mention kiye h jiski wajah se Duplicate record create nhi hoge unki ID ek dusre se alag hogi and ID NULL Nhi Ho Sakti
+
+1) A) create table wipro (
+id int PRIMARY KEY,
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL DEFAULT 'bangalore');
+
+
+OR
+
+
+1) B) create table wipro (
+id int,
+firstname VARCHAR(20) NOT NULL,
+middlename VARCHAR(20),
+lastname VARCHAR(20) NOT NULL,
+age int NOT NULL,
+salary int NOT NULL,
+location VARCHAR(20) NOT NULL DEFAULT 'bangalore',
+PRIMARY KEY(id)
+);
+
+
+
+desc wipro;
++------------+-------------+------+-----+-----------+-------+
+| Field      | Type        | Null | Key | Default   | Extra |
++------------+-------------+------+-----+-----------+-------+
+| id         | int         | NO   | PRI | NULL      |       |
+| firstname  | varchar(20) | NO   |     | NULL      |       |
+| middlename | varchar(20) | YES  |     | NULL      |       |
+| lastname   | varchar(20) | NO   |     | NULL      |       |
+| age        | int         | NO   |     | NULL      |       |
+| salary     | int         | NO   |     | NULL      |       |
+| location   | varchar(20) | NO   |     | bangalore |       |
++------------+-------------+------+-----+-----------+-------+
+
+
+
+2) insert into wipro(id, firstname, lastname, age, salary) VALUES (1, 'rajesh','sharma', 28, 10000);
+
+
++----+-----------+------------+----------+-----+--------+-----------+
+| id | firstname | middlename | lastname | age | salary | location  |
++----+-----------+------------+----------+-----+--------+-----------+
+|  1 | rajesh    | NULL       | sharma   |  28 |  10000 | bangalore |
++----+-----------+------------+----------+-----+--------+-----------+
+
+--> Ab agar isme Rajesh name dena h toh primary key alag honi chahiye i.e. id k Column me 2,3,4 etc. dalna hoga 1 dalege toh error aayega.
+
+
+
