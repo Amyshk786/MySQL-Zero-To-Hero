@@ -1,0 +1,78 @@
+
+
+1) We will be Differentiating "Row Number", "RANK" & "DENSE RANK" 
+
+
+
+
+A) Row Number - [In This there is a Different Row Number which is Assign to the Records Which have Same Salary Like "shane" & "rahul" Both have Salary 20000 but have a Row Number 3 & 4  Same with "Sachin" and "Kapil" They Have Row Number 6 & 7]
+
+SELECT firstname, lastname, salary, row_number() OVER (order by salary desc) AS row_num FROM employe;
+
++-----------+----------+--------+---------+
+| firstname | lastname | salary | row_num |
++-----------+----------+--------+---------+
+| rohit     | sharma   |  30000 |       1 |
+| shikhar   | dhawan   |  25000 |       2 |
+| shane     | warne    |  20000 |       3 |
+| rahul     | dravid   |  20000 |       4 |
+| saurabh   | ganguly  |  15000 |       5 |
+| sachin    | sharma   |  10000 |       6 |
+| kapil     | dev      |  10000 |       7 |
++-----------+----------+--------+---------+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+B) RANK - [In This Same Row Number is Assign to the Records Which have Same Salary Like "shane" & "rahul" Both have Salary 20000 and they have Row Number 3 & 3  Same with "Sachin" and "Kapil" They Have 5 & 5]  
+
+Note - [But Row Number 4 has been Skipped In this]
+
+SELECT firstname, lastname, salary, RANK() OVER (order by salary desc) AS row_num FROM employe;
+
++-----------+----------+--------+---------+
+| firstname | lastname | salary | row_num |
++-----------+----------+--------+---------+
+| rohit     | sharma   |  30000 |       1 |
+| shikhar   | dhawan   |  25000 |       2 |
+| shane     | warne    |  20000 |       3 |
+| rahul     | dravid   |  20000 |       3 |
+| saurabh   | ganguly  |  15000 |       5 |
+| sachin    | sharma   |  10000 |       6 |
+| kapil     | dev      |  10000 |       6 |
++-----------+----------+--------+---------+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+C) DENSE RANK - [In This Same Row Number is Assign to the Records Which have Same Salary Like "shane" & "rahul" Both have Salary 20000 and they have Row Number 3 & 3  Same with "Sachin" and "Kapil" They Have 5 & 5]
+
+Note - [But Here 4 is Not Skipped]
+
+SELECT firstname, lastname, salary, DENSE_RANK() OVER (order by salary desc) AS row_num FROM employe;
+
++-----------+----------+--------+---------+
+| firstname | lastname | salary | row_num |
++-----------+----------+--------+---------+
+| rohit     | sharma   |  30000 |       1 |
+| shikhar   | dhawan   |  25000 |       2 |
+| shane     | warne    |  20000 |       3 |
+| rahul     | dravid   |  20000 |       3 |
+| saurabh   | ganguly  |  15000 |       4 |
+| sachin    | sharma   |  10000 |       5 |
+| kapil     | dev      |  10000 |       5 |
++-----------+----------+--------+---------+
