@@ -1,0 +1,104 @@
+
+
+Session 9 - [Decimal Data Type & TIMESTAMP]
+
+
+Problem Statements - 
+
+1) Phle humne jo courses ka Table create kiye thee usme course_duration ka Data Type "INT" tha and ye Decimal Values nhi Hold kr skta for eg    agar koi course 3.5 months ka h toh INT will not work in this case. So we have used a New Data Type which is "DECIMAL" it can hold Decimal values.
+
+
+2) We have also added a Column Named as "changed_at" Iss se Humko ye Malum padega k changes kab hue humare data me and iska Default humne "NOW() rkha h that means CURRENT TIMESTAMP"
+
+
+So we are Creating a New Table 
+
+
+CREATE TABLE courses_new (
+course_id INT NOT NULL,
+course_name VARCHAR(30) NOT NULL,
+course_duration DECIMAL(3,1) NOT NULL,
+course_fees INT NOT NULL,
+PRIMARY KEY(course_id),
+changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+desc courses_new
+
++-----------------+--------------+------+-----+-------------------+-----------------------------------------------+
+| Field           | Type         | Null | Key | Default           | Extra                                         |
++-----------------+--------------+------+-----+-------------------+-----------------------------------------------+
+| course_id       | int          | NO   | PRI | NULL              |                                               |
+| course_name     | varchar(30)  | NO   |     | NULL              |                                               |
+| course_duration | decimal(3,1) | NO   |     | NULL              |                                               |
+| course_fees     | int          | NO   |     | NULL              |                                               |
+| changed_at      | timestamp    | YES  |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED on update CURRENT_TIMESTAMP |
++-----------------+--------------+------+-----+-------------------+-----------------------------------------------+
+
+
+
+
+
+Insert Statements - 
+
+1) INSERT INTO courses_new (course_id, course_name, course_duration, course_fees) VALUES (1, 'bigdata', 6.5, 50000);
+
+
+2) INSERT INTO courses_new (course_id, course_name, course_duration, course_fees) VALUES (2, 'web development', 3.5, 35000);
+
+
+3) INSERT INTO courses_new (course_id, course_name, course_duration, course_fees) VALUES (3, 'data science', 7.5, 40000);
+
+
+4) INSERT INTO courses_new (course_id, course_name, course_duration, course_fees) VALUES (4, 'devops', 10.5, 70000);
+
+
+
+
+
+
+Select Statement - 
+
+SELECT * FROM courses_new;
++-----------+-----------------+-----------------+-------------+---------------------+
+| course_id | course_name     | course_duration | course_fees | changed_at          |
++-----------+-----------------+-----------------+-------------+---------------------+
+|         1 | bigdata         |             6.5 |       50000 | 2024-07-26 11:54:03 |
+|         2 | web development |             3.5 |       35000 | 2024-07-26 11:54:17 |
+|         3 | data science    |             7.5 |       40000 | 2024-07-26 11:54:39 |
+|         4 | devops          |            10.5 |       70000 | 2024-07-26 11:55:04 |
++-----------+-----------------+-----------------+-------------+---------------------+
+
+
+
+
+
+
+
+When we Update a Record [We have updated the fees for devops to 95,000]
+
+
+5) UPDATE courses_new set course_fees = 95000 where course_id = 4;
+
+
+SELECT * FROM courses_new;
++-----------+-----------------+-----------------+-------------+---------------------+
+| course_id | course_name     | course_duration | course_fees | changed_at          |
++-----------+-----------------+-----------------+-------------+---------------------+
+|         1 | bigdata         |             6.5 |       50000 | 2024-07-26 12:11:52 |
+|         2 | web development |             3.5 |       35000 | 2024-07-26 12:12:11 |
+|         3 | data science    |             7.5 |       40000 | 2024-07-26 12:12:32 |
+|         4 | devops          |            10.5 |       95000 | 2024-07-27 14:44:57 |
+|         5 | data structure  |            10.0 |       79000 | 2024-07-27 14:43:15 |
++-----------+-----------------+-----------------+-------------+---------------------+
+
+
+Note - You can now see the changed_at has been changed from 26 July to 27 July.
+
+
+
+
+
+
+
