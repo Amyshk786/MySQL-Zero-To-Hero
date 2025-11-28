@@ -110,3 +110,191 @@ E) Double Level Sorting 1st on the basis of years_of_exp & 2nd on the basis of f
 +---------+--------------+
 
 
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+--Problem Statements of Order By
+=================================
+
+
+
+
+
+
+
+ORDER BY - 
+
+
+1) Problem Statement No 1 - 
+
+If we use the below Select Statement The Data is Not Shown in a Specific Order 
+
+select student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student;
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          1 | 2024-02-03 20:40:37 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          2 | 2024-02-03 20:40:37 |               1 | virat         |            3 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          3 | 2024-02-03 20:40:37 |               3 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          4 | 2024-02-03 20:40:38 |               1 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          5 | 2024-02-03 20:41:27 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-02-03 20:41:27 |               1 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-02-03 20:41:27 |               1 | carl          |           20 | wipro           | 19-02-2021 | youtube           | pune      |
+|          8 | 2024-02-03 20:41:27 |               1 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+1) Solution Statement No 1 -
+
+[Hum Jab ye Query use krege toh Data Years_Of_Exp K Order me show krega (Ascending Oder mein)]
+
+
+select student_id, enrollment_date, selected_course, student_fname, years_of_exp, student_company, batch_date, source_of_joining, location from student ORDER BY years_of_exp;
+
+
+
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | enrollment_date     | selected_course | student_fname | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+|          2 | 2024-02-03 20:40:37 |               1 | virat         |            3 | flipkart        | 5-02-2021  | linkedin          | hyderabad |
+|          1 | 2024-02-03 20:40:37 |               2 | rohit         |            6 | walmart         | 5-02-2021  | linkedin          | bangalore |
+|          4 | 2024-02-03 20:40:38 |               1 | rahul         |            8 | walmart         | 19-02-2021 | quora             | chennai   |
+|          3 | 2024-02-03 20:40:37 |               3 | shikhar       |           12 | datamatics      | 19-02-2021 | google            | bangalore |
+|          8 | 2024-02-03 20:41:27 |               1 | saurabh       |           12 | wipro           | 19-02-2021 | google            | chennai   |
+|          5 | 2024-02-03 20:41:27 |               1 | kapil         |           15 | microsoft       | 5-02-2021  | friend            | pune      |
+|          6 | 2024-02-03 20:41:27 |               1 | brain         |           18 | tcs             | 5-02-2021  | youtube           | pune      |
+|          7 | 2024-02-03 20:41:27 |               1 | carl          |           20 | wipro           | 19-02-2021 | youtube           | pune      |
++------------+---------------------+-----------------+---------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Example 1- 
+
+We Can Also Use ORDER BY for Getting the Student_fname in a Alphabetical Order - 
+
+select student_fname from student ORDER BY student_fname;
+
+
++---------------+
+| student_fname |
++---------------+
+| brain         |
+| carl          |
+| kapil         |
+| rahul         |
+| rohit         |
+| saurabh       |
+| shikhar       |
+| virat         |
++---------------+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Example 2 - 
+
+We Can Also Use ORDER BY for Getting the Student_fname who has the Lowest Year of Exp. 
+
+select student_fname from student ORDER BY years_of_exp;
+
+
++---------------+
+| student_fname |
++---------------+
+| virat         |
+| rohit         |
+| rahul         |
+| shikhar       |
+| saurabh       |
+| kapil         |
+| brain         |
+| carl          |
++---------------+
+
+
+
+OR
+
+
+
+select student_fname, years_of_exp from student ORDER BY years_of_exp;   [By Defalt It Will Show In Ascending Order]
+
+
++---------------+--------------+
+| student_fname | years_of_exp |
++---------------+--------------+
+| virat         |            3 |
+| rohit         |            6 |
+| rahul         |            8 |
+| shikhar       |           12 |
+| saurabh       |           12 |
+| kapil         |           15 |
+| brain         |           18 |
+| carl          |           20 |
++---------------+--------------+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Example 3 - 
+
+
+We Can Also Use ORDER BY for Getting the Student_fname Who has the Higher Years of Exp  [Now It Will Show In Descending Order]
+
+
+select student_fname, years_of_exp from student ORDER BY years_of_exp desc;
+
+
++---------------+--------------+
+| student_fname | years_of_exp |
++---------------+--------------+
+| carl          |           20 |
+| brain         |           18 |
+| kapil         |           15 |
+| shikhar       |           12 |
+| saurabh       |           12 |
+| rahul         |            8 |
+| rohit         |            6 |
+| virat         |            3 |
++---------------+--------------+
+
+
+
+
+
+
+
+
+
