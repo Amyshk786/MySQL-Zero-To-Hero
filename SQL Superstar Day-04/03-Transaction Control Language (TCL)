@@ -1,0 +1,31 @@
+
+
+Transaction Control Language (TCL)
+===================================
+
+
+- For Example we have a Employee table in which there are 100 employees record and we want to delete the 100th record as that employee is leaving the organization so we will use the below command.
+
+DELETE FROM employees WHERE employee_id = 100;
+
+
+
+
+1) Commit - If you Perform any DML Operation then the Transaction is in Open State (Insert, Update, Delete). So there are 2 Options in this State the Transaction Can be Committed or It Can be Rollback (going back to the previous state).
+
+
+
+2) Rollback - If you Perform any DDL Operation then the Transaction is Auto-Committed (Create, Alter, Truncate, Drop)
+
+
+
+IMP Note -
+===========
+
+-> If a Transaction is Committed It can't be Rolled back & If a Transaction is Rollbacked It can't be Committed.
+
+-> Commit & Rollback Only works when the Transaction is in OPEN State.
+
+-> If a DDL Operation is Performed after a DML Operation we Cannot do a Rollback as DDL Operations are Auto-Committed
+
+
