@@ -1,0 +1,164 @@
+
+Data Control Language (DCL) 
+========================
+
+
+Data Control Language (DCL)  - This is related to a Database Administrator who has full access to  the Database and he has the authority  to Grant and Revoke the access.
+
+
+Example : If we want to Grant access to someone of the customers table (but we don’t want them to have access to phone_number, email, street address) & Grant Read-Only Access.
+
+
+# view is a structure on top of this table or view is a wrapper on top of our table. (If we have 10 Columns in our table in view we can have 6 Columns)
+
+
+
+
+1) Now we are Creating “VIEW” from our customers table in which we will have only the below mentioned columns
+
+create view customers_view as select customer_id, customer_fname, customer_lname, customer_city, customer_state, customer_zipcode from customers;
+
+
+
+Output - select * from customers_view;
+
++-------------+----------------+----------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | city        | state | pincode |
++-------------+----------------+----------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | Littleton   | CO    | 80126   |
+|           3 | Ann            | Smith          | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+-------------+-------+---------+
+
+
+- We are creating a User with name Amir and providing password to him.
+CREATE USER 'amir'@'localhost' IDENTIFIED BY 'amir786';
+
+
+
+- Now we will Grant Select Access to the user
+GRANT SELECT ON retail_db.customers_v TO 'amir'@'localhost';
+
+
+
+- Now we will Login as Amir User
+mysql -u amir -p
+
+
+
+- Now If we will Check which All Database we have
+
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| retail_db          |
++--------------------+
+
+
+
+
+- use retail_db
+
+- show tables;
++---------------------+
+| Tables_in_retail_db |
++---------------------+
+| customers_v         |
++---------------------+
+
+
+
+
+- Now if we will Check using the Select Statement so we are able to see only the Records which we were Granted access to 
+
+select * from customers_v;
++-------------+----------------+----------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | city        | state | pincode |
++-------------+----------------+----------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | Littleton   | CO    | 80126   |
+|           3 | Ann            | Smith          | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+-------------+-------+---------+
+
+
+
+
+
+
+
+- Now we will Revoke the Access for the User Amir
+
+REVOKE SELECT ON retail_db.customers_v FROM 'amir'@'localhost';
+
+
+
+
+- As the Access is Revoked we are Unable to use the Select Command
+
+select * from customers_v;
+ERROR 1142 (42000): SELECT command denied to user 'amir'@'localhost' for table 'customers_v'
+
+
+
+
+
+
+
+- Now we will be Creating a View of the Employees table and Grant DROP & DELETE Access to the User
+
+CREATE USER 'amir'@'localhost' IDENTIFIED BY 'amir786';
+
+GRANT SELECT,DROP,DELETE ON retail_db.employees 'amir'@'localhost';
+
+
+Note - Once the Access is Granted the User will have the Privilege to perform that particular action.
+
+
+
+
+- If we want to Revoke the Access which we have Granted to the User then we can use the below
+
+REVOKE DROP, DELETE ON retail_db.employees FROM 'amir'@'localhost'
+
+
+Note - Once the Access is Revoked the User will Not have the Privilege to perform that particular action.
+
+
+
+
+- For Deleting a User we can use the below Command
+
+DROP USER 'amir'@'localhost';
+
+
+
+
+
+———————————————————————
+
+
+If we want to know if the tables which is showing is a Tables or it is a View so we can go to the Information_Schema Database -> In which there is a Table named as "Tables". It is a System Catalog which has all the Metadata about the Tables.
+
+- We can follow the below mentioned steps to check if the table is a table or a view
+
+USE information_schema
+
+show tables;
+
+select * from tables where table_schema = 'retail_db';
+
+
+- If we want Information about the Columns there is a tables named as 'Columns'
+
+select * from columns where table_schema = 'retail_db';
+
+
+
+
