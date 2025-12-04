@@ -1,0 +1,76 @@
+
+
+Day-02 Create your First Database & Tables
+===========================================
+
+When we Initially use any Application or Website it asks us to Signup and provide some basic information like (first name, last name, age, phone number, email, address)
+
+
+- For Single Line Comment we can give below
+
+(# or --)
+
+
+- For Multi Line Comment we can give below
+
+/*
+And between  this we can write the data which we want to comment
+*/
+
+
+
+-> To Create a Database
+- create database retail_db;
+
+
+-> To Use any Database use below Command
+- use retail_db;
+
+
+-> We are creating  a Orders Table under retail_db Database
+
+- CREATE TABLE orders (
+order_id INT,
+order_date DATETIME,
+customer_id INT,
+order_status VARCHAR(30)
+);
+
+
+
+
+-> We are creating  a Customers Table under retail_db Database
+
+- CREATE TABLE customers (
+customer_id INT,
+customer_fname VARCHAR(45) ,
+customer_lname VARCHAR(45),
+customer_email VARCHAR45) ,
+customer_password VARCHAR(45) ,
+customer_street VARCHAR255) ,
+customer_city VARCHAR45) ,
+customer_state VARCHAR(45) ,
+customer_zipcode VARCHAR(45)
+);
+
+
+
+
+
+
+- To Drop a Database we use below Command
+- DROP DATABASE retail_db;
+
+
+
+- To Drop a Table we use below Command
+- DROP TABLE customers;
+
+
+
+
+
+
+
+
+
