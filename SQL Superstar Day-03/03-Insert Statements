@@ -1,0 +1,59 @@
+
+
+INSERT Statements
+=================
+
+
+1) This is Our Orders Table 
+
+
+CREATE TABLE orders (
+order_id INT,
+order_date DATETIME,
+order_customer_id INT,
+order_status VARCHAR(45)
+);
+
+
+
+
+-- worked as an INT can Accept Integer which is wrapped under ‘ ‘ [As it Internally does Type Casting to Accommodate this]
+INSERT INTO orders VALUES (1,'2013-07-25 00:00:00','11599','CLOSED');
+
+
+-- failed as an INT cannot hold data such as [-, A]
+INSERT INTO orders VALUES (2,'2013-07-25 00:00:00','1159-A12','CLOSED');
+
+
+-- worked as DATETIME can Accommodate a DATE and these are Compatible types
+INSERT INTO orders VALUES (3,'2013-07-25',11599,'CLOSED');
+
+
+-- worked as a VARCHAR can hold an Integer 
+INSERT INTO orders VALUES (4,'2013-07-25 00:00:00',11599, 8);
+
+
+
+
+———————————————————————
+
+
+
+
+2) We Have created a new table in which we have limited the count for Varchar to 5 and it will not accept more than 5 characters 
+
+
+CREATE TABLE orders (
+order_id int,
+order_date datetime,
+order_customer_id int,
+order_status varchar(5)
+);
+
+
+
+-- has not worked (data too long for column order_status)
+INSERT INTO orders VALUES (5,'2013-07-25',256,'PENDING_PAYMENT');
+
+
+
