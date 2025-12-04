@@ -1,0 +1,75 @@
+
+Float & Decimal
+================
+
+3) Now we will Create a Table named as Order_Items
+
+
+IMP Note - 
+
+- Float Can Hold Upto 3 Decimal Values
+
+- Decimal Can Hold as much as we want we just have to mention that  [DECIMAL (20,7)] This means it can hold unto 7 decimals and we can increase  as per our requirements 
+
+
+
+A)  - Float Can Hold Upto 3 Decimal Values
+
+CREATE TABLE order_items (
+order_item_id int,
+order_item_order_id int,
+order_item_product_id int,
+order_item_quantity int,
+order_item_subtotal float,
+order_item_product_price float
+);
+
+
+
+- We ca use this for Multi Line Comment
+
+/* 701, 101, macbook, 1, 130000, 130000
+890, 101, airpods, 2, 36000, 18000
+*/
+
+
+
+INSERT INTO order_items VALUES (1,1,957,1,299.98,299.98);
+
+INSERT INTO order_items VALUES (1,1,957,1,299.9878,299.9856);
+
+
+
+
+
+
+B) Decimal Can Hold as much as we want we just have to mention that  [DECIMAL (20,8)] This means it can hold unto 8 decimals and we can increase  as per our requirements 
+
+CREATE TABLE order_items (
+order_item_id int,
+order_item_order_id int,
+order_item_product_id int,
+order_item_quantity int,
+order_item_subtotal DECIMAL(20,8),
+order_item_product_price DECIMAL(20,8)
+);
+
+
+INSERT INTO order_items VALUES (1,1,957,1,299.98,299.9875);
+
+INSERT INTO order_items VALUES (1,1,957,1,299.9878976,299.9856789);
+
+
+
+- If there is some name which has comma in between then we can use like this as we have used in closed
+INSERT INTO orders VALUES (7,'2013-07-25 00:00:00','11599','CLO\'SED');
+
+
+
+- This will Not work  as the Date is not in Correct Format & Date should be Wrapped Inside a ‘ ’
+INSERT INTO orders VALUES (2,'12th july 2025',11599,'CLOSED');
+
+
+
+
+
