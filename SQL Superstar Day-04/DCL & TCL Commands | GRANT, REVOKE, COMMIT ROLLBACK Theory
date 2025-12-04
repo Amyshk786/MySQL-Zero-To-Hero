@@ -1,0 +1,24 @@
+
+
+Day-04 DCL & TCL Commands | GRANT, REVOKE, COMMIT ROLLBACK
+==========================================================
+
+
+In a Nutshell - 
+
+DDL - Defines Structure  [CREATE, ALTER, DROP,  TRUNCATE, RENAME & COMMENT] 
+
+
+DML - Manipulates the Data   [INSERT, UPDATE & DELETE]
+
+
+DQL - Queries Data  [SELECT]
+
+
+DCL - Manages Permissions  [GRANT, REVOKE]
+
+
+TCL - Manages Transactions   [COMMIT, ROLLBACK, SAVE-POINT, SET TRANSACTION]
+
+
+
