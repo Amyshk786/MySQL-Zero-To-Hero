@@ -1,0 +1,40 @@
+
+Data Insert 
+============
+
+
+4) Now we have created  a Customers table
+
+CREATE TABLE customers (
+customer_id INT,
+customer_fname VARCHAR(45) ,
+customer_lname VARCHAR(45),
+customer_email VARCHAR(45) ,
+customer_phone VARCHAR(45) ,
+customer_street VARCHAR(255) ,
+customer_city VARCHAR(45) ,
+customer_state VARCHAR(45) ,
+customer_zipcode VARCHAR45)
+);
+
+
+- We have inserted the below data and it will work as the Number of Columns and and the data is Matching
+INSERT INTO customers VALUES (1,'Richard','Hernandez','richardhernandez@gmail.com','9191919191','6303 Heather Plaza','Brownsville','TX','78521');
+
+
+
+- We have inserted the below data and it will Not work as the Number of Columns and and the Values is Not Matching
+INSERT INTO customers VALUES (2,'Mary','Barrett','marybarrett@yahoo.com','8181818181','Littleton','CO','8012 6');
+
+
+
+- We can also use this for Inserting data first mention the Column name then the Values
+INSERT INTO customers (customer_id,customer_fname,customer_lname,customer_email,customer_phone,customer_city,customer_state,customer_zipcode) VALUES (2,'Mary','Barrett','marybarrett@yahoo.com','8181818181','Littleton','CO','8012 6');
+
+
+
+- We can also use this for Inserting data first mention the Column name then the Values [cust_name pehle h and cust_id baadme h]
+INSERT INTO customers (customer_fname,customer_id,customer_lname,customer_email,customer_phone,customer_city,customer_state,customer_zipcode) VALUES ('Mary',2,'Barrett','marybarrett@yahoo.com','8181818181','Littleton','CO','8012 6');
+
+
+
