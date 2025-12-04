@@ -1,0 +1,50 @@
+
+
+Day-03 Master INSERT, SELECT & Data Import in SQL | Real World DDL, DML, DQL Explained
+=======================================================================================
+
+
+IMP Note - 
+============
+
+1) Data Definition Language (DDL) - DDL Statements are the ones which Change the Table Structure, They Do Not Manuplate the Data. DDL Commands are [CREATE, ALTER, DROP,  TRUNCATE, RENAME & COMMENT]  TRUNCATE - It Internally Drops the Table and Recreates it.
+
+
+
+2) Data Manipulation Language - DML Statements where we Deal with the Data Directly.  DML Commands are [INSERT, UPDATE & DELETE]
+
+
+
+3) Data Query Language (DQL) - DQL are the Statements where we are not either changing the structure or dealing with the structure nor we are changing the data itself. We are just seeing it so this falls under the DQL Category. DQL Commands are [SELECT]
+
+
+
+4) Data Control Language (DCL) -  [GRANT, REVOKE]
+
+
+
+5) Transaction Control Language (TCL) - [COMMIT, ROLLBACK, SAVE-POINT, SET TRANSACTION]
+
+
+
+
+
+
+In a Nutshell - 
+=================
+
+DDL - Defines Structure  [CREATE, ALTER, DROP,  TRUNCATE, RENAME & COMMENT] 
+
+
+DML - Manipulates the Data   [INSERT, UPDATE & DELETE]
+
+
+DQL - Queries Data  [SELECT]
+
+
+DCL - Manages Permissions  [GRANT, REVOKE]
+
+
+TCL - Manages Transactions   [COMMIT, ROLLBACK, SAVE-POINT, SET TRANSACTION]
+
+
