@@ -1,0 +1,48 @@
+
+# SQL Commands
+===============
+
+
+- How to List All the Databases
+- show databases;
+
+
+
+- How to Create Database
+- create database retail_db;
+
+
+- How to Connect to a Database
+- use retail_db;
+
+
+- How to Create a Table
+- create table table_name & provide the data-types;
+
+
+- How to Insert Records into a Table
+- Insert into customers VALUES and provide the information; 
+
+
+- How to View Records in a Table
+- Select * from customers;
+
+
+- How to List All the tables inside a Database
+- show tables;
+
+
+- How to Drop a Table
+- drop table table_name;
+
+
+- How to Drop a Database
+- drop database db_name;
+
+
+- How to Know Which Database we are connected to
+- select database();
+
+
+
+
