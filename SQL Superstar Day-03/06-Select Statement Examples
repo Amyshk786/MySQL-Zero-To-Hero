@@ -1,0 +1,39 @@
+
+
+Examples -
+===========
+
+
+- If we want to Get Selected Data from the Table we can do that as below
+SELECT customer_id, customer_fname, customer_city, customer_state FROM customers;
+
+
+
+- If we want to Check the Structure of the Table we can use the below Command
+DESC customers;  OR DESCRIBE customers;
+
+
+
+- if we want to check the tables like what kind of data we have so we can use below with Limit the Columns like 5,10, 15 20 depends upon you
+SELECT * FROM customers LIMIT 5;
+
+
+- if we want to Sort the Data on the Basis of Customer First-Name
+SELECT * FROM customers ORDER BY customer_fname;  [This will Show Data in ASC Order]
+
+
+
+- For Descending Order we can use below
+SELECT * FROM customers ORDER BY customer_fname DESC; 
+
+
+
+- The Below Command will delete the Table as well as the Entire Data
+DROP TABLE customers; 
+
+
+
+- If we want to Only Delete the Information Inside the table then we can use the below Command
+DELETE TABLE employees;
+
+
