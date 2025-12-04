@@ -1,0 +1,121 @@
+SQL Superstar Playlist
+
+
+Day-01 MySQL Installation & Basics Explained
+============================================
+
+# Limitations of Excel
+=======================
+
+- If we use Excel for storing the data the Maximum records we can have is 10,48,576 and If we want to work on Large Datasets it is very Tedious.
+
+
+
+
+# What is MySQL and SQL
+========================
+
+- SQL is Structured Query Language which is used to Interact or Communicate with the Database so we can  retrieve Information from it.
+
+- MySQL is a Database which Stores the data in the form of Tables (It is a Collection of Tables)
+
+- Table is the entity that holds the data in the form of Rows & Columns (Similar to Excel Spreadsheets)
+
+
+# Types of MySQL Databases
+==========================
+
+- MySQL
+- PostgreSQL
+- SQL Lite
+- Microsoft SQL Server
+- Oracle
+- MariaDB
+
+
+
+# NoSQL Databases
+=================
+
+- HBase 
+- MongoDB
+- DynamoDB
+- Cassandra
+
+
+
+
+# Installation
+===============
+
+- We Install a Database Server
+- We Also Install a Workbench which is a Integrated Development Environment (IDE)
+
+
+# MySQL Download Link - https://dev.mysql.com/downloads/
+
+
+
+
+# How to Setup the Database
+
+mysql -u root -p  (Hit enter & then it will ask for the Password so you can provide that)  
+
+
+If the Path is not set then set it in the below file
+-vim bash.profile
+- export PATH=${PATH}:/usr/local/sql/bin
+
+:wq! (To Save)
+
+
+
+# Basic SQL Query or Commands
+============================
+
+- To List the Database
+- show databases;
+
+
+Output - show databases;
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| retail_db          |
+| sys                |
+| test               |
++--------------------+
+
+
+
+
+
+- To Create a Database
+- create database retail_db;
+
+
+- To Use any Database use below Command
+- use retail_db;
+
+
+- To check which Database we are Connected to
+- select database();
+
+
+Output - select database();
+
++------------+
+| database() |
++------------+
+| retail_db  |
++------------+
+
+
+
+
+
+
