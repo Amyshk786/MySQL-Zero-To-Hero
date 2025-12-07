@@ -1,0 +1,102 @@
+
+
+We will Drop the Database and Create a New One
+
+
+- Check Constraint  [We will Create a Table and Provide Valid Order Status]
+==============================================================================
+
+
+CREATE TABLE orders (
+order_id INT,
+order_item_id INT,
+order_date DATE,
+customer_id INT,
+order_status VARCHAR(20),
+product_id INT,
+quantity INT,
+product_price FLOAT,
+total_price FLOAT
+);
+
+
+
+
+Valid Order Status
+===================
+CLOSED
+PENDING_PAYMENT
+COMPLETE
+PROCESSING
+ON_HOLD
+SUSPECTED_FRAUD
+PENDING
+
+
+
+
+1) Create a Check Constraint
+==============================
+
+ALTER TABLE orders
+    ADD CHECK (order_status in ('CLOSED','PENDING_PAYMENT','COMPLETE','PROCESSING','ON_HOLD','SUSPECTED_FRAUD','PENDING'));
+
+
+OR 
+
+ALTER TABLE orders
+    ADD CONSTRAINT CHK_OrderStatus CHECK (order_status in ('CLOSED','PENDING_PAYMENT','COMPLETE','PROCESSING','ON_HOLD','SUSPECTED_FRAUD','PENDING'));
+
+
+
+
+
+- If we Want to Check the Constraint we can run below command
+
+show create table orders;
+
+
+Output 
+
+orders | CREATE TABLE `orders` (
+  `order_id` int DEFAULT NULL,
+  `order_item_id` int DEFAULT NULL,
+  `order_date` date DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
+  `order_status` varchar(20) DEFAULT NULL,
+  `product_id` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `product_price` float DEFAULT NULL,
+  `total_price` float DEFAULT NULL,
+  CONSTRAINT `orders_chk_1` CHECK ((`order_status` in (_utf8mb4'CLOSED',_utf8mb4'PENDING_PAYMENT',_utf8mb4'COMPLETE',_utf8mb4'PROCESSING',_utf8mb4'ON_HOLD',_utf8mb4'SUSPECTED_FRAUD',_utf8mb4'PENDING')))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+OR 
+
+USE information_schema;
+
+SHOW tables;  [This will Show us that there is a Table named as Check Constraint]
+
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| ADMINISTRABLE_ROLE_AUTHORIZATIONS     |
+| APPLICABLE_ROLES                      |
+| CHARACTER_SETS                        |
+| CHECK_CONSTRAINTS                     |
++---------------------------------------+
+
+
+SELECT * FROM check_constraints;  [This will Show the Constraint Name]
+
+
+--------------------+-------------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CONSTRAINT_CATALOG | CONSTRAINT_SCHEMA | CONSTRAINT_NAME | CHECK_CLAUSE                                                                                                                                                                         |
++--------------------+-------------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| def                | test              | orders_chk_1    | (`order_status` in (_utf8mb4\'CLOSED\',_utf8mb4\'PENDING_PAYMENT\',_utf8mb4\'COMPLETE\',_utf8mb4\'PROCESSING\',_utf8mb4\'ON_HOLD\',_utf8mb4\'SUSPECTED_FRAUD\',_utf8mb4\'PENDING\')) |
++--------------------+-------------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
+
+
