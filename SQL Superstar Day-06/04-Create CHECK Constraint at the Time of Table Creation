@@ -1,0 +1,56 @@
+
+
+3) We will Add the Check Constraint while Creating the Table
+==============================================================
+
+Note - We have Added the Check Constraint on “order_status” Column
+
+
+CREATE TABLE orders (
+order_id INT,
+order_item_id INT,
+order_date DATE,
+customer_id INT,
+order_status VARCHAR(20) CHECK (order_status in ('CLOSED','PENDING_PAYMENT','COMPLETE','PROCESSING','ON_HOLD','SUSPECTED_FRAUD','PENDING')), 
+product_id INT,
+quantity INT,
+product_price FLOAT,
+total_price FLOAT
+);
+
+
+
+
+
+
+—————————————————————————————————————————————————————————————————————
+
+
+
+4) We will Add 2 Check Constraint while Creating the Table
+============================================================
+
+
+CREATE TABLE orders (
+order_id INT,
+order_item_id INT,
+order_date DATE,
+customer_id INT,
+order_status VARCHAR(20) CHECK (order_status in ('CLOSED','PENDING_PAYMENT','COMPLETE','PROCESSING','ON_HOLD','SUSPECTED_FRAUD','PENDING')), 
+product_id INT,
+quantity INT CHECK (quantity <=50),
+product_price FLOAT,
+total_price FLOAT
+);
+
+
+
+- Now If we Insert the Below Statement it will Fail as Qty is Exceeding 50 & Order_Status is CLOSE
+
+INSERT INTO orders VALUES (1, 1, ‘2013-07-25', 11599, 'CLOSE',  957, 1, 299.98, 299.98);
+
+[ERROR 3819 (HY000): Check constraint 'orders_chk_1' is violated.]
+
+
+
+
