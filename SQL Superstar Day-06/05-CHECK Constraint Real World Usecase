@@ -1,0 +1,109 @@
+
+
+5) We will Create a Persons Table & Add a Check Constraint that the Age Should Not be Negative
+===============================================================================================
+
+
+CREATE TABLE persons (
+person_id INT,
+first_name VARCHAR(50), 
+last_name VARCHAR(50),
+age INT CHECK (age > 0)
+);
+
+
+
+INSERT INTO orders (person_id, first_name, last_name, age) VALUES (1, ‘Raj’, ‘Sharma’, -5);
+
+[ERROR 1054 (42S22): Unknown column 'person_id' in 'field list']
+
+
+
+
+
+
+
+
+
+——————————————————————————————————————————————
+
+
+
+
+6) Pattern Matching In Constraints	
+====================================
+
+- We are saying that in email it shud be amir@gmail.com [If it will not have ‘@‘ and ‘.’ Then It will Throw an Error]
+
+
+CREATE TABLE users (
+user_id INT,
+username VARCHAR(50), 
+email VARCHAR(100) CHECK (email LIKE ‘%@%.%’)
+);
+
+
+INSERT INTO users (user_id, username, email) VALUES (1, 'Amirs', 'amir@gmail.com');
+
+[Query OK, 1 row affected (0.001 sec)]
+
+
+
+
+INSERT INTO users (user_id, username, email) VALUES (1, 'Adnans', 'adnangmail.com');
+
+[ERROR 3819 (HY000): Check constraint 'users_chk_1' is violated.]
+
+
+
+
+INSERT INTO users (user_id, username, email) VALUES (1, 'Ahmedk', 'ahmed@gmailcom');
+
+[ERROR 3819 (HY000): Check constraint 'users_chk_1' is violated.]
+
+
+
+
+
+
+
+
+———————————————————————
+
+
+
+
+7) End_Date Should be Greater Than the Start_Date 
+===================================================
+
+We have a Projects Table In which we have Project Start_Date & End_Date But we know that the Start_Date should be Always Less Than the End_Date, So we can put a Check Constraint for this.
+
+[Greater Than Symbol is >]
+[Less Than Symbol is <]
+
+
+CREATE TABLE projects ( 
+project_id INT, 
+project_name VARCHAR(100), 
+start_date DATE, 
+end_date DATE, 
+CHECK (end_date > start_date) 
+);
+
+
+
+
+- We are Inserting a Record which has a Start Date which is 1-Jan-2023 & End Date 31-Dec-2023 which is Perfect
+INSERT INTO projects (project_id, project_name, start_date, end_date) VALUES (1, ‘Project Alpha’, ‘2023-01-01’, ‘2023-12-31’)
+
+
+
+
+- We are Inserting a Record which has a Start Date which is 1-Jan-2023 & End Date 31-Dec-2022 This will Throw an error as it is Violating the Check Constraint
+INSERT INTO projects (project_id, project_name, start_date, end_date) VALUES (1, ‘Project Alpha’, ‘2023-01-01’, ‘2023-12-31’)
+
+
+
+
+
+
