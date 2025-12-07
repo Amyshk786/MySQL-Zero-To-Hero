@@ -1,0 +1,152 @@
+
+
+# MODIFY a Column Using Alter
+===============================
+
+
+1) Change “product_price” column datatype From (FLOAT to INT)
+
+ALTER TABLE orders MODIFY product_price INT;
+
+
+
+2) Change column product_id From (INT to VARCHAR)
+
+ALTER TABLE orders MODIFY product_id VARCHAR(5);
+
+
+
+3) Change column customer_id (INT to VARCHAR)  # This will not work as 3 will be Too Short as we Have Some Cust_ID which is of 5 Characters 
+
+ALTER TABLE orders MODIFY customer_id VARCHAR(3);
+
+
+
+4) Change order_time From (DATETIME to INT)  # This will not work as INT Cannot Accommodate a Date-Time
+
+ALTER TABLE orders MODIFY order_time INT;
+
+
+
+5) Change order_time From (DATETIME to VARCHAR)
+
+ALTER TABLE orders MODIFY order_time VARCHAR(50);
+
+
+
+6) Change order_time From (VARCHAR to DATE)
+
+ALTER TABLE orders MODIFY order_time DATE;
+
+
+
+select * from orders;
+
+
+
+7) Change order_status From (VARCHAR to INT)  # This will Not Work as INT Cannot Hold a VARCHAR But if there was No Value and if it was NULL we can Change the Data Type to INT
+
+ALTER TABLE orders MODIFY order_status INT;
+
+
+
+8) Delete from orders where order_status ='COMPLETE'; 
+
+
+desc orders;
+
+
+
+9) Rename the table as orders_with_status
+
+ALTER TABLE orders RENAME TO orders_with_status;
+
+
+
+SHOW tables;
+
+
+
+
+------------------------------------------------------------
+
+# Modify Usecase
+=================
+
+
+- If we want to change the Date-Time to Date we can do that by running below Command
+
+ALTER TABLE orders MODIFY order_date DATE;
+
+
+
+- Delete a Column From a Table Using Alter
+
+DELETE FROM orders WHERE order_id = 7;
+
+
+
+
+- DESCRIBE orders;
+
+
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| order_id      | int         | YES  |     | NULL    |       |
+| order_item_id | int         | YES  |     | NULL    |       |
+| order_date    | datetime    | YES  |     | NULL    |       |
+| customer_id   | int         | YES  |     | NULL    |       |
+| product_id    | int         | YES  |     | NULL    |       |
+| quantity      | int         | YES  |     | NULL    |       |
+| product_price | float       | YES  |     | NULL    |       |
+| order_status  | varchar(20) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+
+
+- Now we are Inserting Data for Order & and for 1 of the records we are providing proper Date&Time for rest 2 we are only providing Date
+
+INSERT INTO orders (order_id, order_item_id, order_date, customer_id, order_status, product_id, quantity, product_price) VALUES
+(7, 14, '2013-07-25 12:42:30', 4530, 'COMPLETE', 1073, 1, 199.99), 
+(7, 15, '2013-07-25', 4530, 'COMPLETE', 957, 1, 299.98), 
+(7, 16, '2013-07-25', 4530, 'COMPLETE', 926, 5, 15.99);
+
+
++----------+---------------+---------------------+-------------+------------+----------+---------------+--------------+
+| order_id | order_item_id | order_date          | customer_id | product_id | quantity | product_price | order_status |
++----------+---------------+---------------------+-------------+------------+----------+---------------+--------------+
+|        1 |             1 | 2013-07-25 00:00:00 |       11599 |        957 |        1 |        299.98 | NULL         |
+|        2 |             2 | 2013-07-25 00:00:00 |         256 |       1073 |        1 |        199.99 | NULL         |
+|        2 |             3 | 2013-07-25 00:00:00 |         256 |        502 |        5 |            50 | NULL         |
+|        2 |             4 | 2013-07-25 00:00:00 |         256 |        403 |        1 |        129.99 | NULL         |
+|        4 |             5 | 2013-07-25 00:00:00 |        8827 |        897 |        2 |         24.99 | NULL         |
+|        4 |             6 | 2013-07-25 00:00:00 |        8827 |        365 |        5 |         59.99 | NULL         |
+|        4 |             7 | 2013-07-25 00:00:00 |        8827 |        502 |        3 |            50 | NULL         |
+|        4 |             8 | 2013-07-25 00:00:00 |        8827 |       1014 |        4 |         49.98 | NULL         |
+|        5 |             9 | 2013-07-25 00:00:00 |       11318 |        957 |        1 |        299.98 | NULL         |
+|        5 |            10 | 2013-07-25 00:00:00 |       11318 |        365 |        5 |         59.99 | NULL         |
+|        5 |            11 | 2013-07-25 00:00:00 |       11318 |       1014 |        2 |         49.98 | NULL         |
+|        5 |            12 | 2013-07-25 00:00:00 |       11318 |        957 |        1 |        299.98 | NULL         |
+|        5 |            13 | 2013-07-25 00:00:00 |       11318 |        403 |        1 |        129.99 | NULL         |
+|        8 |            17 | 2013-07-25 00:00:00 |        2911 |        365 |        3 |         59.99 | NULL         |
+|        8 |            18 | 2013-07-25 00:00:00 |        2911 |        365 |        5 |         59.99 | NULL         |
+|        8 |            19 | 2013-07-25 00:00:00 |        2911 |       1014 |        4 |         49.98 | NULL         |
+|        8 |            20 | 2013-07-25 00:00:00 |        2911 |        502 |        1 |            50 | NULL         |
+|        7 |            14 | 2013-07-25 12:42:30 |        4530 |       1073 |        1 |        199.99 | COMPLETE     |
+|        7 |            15 | 2013-07-25 00:00:00 |        4530 |        957 |        1 |        299.98 | COMPLETE     |
+|        7 |            16 | 2013-07-25 00:00:00 |        4530 |        926 |        5 |         15.99 | COMPLETE     |
++----------+---------------+---------------------+-------------+------------+----------+---------------+--------------+
+
+
+
+IMP Note - As for one of the Above record we have provided Date-Time, If we change the Data Type of “order_date” from DATETIME to DATE it will Warn us and the Time data will be lost. Even If we change the Data type Again to DATETIME from DATE we cannot get the time data as it is lost.
+
+
+SELECT * FROM orders;
+
+
+
+
+
+
+
