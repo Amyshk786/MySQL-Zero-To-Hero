@@ -1,0 +1,142 @@
+
+
+# ADD a Column Using Alter
+============================
+
+
+- Now we want to Add a New Column named as order_status
+
+ALTER TABLE orders ADD COLUMN order_status VARCHAR(20);
+
+
+- Now if we will do SELECT * FROM orders;  [We Can see a New Column with the name “order_status” has been created]
+
+
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+| order_id | order_item_id | order_date | customer_id | product_id | quantity | product_price | total_price | order_status |
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+|        1 |             1 | 2013-07-25 |       11599 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        2 |             2 | 2013-07-25 |         256 |       1073 |        1 |        199.99 |      199.99 | NULL         |
+|        2 |             3 | 2013-07-25 |         256 |        502 |        5 |            50 |         250 | NULL         |
+|        2 |             4 | 2013-07-25 |         256 |        403 |        1 |        129.99 |      129.99 | NULL         |
+|        4 |             5 | 2013-07-25 |        8827 |        897 |        2 |         24.99 |       49.98 | NULL         |
+|        4 |             6 | 2013-07-25 |        8827 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        4 |             7 | 2013-07-25 |        8827 |        502 |        3 |            50 |         150 | NULL         |
+|        4 |             8 | 2013-07-25 |        8827 |       1014 |        4 |         49.98 |      199.92 | NULL         |
+|        5 |             9 | 2013-07-25 |       11318 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        5 |            10 | 2013-07-25 |       11318 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        5 |            11 | 2013-07-25 |       11318 |       1014 |        2 |         49.98 |       99.96 | NULL         |
+|        5 |            12 | 2013-07-25 |       11318 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        5 |            13 | 2013-07-25 |       11318 |        403 |        1 |        129.99 |      299.98 | NULL         |
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+
+
+
+
+- Now we have a Requirement that we will have to Insert below Information in the Table 
+
+INSERT INTO orders VALUES (7, 14,'2013-07-25', 4530, 1073, 1, 199.99, 199.99);  [This will Not work as the Column count has 9 and Data is 8 Order_status Data is Missing]
+
+
+
+- So we can Use this way to Insert first mention the Column Names then the Values
+
+INSERT INTO orders (order_id, order_item_id, order_date, customer_id, product_id, quantity, product_price, total_price) VALUES (7, 14, '2013-07-25', 4530, 1073, 1, 199.99, 199.99);
+
+- We can do SELECT * FROM orders to check this 
+
+
+
+- Now we will Delete Column
+DELETE FROM orders WHERE order_id = 7;
+
+
+
+
+- Multiple Insert Statements  Now we will be Inserting Data in the Orders Table and Now we will be providing Information about the "order_status"
+
+INSERT INTO orders (order_id, order_item_id, order_date, customer_id, order_status, product_id, quantity, product_price, total_price) VALUES 
+(7, 14,'2013-07-25', 4530,'COMPLETE', 1073, 1,199.99, 199.99), 
+(7, 15, '2013-07-25', 4530, 'COMPLETE', 957, 1,299.98, 299.98), 
+(7, 16, '2013-07-25', 4530, 'COMPLETE', 926, 5, 15.99, 79.95);
+
+
+
+- Now If we see There will be Records for Order 7 will be Inserted with “order_status as COMPLETE
+
+
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+| order_id | order_item_id | order_date | customer_id | product_id | quantity | product_price | total_price | order_status |
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+|        1 |             1 | 2013-07-25 |       11599 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        2 |             2 | 2013-07-25 |         256 |       1073 |        1 |        199.99 |      199.99 | NULL         |
+|        2 |             3 | 2013-07-25 |         256 |        502 |        5 |            50 |         250 | NULL         |
+|        2 |             4 | 2013-07-25 |         256 |        403 |        1 |        129.99 |      129.99 | NULL         |
+|        4 |             5 | 2013-07-25 |        8827 |        897 |        2 |         24.99 |       49.98 | NULL         |
+|        4 |             6 | 2013-07-25 |        8827 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        4 |             7 | 2013-07-25 |        8827 |        502 |        3 |            50 |         150 | NULL         |
+|        4 |             8 | 2013-07-25 |        8827 |       1014 |        4 |         49.98 |      199.92 | NULL         |
+|        5 |             9 | 2013-07-25 |       11318 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        5 |            10 | 2013-07-25 |       11318 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        5 |            11 | 2013-07-25 |       11318 |       1014 |        2 |         49.98 |       99.96 | NULL         |
+|        5 |            12 | 2013-07-25 |       11318 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        5 |            13 | 2013-07-25 |       11318 |        403 |        1 |        129.99 |      299.98 | NULL         |
+|        7 |            14 | 2013-07-25 |        4530 |       1073 |        1 |        199.99 |      199.99 | COMPLETE     |
+|        7 |            15 | 2013-07-25 |        4530 |        957 |        1 |        299.98 |      299.98 | COMPLETE     |
+|        7 |            16 | 2013-07-25 |        4530 |        926 |        5 |         15.99 |       79.95 | COMPLETE     |
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+
+
+
+
+- Now If we want to Provide Information for Order Number 8 and we don’t want to provide “order_status” Info so we can use Any one of the below 
+
+# null means Absence of a Value and Below we have entered the Value as ”null” for “order_status”
+
+INSERT INTO orders (order_id, order_item_id, order_date, customer_id, order_status, product_id, quantity, product_price, total_price) VALUES
+(8, 17, '2013-07-25', 2911, null, 365, 3, 59.99,179.97), (8, 18, '2013-07-25', 2911, null, 365, 5, 59.99, 299.95),
+(8, 19, '2013-07-25', 2911, null, 1014, 4, 49.98, 199.92), (8, 20, '2013-07-25', 2911, null, 502, 1, 50.00, 50.00);
+
+
+
+- The Above Command is Equivalent to the Below Command In the Below Command we have Not entered the Value for “order_status”
+
+INSERT INTO orders (order_id, order_item_id, order_date, customer_id, product_id, quantity, product_price, total_price) VALUES
+(8, 17, '2013-07-25', 2911, 365, 3, 59.99, 179.97),
+(8, 18, '2013-07-25', 2911, 365, 5, 59.99, 299.95),
+(8, 19, '2013-07-25', 2911, 1014, 4, 49.98, 199.92),
+(8, 20, '2013-07-25', 2911, 502, 1, 50.00, 50.00);
+
+
+
+- SELECT * FROM orders;  [And we will see the Value for “order_status” will be NULL
+
+
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+| order_id | order_item_id | order_date | customer_id | product_id | quantity | product_price | total_price | order_status |
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+|        1 |             1 | 2013-07-25 |       11599 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        2 |             2 | 2013-07-25 |         256 |       1073 |        1 |        199.99 |      199.99 | NULL         |
+|        2 |             3 | 2013-07-25 |         256 |        502 |        5 |            50 |         250 | NULL         |
+|        2 |             4 | 2013-07-25 |         256 |        403 |        1 |        129.99 |      129.99 | NULL         |
+|        4 |             5 | 2013-07-25 |        8827 |        897 |        2 |         24.99 |       49.98 | NULL         |
+|        4 |             6 | 2013-07-25 |        8827 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        4 |             7 | 2013-07-25 |        8827 |        502 |        3 |            50 |         150 | NULL         |
+|        4 |             8 | 2013-07-25 |        8827 |       1014 |        4 |         49.98 |      199.92 | NULL         |
+|        5 |             9 | 2013-07-25 |       11318 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        5 |            10 | 2013-07-25 |       11318 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        5 |            11 | 2013-07-25 |       11318 |       1014 |        2 |         49.98 |       99.96 | NULL         |
+|        5 |            12 | 2013-07-25 |       11318 |        957 |        1 |        299.98 |      299.98 | NULL         |
+|        5 |            13 | 2013-07-25 |       11318 |        403 |        1 |        129.99 |      299.98 | NULL         |
+|        7 |            14 | 2013-07-25 |        4530 |       1073 |        1 |        199.99 |      199.99 | COMPLETE     |
+|        7 |            15 | 2013-07-25 |        4530 |        957 |        1 |        299.98 |      299.98 | COMPLETE     |
+|        7 |            16 | 2013-07-25 |        4530 |        926 |        5 |         15.99 |       79.95 | COMPLETE     |
+|        8 |            17 | 2013-07-25 |        2911 |        365 |        3 |         59.99 |      179.97 | NULL         |
+|        8 |            18 | 2013-07-25 |        2911 |        365 |        5 |         59.99 |      299.95 | NULL         |
+|        8 |            19 | 2013-07-25 |        2911 |       1014 |        4 |         49.98 |      199.92 | NULL         |
+|        8 |            20 | 2013-07-25 |        2911 |        502 |        1 |            50 |          50 | NULL         |
++----------+---------------+------------+-------------+------------+----------+---------------+-------------+--------------+
+
+
+
+
