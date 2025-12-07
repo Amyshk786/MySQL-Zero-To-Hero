@@ -1,0 +1,81 @@
+
+
+Day-06 Master SQL Check Constraints 
+====================================
+
+
+- We Can Define some Rules or Constraints which will Help us to have Quality Data.
+
+For Example we have a EMPLOYEE TABLE - AGE (INT) and there is Age Column which has INT as the Data Type. But this Integer can also have -5 as Age but we know it is Incorrect.  So we will have to Specify the Constraints at the time of table creation time (create table) OR later alter the table definition and add a constraint. So we can Define some Rules or Constraints which will help us to have Quality Data,  This Ensures the Accuracy and Reliability of Data.
+
+
+How to Add Constraints -
+==========================
+- Specify the Rules for Data in a table [Like Age Cannot be Negative, Joining date should not be a Future Date]
+
+- It Also Ensures the Accuracy and Reliability of the data
+
+
+
+
+When to specify these constraints -
+=====================================
+
+- At the time of Table Creation Time (create table)
+
+- We can Later Alter the table Definition and Add a Constraint
+
+
+
+
+
+——————————————————————————————————————————————
+
+
+We will Drop the Database and Create a New One
+
+
+- Check Constraint  [We will Create a Table and Provide Valid Order Status]
+=========================================================
+
+
+CREATE TABLE orders (
+order_id INT,
+order_item_id INT,
+order_date DATE,
+customer_id INT,
+order_status VARCHAR(20),
+product_id INT,
+quantity INT,
+product_price FLOAT,
+total_price FLOAT
+);
+
+
+
+
+Valid Order Status
+===================
+CLOSED
+PENDING_PAYMENT
+COMPLETE
+PROCESSING
+ON_HOLD
+SUSPECTED_FRAUD
+PENDING
+
+
+- If we Insert this Info this will be Added as we have Not Added any Constraints
+
+INSERT INTO orders VALUES (1, 1, ‘2013-07-25', 11599, 'CLOSE',  957, 1, 299.98, 299.98);
+
+
+- DELETE FROM orders;
+
+
+
+- But if we Delete the Above Record and Add a Check Constraint in our “orders” table then it will say “Check Constraint is Violated”
+
+[ERROR 3819 (HY000): Check constraint 'orders_chk_1' is violated]
+
+
