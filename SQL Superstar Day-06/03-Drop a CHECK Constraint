@@ -1,0 +1,11 @@
+
+
+
+2) To Drop a Check Constraint
+===============================
+
+ALTER TABLE orders DROP CONSTRAINT orders_chk_1;
+
+
+
+
