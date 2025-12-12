@@ -1,0 +1,42 @@
+
+AUTO INCREMENT -
+==================
+
+
+- Auto Increment is Generally used for Primary Key
+
+
+
+CREATE TABLE employees (
+employee_id INT AUTO_INCREMENT,
+first_name VARCHAR(40),
+last_name VARCHAR(40),
+hire_date DATE,
+PRIMARY KEY (employee_id)
+);
+
+
+
+
+
+
+A) If we Have a Requirement that the Employee_id Should Start from 1000 so we can use below
+
+ALTER TABLE employees AUTO_INCREMENT = 1000;
+
+
+
+B) If we want That Auto_Increment should be done by 2 [First Record is 1001, Second should be 1003, 1005 and so on] 
+
+SET @@auto_increment_increment = 2;
+
+
+
+
+
+
+
+
+
+
+
