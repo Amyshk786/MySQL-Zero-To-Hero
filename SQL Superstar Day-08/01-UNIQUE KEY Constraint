@@ -1,0 +1,89 @@
+
+
+Day-08 SQL Constraints - Unique, Default & Auto-Increment
+============================================================
+
+
+UNIQUE KEY -
+==============
+
+- We Can Only Have 1 Primary Key Inside a Table
+
+- We Can Have Multiple Unique Key Inside a Table and It Can Hold Multiple NULL Values like we can use that in cust_phone, cust_email  As 2 Customers Cannot Have Same Email-ID or Phone-Number 
+
+- If we want we can also Use UNIQUE KEY & NOT NULL at the Same time
+
+
+
+1) In the Below Example we Have Add Primary Key on “customer_id” Column & Unique Key on “customer_email” and “customer_phone” Column
+
+CREATE TABLE customers (
+customer_id INT NOT NULL,
+customer_fname VARCHAR(45) NOT NULL,
+customer_lname VARCHAR(45) NOT NULL,
+customer_email VARCHAR(45) NOT NULL,
+customer_phone VARCHAR(45),
+customer_street VARCHAR(255),
+customer_city VARCHAR(45) NOT NULL,
+customer_state VARCHAR(45) NOT NULL,
+customer_zipcode VARCHAR(45),
+PRIMARY KEY (customer_id),
+UNIQUE KEY (customer_email, customer_phone)
+);
+
+
+
+
+DESC customers;
+
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| customer_id      | int          | NO   | PRI | NULL    |       |
+| customer_fname   | varchar(45)  | NO   |     | NULL    |       |
+| customer_lname   | varchar(45)  | NO   |     | NULL    |       |
+| customer_email   | varchar(45)  | YES  | MUL | NULL    |       |
+| customer_phone   | varchar(45)  | YES  | UNI | NULL    |       |
+| customer_street  | varchar(255) | YES  |     | NULL    |       |
+| customer_city    | varchar(45)  | NO   |     | NULL    |       |
+| customer_state   | varchar(45)  | NO   |     | NULL    |       |
+| customer_zipcode | varchar(45)  | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+
+
+
+
+
+
+-> We Have Inserted 2 Records 
+INSERT INTO customers VALUES (1,’Richard’,’Hernandez’, ‘richard@gmail.com’, ‘9191919191’,’6303 Heather Plaza’, ‘Brownsville’, ‘TX’, ‘78521’), 
+(2,’Mary’, ‘Barrett’, ‘mary@gmail.com’, ‘9292929292’, ‘9526 Noble Embers Ridge’, ‘Littleton’,’CO’, ‘80126’)
+
+
+
+
+SELECT * FROM customers;
+
++-------------+----------------+----------------+-------------------+----------------+-------------------------+---------------+----------------+------------------+
+| customer_id | customer_fname | customer_lname | customer_email    | customer_phone | customer_street         | customer_city | customer_state | customer_zipcode |
++-------------+----------------+----------------+-------------------+----------------+-------------------------+---------------+----------------+------------------+
+|           1 | Richard        | Hernandez      | richard@gmail.com | 9191919191     | 6303 Heather Plaza      | Brownsville   | TX             | 78521            |
+|           2 | Mary           | Barrett        | mary@gmail.com    | 9292929292     | 9526 Noble Embers Ridge | Littleton     | CO             | 80126            |
++-------------+----------------+----------------+-------------------+----------------+-------------------------+---------------+----------------+------------------+
+
+
+
+
+
+-> Now If we Insert Third Record with the Same Phone_Num as Mary It will Throw an Error
+
+INSERT INTO customers VALUES (3, 'Ann', 'Smith', 'ann@gmail.com','9292929292', '3422 Blue Pioneer Bend', 'Caguas', 'PR', '00725');
+
+ERROR 1062 (23000): Duplicate entry '9292929292' for key 'customers.customer_phone'
+
+
+
+
+
+
+
