@@ -1,0 +1,63 @@
+
+
+COMPOSITE PRIMARY KEY
+========================
+
+
+- Composite Primary Key - We Can Also Mention the Primary Key at the Last This Comes Handy When we Want to Have Primary Key with the Combination of 2 Columns. We can Just Mention ‘PRIMARY KEY (order_id, product_id)’  As Shown Below. If a Customer Purchases 2 Items so that will have Same “Order_ID” But Different “Product_ID” Like Below [Ek hi Customer ne 3 Items Buy KIya H] Toh Is Case me Hum Composite Primary Key Use car Sakte Hai. 
+But Order_ID & Product_ID Repeat Nhi Hona Chahiye, Like A Customer cannot Buy 101 Items 2 Times It will Throw Error. 
+
+
+
+
+CREATE TABLE order_items (
+order_id INT,
+product_id INT,
+quantity float,
+PRIMARY KEY (order_id, product_id)
+);
+
+
+
+DESC order_items 
+
++------------+-------+------+-----+---------+-------+
+| Field      | Type  | Null | Key | Default | Extra |
++------------+-------+------+-----+---------+-------+
+| order_id   | int   | NO   | PRI | NULL    |       |
+| product_id | int   | NO   | PRI | NULL    |       |
+| quantity   | float | YES  |     | NULL    |       |
++------------+-------+------+-----+---------+-------+
+
+
+
+INSERT INTO order_items VALUES (1, 101, 5), (1, 102, 4), (1, 405, 10);
+
+
+
+SELECT * FROM order_items;
+
++----------+------------+----------+
+| order_id | product_id | quantity |
++----------+------------+----------+
+|        1 |        101 |        5 |
+|        1 |        102 |        4 |
+|        1 |        405 |       10 |
++----------+------------+----------+
+
+
+
+
+- We have Repeated the Product_ID 101 and this will Throw Error
+INSERT INTO order_items VALUES (1, 101, 5);
+
+ERROR 1062 (23000): Duplicate entry '1-101' for key 'order_items.PRIMARY'
+
+
+
+
+
+
+
+
+
