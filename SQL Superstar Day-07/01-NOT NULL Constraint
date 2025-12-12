@@ -1,0 +1,96 @@
+
+
+Day-07 Not Null & Primary Key Constraint in SQL
+==================================================
+
+
+NOT NULL CONSTRAINT -
+========================
+
+
+1) We Are Creating a Orders Table in which we have Specified that No Column should Hold a NULL Value [By Default Table can Hold a NULL Value]
+
+
+CREATE TABLE orders (
+order_id INT NOT NULL,
+order_item_id INT NOT NULL,
+order_date DATE NOT NULL,
+customer_id INT NOT NULL,
+order_status VARCHAR(20) NOT NULL,
+product_id INT NOT NULL,
+quantity INT NOT NULL,
+product_price FLOAT NOT NULL,
+total_price FLOAT NOT NULL
+);
+
+
+
+Eg-1)  This Insert will Work as All the Column has Values
+
+INSERT INTO orders VALUES (1, 1, '2013-07-25', 11599, 'CLOSED',  957, 1, 299.98, 299.98);
+
+
+Output - 
+Query OK, 1 row affected (0.002 sec)
+
+
+
+
+
+
+Eg-2)  Now we are Entering a Value for Order Status as NULL This will Throw an Error
+
+INSERT INTO orders VALUES (2, 2, '2013-07-25', 11569, 'NULL',  957, 1, 299.98, 299.98);
+
+
+Output -
+ERROR 3819 (HY000): Check constraint 'orders_chk_1' is violated.
+
+
+
+
+
+
+
+———————————————————————
+
+2) Now we are Creating Customers Table in Which we have Some Values Which Should Not Hold NULL Value and these 3 Columns can Hold a NULL Value [cust_phone, street & zipcode]
+
+
+CREATE TABLE customers (
+customer_id INT NOT NULL,
+customer_fname VARCHAR(45) NOT NULL,
+customer_lname VARCHAR(45) NOT NULL,
+customer_email VARCHAR(45) NOT NULL,
+customer_phone VARCHAR(45),
+customer_street VARCHAR(255),
+customer_city VARCHAR(45) NOT NULL,
+customer_state VARCHAR(45) NOT NULL,
+customer_zipcode VARCHAR(45)
+);
+
+
+
+-> To Check Which Columns Can Hold a NULL Value and Which Cannot we can use Below Command
+
+DESC customers;
+
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| customer_id      | int          | NO   |     | NULL    |       |
+| customer_fname   | varchar(45)  | NO   |     | NULL    |       |
+| customer_lname   | varchar(45)  | NO   |     | NULL    |       |
+| customer_email   | varchar(45)  | NO   |     | NULL    |       |
+| customer_phone   | varchar(45)  | YES  |     | NULL    |       |
+| customer_street  | varchar(255) | YES  |     | NULL    |       |
+| customer_city    | varchar(45)  | NO   |     | NULL    |       |
+| customer_state   | varchar(45)  | NO   |     | NULL    |       |
+| customer_zipcode | varchar(45)  | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+
+
+
+
+
+
