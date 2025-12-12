@@ -1,0 +1,67 @@
+
+
+Day-9 Master Foreign Keys in One Detailed Video
+================================================
+
+
+- Foreign Key Constraint is Used to Enforce a Link Between 2 Tables
+
+- Also A Foreign Key Constraint Can be Used to Enforce Referential Data Integrity Between 2 Tables
+
+- We Can Relate 2 Tables by Using the Foreign Key Constraint
+
+- Primary Key in the 1st Table will be the Foreign Key in the 2nd Table [As Shown Below]
+
+
+
+->  We have Created Customers Table
+
+Table N0-1
+
+CREATE TABLE customers (
+customer_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
+);
+
+
+
+
+-> We have Created Orders Table
+
+Table No-2
+
+CREATE TABLE orders (
+order_id INT PRIMARY KEY,
+order_date DATE,
+customer_id INT,
+FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+);
+
+
+
+
+-> Inserting Data
+
+- Customer No1
+
+INSERT INTO customers (customer_id, first_name, last_name)
+VALUES (1, 'John', 'Doe');
+
+INSERT INTO orders (order_id, order_date, customer_id)
+VALUES (1, '2023-07-01', 1);
+
+
+
+
+- Customer No2
+
+As we have No Data for Customer Number 2 in the "Customers" Table so It will Throw an Error [Cannot Add or Update a Child Row A Foreign Key Constraint Fails]
+
+INSERT INTO orders (order_id, order_date, customer_id)
+VALUES (2, '2023-07-02', 2);
+
+
+
+
+
