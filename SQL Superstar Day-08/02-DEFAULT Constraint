@@ -1,0 +1,147 @@
+
+
+DEFAULT -
+==========
+
+
+Benefits of Default Constraint - 
+=================================
+
+- Ensures Data Consistency 
+
+- It Guarantees you that a Default Value is Added when there is No Value Provided
+
+- It Helps to Prevent NULL
+
+ 
+
+
+1) We have Created Employees Table in which we have below mentioned Columns & Now we want the Status Should show ‘Active’ By Default. So we Can Create a Table Like Below and Mention the Default Value
+
+
+CREATE TABLE employees (
+employee_id INT,
+first_name VARCHAR(40),
+last_name VARCHAR(40),
+hire_date DATE,
+status VARCHAR(15) DEFAULT ‘ACTIVE’,
+PRIMARY KEY (employee_id)
+);
+
+
+
+DESC employees;
+
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| employee_id | int         | NO   | PRI | NULL    |       |
+| first_name  | varchar(40) | YES  |     | NULL    |       |
+| last_name   | varchar(40) | YES  |     | NULL    |       |
+| hire_date   | date        | YES  |     | NULL    |       |
+| status      | varchar(15) | YES  |     | ACTIVE  |       |
++-------------+-------------+------+-----+---------+-------+
+
+
+
+
+A) Here we have Not Provided the Value for “Status” But we have mentioned the Default Value Should be “ACTIVE”
+
+INSERT INTO employees (employee_id, first_name, last_name, hire_date) VALUES (1, 'Kapil', 'Sharma', '2025-12-07');
+
+
+
+
+SELECT * FROM employees;
+
++-------------+------------+-----------+------------+--------+
+| employee_id | first_name | last_name | hire_date  | status |
++-------------+------------+-----------+------------+--------+
+|           1 | Kapil      | Sharma    | 2025-12-07 | ACTIVE |
++-------------+------------+-----------+------------+--------+
+
+
+
+
+
+
+
+B) We can Also Insert a Value Like this Just Mention default so It will take the Default Value 
+
+INSERT INTO employees (employee_id, first_name, last_name, hire_date, status) VALUES (2, 'Amir', 'Shaikh', '2025-12-07', default);
+
+
+
+SELECT * FROM employees;
+
++-------------+------------+-----------+------------+--------+
+| employee_id | first_name | last_name | hire_date  | status |
++-------------+------------+-----------+------------+--------+
+|           1 | Kapil      | Sharma    | 2025-12-07 | ACTIVE |
+|           2 | Amir       | Shaikh    | 2025-12-07 | ACTIVE |
++-------------+------------+-----------+------------+--------+
+
+
+
+
+
+C) If we Want to Enter some Other Value so we will have to Mention that in below Example we have entered the Value as “INACTIVE” If we enter the Value as NULL IT will Take that and if we want to avoid that we can give NOT NULL Constraint.
+
+
+INSERT INTO employees (employee_id, first_name, last_name, hire_date, status) VALUES (3, 'Adnan’, 'Shaikh', '2025-12-07', 'INACTIVE');
+
+
+
+SELECT * FROM employees;
+
++-------------+------------+-----------+------------+----------+
+| employee_id | first_name | last_name | hire_date  | status   |
++-------------+------------+-----------+------------+----------+
+|           1 | Kapil      | Sharma    | 2025-12-07 | ACTIVE   |
+|           2 | Amir       | Shaikh    | 2025-12-07 | ACTIVE   |
+|           3 | Adnan      | Shaikh    | 2025-12-07 | INACTIVE |
++-------------+------------+-----------+------------+----------+
+
+
+
+
+
+
+
+
+
+D) In the BelowExample we have Created a Table orders where we have set the Default Value for “order_date” as “CURRENT_DATE” If we enter the Value as NULL It will Take that and if we want to avoid that we can give NOT NULL Constraint.
+
+
+CREATE TABLE orders (
+order_id INT NOT NULL,
+customer_id INT,
+product_id INT,
+quantity INT,
+order_date DATE DEFAULT (CURRENT_DATE)
+PRIMARY KEY (order_id)
+);
+
+
+
+
+
+
+
+E) If we are Startup from USA and we know Our Customers will be From USA so we can Create the Table Like Below. If we enter the Value as NULL It will Take that and if we want to avoid that we can give NOT NULL Constraint.
+
+
+CREATE TABLE customers (
+customer_id INT,
+first_name VARCHAR(40),
+last_name VARCHAR(40),
+country VARCHAR(40) DEFAULT ‘USA’,
+PRIMARY KEY (customer_id)
+);
+
+
+
+
+
+
+
