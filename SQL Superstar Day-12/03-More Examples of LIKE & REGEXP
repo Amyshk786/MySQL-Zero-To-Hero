@@ -1,0 +1,359 @@
+
+# Creating a Table
+
+
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL
+);
+
+
+
+
+
+# Inserting the Data [We Have Added Some Valid Emails & Some Emails are Not Valid]
+
+INSERT INTO users (email) VALUES
+('john.doe@example.com'),
+('jane_smith123@example.org'),
+('michael.jordan@basketball.co'),
+('invalid-email@example'),
+('sarah.connor@techfuture.net'),
+('tony.stark@starkindustries.com'),
+('bruce_wayne@wayneenterprises.biz'),
+('peter.parker@spiderman.com'),
+('invalid-email@.com'),
+('clark.kent@dailyplanet.news'),
+('diana.prince@themyscira.gov'),
+('steve.rogers@avengers.us'),
+('invalid-email@example..com'),
+('natasha.romanoff@shield.int'),
+('valid.email+alias@example.org'),
+('bruce.banner@hulk.com'),
+('barry.allen@flash.city'),
+('arthur.curry@atlantis.ocean'),
+('diana.prince@amazon.wonder'),
+('invalid-email@example@domain.com'),
+('oliver.queen@arrow.ind'),
+('hal.jordan@greenlantern.space');
+
+
+
+
+
+SELECT * FROM users;
+
+
++----+----------------------------------+
+| id | email                            |
++----+----------------------------------+
+|  1 | john.doe@example.com             |
+|  2 | jane_smith123@example.org        |
+|  3 | michael.jordan@basketball.co     |
+|  4 | invalid-email@example            |
+|  5 | sarah.connor@techfuture.net      |
+|  6 | tony.stark@starkindustries.com   |
+|  7 | bruce_wayne@wayneenterprises.biz |
+|  8 | peter.parker@spiderman.com       |
+|  9 | invalid-email@.com               |
+| 10 | clark.kent@dailyplanet.news      |
+| 11 | diana.prince@themyscira.gov      |
+| 12 | steve.rogers@avengers.us         |
+| 13 | invalid-email@example..com       |
+| 14 | natasha.romanoff@shield.int      |
+| 15 | valid.email+alias@example.org    |
+| 16 | bruce.banner@hulk.com            |
+| 17 | barry.allen@flash.city           |
+| 18 | arthur.curry@atlantis.ocean      |
+| 19 | diana.prince@amazon.wonder       |
+| 20 | invalid-email@example@domain.com |
+| 21 | oliver.queen@arrow.ind           |
+| 22 | hal.jordan@greenlantern.space    |
++----+----------------------------------+
+
+
+
+
+
+
+———————————————————————
+
+
+
+
+
+
+
+20) We Can get the Emails which are Following the below mentioned Rules
+
+SELECT * FROM users WHERE email REGEXP '^[a-z0-9._]+@[a-z0-9_]+\.[a-z]{2,}';
+
+
+Rules for Valid Email are
+
+
+For Name Valid is [a-z, 0-9, ., _]
+
+For Domain Valid is [a-z, 0-9]
+
+For Top Level Domain Valid is [a-z 2 or More Characters]
+
+
+name - sumit
+domain - "trendytech" "gmail"
+top level domain - ".in" ".com"
+
+
+
+- Some Demo Emails
+
+sumit@trendytech.in
+sumit_hyd@gmail.com
+trendytech.sumit@gmail.com
+
+
+name@domain.topleveldomain
+
+
+
+
+Output - 
+
++----+----------------------------------+
+| id | email                            |
++----+----------------------------------+
+|  1 | john.doe@example.com             |
+|  2 | jane_smith123@example.org        |
+|  3 | michael.jordan@basketball.co     |
+|  5 | sarah.connor@techfuture.net      |
+|  6 | tony.stark@starkindustries.com   |
+|  7 | bruce_wayne@wayneenterprises.biz |
+|  8 | peter.parker@spiderman.com       |
+| 10 | clark.kent@dailyplanet.news      |
+| 11 | diana.prince@themyscira.gov      |
+| 12 | steve.rogers@avengers.us         |
+| 14 | natasha.romanoff@shield.int      |
+| 16 | bruce.banner@hulk.com            |
+| 17 | barry.allen@flash.city           |
+| 18 | arthur.curry@atlantis.ocean      |
+| 19 | diana.prince@amazon.wonder       |
+| 21 | oliver.queen@arrow.ind           |
+| 22 | hal.jordan@greenlantern.space    |
++----+----------------------------------+
+
+
+
+
+
+
+
+
+21) We Can get the Emails which are NOT Following the below mentioned Rules
+
+SELECT * FROM users WHERE email NOT REGEXP '^[a-z0-9._]+@[a-z0-9_]+\.[a-z] {2, }$’;
+
+
+
+
+Output - 
+
++----+----------------------------------+
+| id | email                            |
++----+----------------------------------+
+|  4 | invalid-email@example            |
+|  9 | invalid-email@.com               |
+| 13 | invalid-email@example..com       |
+| 15 | valid.email+alias@example.org    |
+| 20 | invalid-email@example@domain.com |
++----+----------------------------------+
+
+
+
+
+
+
+
+
+
+
+22) A) If we Want an Email where there is Exactly 20 Characters Then We can use below Command
+
+SELECT * FROM users WHERE email REGEXP ‘^………………..$’;
+
+
+
+Output - 
+
++----+----------------------+
+| id | email                |
++----+----------------------+
+|  1 | john.doe@example.com |
++----+----------------------+
+
+
+
+
+
+
+
+22) B) If we Want an Email where there is Exactly 20 Characters Using LIKE Operator then we can use below Command
+
+SELECT * FROM users WHERE email LIKE '____________________';
+
+
+
+Output - 
+
++----+----------------------+
+| id | email                |
++----+----------------------+
+|  1 | john.doe@example.com |
++----+----------------------+
+
+
+
+
+
+
+
+
+
+23) A) If we Want an Email where there is 20 Or More Characters Then We can use below Command
+
+
+SELECT * FROM users WHERE email REGEXP '....................'
+
+
+
+Output - 
+
++----+----------------------------------+
+| id | email                            |
++----+----------------------------------+
+|  1 | john.doe@example.com             |
+|  2 | jane_smith123@example.org        |
+|  3 | michael.jordan@basketball.co     |
+|  4 | invalid-email@example            |
+|  5 | sarah.connor@techfuture.net      |
+|  6 | tony.stark@starkindustries.com   |
+|  7 | bruce_wayne@wayneenterprises.biz |
+|  8 | peter.parker@spiderman.com       |
+| 10 | clark.kent@dailyplanet.news      |
+| 11 | diana.prince@themyscira.gov      |
+| 12 | steve.rogers@avengers.us         |
+| 13 | invalid-email@example..com       |
+| 14 | natasha.romanoff@shield.int      |
+| 15 | valid.email+alias@example.org    |
+| 16 | bruce.banner@hulk.com            |
+| 17 | barry.allen@flash.city           |
+| 18 | arthur.curry@atlantis.ocean      |
+| 19 | diana.prince@amazon.wonder       |
+| 20 | invalid-email@example@domain.com |
+| 21 | oliver.queen@arrow.ind           |
+| 22 | hal.jordan@greenlantern.space    |
++----+----------------------------------+
+
+
+
+
+
+
+
+
+
+23) B) A) If we Want an Email where there is 20 Or More Characters Using LIKE Operator Then We can use below Command
+
+SELECT * FROM users WHERE email like ‘%____________________%’;
+
+
+
+
+
+Output - 
+
++----+----------------------------------+
+| id | email                            |
++----+----------------------------------+
+|  1 | john.doe@example.com             |
+|  2 | jane_smith123@example.org        |
+|  3 | michael.jordan@basketball.co     |
+|  4 | invalid-email@example            |
+|  5 | sarah.connor@techfuture.net      |
+|  6 | tony.stark@starkindustries.com   |
+|  7 | bruce_wayne@wayneenterprises.biz |
+|  8 | peter.parker@spiderman.com       |
+| 10 | clark.kent@dailyplanet.news      |
+| 11 | diana.prince@themyscira.gov      |
+| 12 | steve.rogers@avengers.us         |
+| 13 | invalid-email@example..com       |
+| 14 | natasha.romanoff@shield.int      |
+| 15 | valid.email+alias@example.org    |
+| 16 | bruce.banner@hulk.com            |
+| 17 | barry.allen@flash.city           |
+| 18 | arthur.curry@atlantis.ocean      |
+| 19 | diana.prince@amazon.wonder       |
+| 20 | invalid-email@example@domain.com |
+| 21 | oliver.queen@arrow.ind           |
+| 22 | hal.jordan@greenlantern.space    |
++----+----------------------------------+
+
+
+
+
+
+
+
+
+
+
+24) We want Name which Should Not Contain "_", "-"
+
+SELECT * FROM users WHERE email REGEXP '^[^_-]+@[a-z0-9_]+\.[a-z]{5}$’;
+
+
+
+
+Output - 
+
++----+-------------------------------+
+| id | email                         |
++----+-------------------------------+
+| 18 | arthur.curry@atlantis.ocean   |
+| 22 | hal.jordan@greenlantern.space |
++----+-------------------------------+
+
+
+
+
+
+
+Note -
+
+If we Give This "^" Symbol Inside a Square Bracket [] that means the Email will Not Contain "_" & "-" As Shown Above
+
+
+
+. Matches Any Single Character
+
+^ Matches the Start of the String
+
+$ Matches the End of the String
+
+[] - defines a character class to match any single character within the brackets
+
+* + ? - Quantifiers to Specify Number of Occurrences
+
+? Means Zero Or One Time
+* Means Zero Or Any Number of Times
++ Means One Or More Time
+
+
+
+
+
+
+
+
+
+
