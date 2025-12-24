@@ -1,0 +1,16 @@
+
+Difference Between UPDATE & ALTER
+==================================
+
+
+1) UPDATE - This is a DML Operation [Changing the Data]
+
+
+
+2) ALTER - This is a DDL Operation [Changing the Definition (Structure)] We Can Alter the Table and New Columns to that Table.
+
+
+
+
+
+
