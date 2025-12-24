@@ -1,0 +1,237 @@
+
+
+-- We will Drop the Students Table and Re-Create it
+
+
+
+CREATE TABLE students(
+student_id INT AUTO_INCREMENT,
+student_fname VARCHAR(30) NOT NULL,
+student_lname VARCHAR(30) NOT NULL,
+student_mname VARCHAR(30),
+student_email VARCHAR(30) NOT NULL,
+student_phone VARCHAR(15) NOT NULL,
+student_alternate_phone varchar(15),
+years_of_exp INT NOT NULL,
+student_company varchar(30),
+batch_date varchar(30) NOT NULL,
+source_of_joining varchar(30) NOT NULL,
+location varchar(30) NOT NULL,
+PRIMARY KEY(student_id),
+UNIQUE KEY(student_email)
+);
+
+
+
+
+
+
+
+--Inserting the Data
+
+
+INSERT INTO students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location)
+VALUES ('Amit', 'Sharma', 'amit.sharma@gmail.com', '9191919191', 6, 'Walmart', '05-02-2021', 'LinkedIn', 'Bangalore');
+
+
+
+INSERT INTO students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location)
+VALUES ('Priya', 'Rao', 'priya.rao@gmail.com', '9292929292', 3, 'Flipkart', '05-02-2021', 'LinkedIn', 'Hyderabad');
+
+
+
+INSERT INTO students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location)
+VALUES ('Rahul', 'Verma', 'rahul.verma@gmail.com', '9393939393', 12, 'Google', '19-02-2021', 'Google', 'Bangalore');
+
+
+
+INSERT INTO students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location)
+VALUES ('Anjali', 'Singh', 'anjali.singh@gmail.com', '9494949494', 8, 'Walmart', '19-02-2021', 'Quora', 'Chennai');
+
+
+
+INSERT INTO students(student_fname, student_lname, student_email, student_phone, years_of_exp, student_company, batch_date, source_of_joining, location)
+VALUES ('Vikram', 'Patel', 'vikram.patel@gmail.com', '9294919191', 15, 'Microsoft', '05-02-2021', 'Friend', 'Pune'),
+('Asha', 'Menon', 'asha.menon@gmail.com', '9394919191', 18, 'TCS', '05-02-2021', 'YouTube', 'Pune'),
+('Kiran', 'Nair', 'kiran.nair@gmail.com', '9293519191', 20, 'Wipro', '19-02-2021', 'YouTube', 'Pune'),
+('Ravi', 'Iyer', 'ravi.iyer@gmail.com', '9291975191', 14, 'Wipro', '19-02-2021', 'Google', 'Chennai');
+
+
+
+
+
+
+———————————————————————
+
+
+
+
+
+
+6) We Need to Find 5 Candidates with Highest Years of Experience
+
+SELECT * FROM students ORDER BY years_of_exp DESC LIMIT 5;
+
+
+Output - 
+
++------------+---------------+---------------+---------------+------------------------+---------------+-------------------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | student_fname | student_lname | student_mname | student_email          | student_phone | student_alternate_phone | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------+---------------+---------------+------------------------+---------------+-------------------------+--------------+-----------------+------------+-------------------+-----------+
+|          7 | Kiran         | Nair          | NULL          | kiran.nair@gmail.com   | 9293519191    | NULL                    |           20 | Wipro           | 19-02-2021 | YouTube           | Pune      |
+|          6 | Asha          | Menon         | NULL          | asha.menon@gmail.com   | 9394919191    | NULL                    |           18 | TCS             | 05-02-2021 | YouTube           | Pune      |
+|          5 | Vikram        | Patel         | NULL          | vikram.patel@gmail.com | 9294919191    | NULL                    |           15 | Microsoft       | 05-02-2021 | Friend            | Pune      |
+|          8 | Ravi          | Iyer          | NULL          | ravi.iyer@gmail.com    | 9291975191    | NULL                    |           14 | Wipro           | 19-02-2021 | Google            | Chennai   |
+|          3 | Rahul         | Verma         | NULL          | rahul.verma@gmail.com  | 9393939393    | NULL                    |           12 | Google          | 19-02-2021 | Google            | Bangalore |
++------------+---------------+---------------+---------------+------------------------+---------------+-------------------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
+
+
+7) Candidates who have 4th & 5th Highest Years Of Experience 
+
+[We have 5 Records In the Above Query and SQL counts the Records from 0, So YOE 20 is 0,  YOE 18 is 1, YOE 14 is the 3rd We want 4th & 5th Highest so we will give  3,2 This Means Student_Name Ravi & Rahul]
+
+SELECT * FROM students ORDER BY years_of_exp DESC LIMIT 3,2;
+
+
+Output - 
+
++------------+---------------+---------------+---------------+-----------------------+---------------+-------------------------+--------------+-----------------+------------+-------------------+-----------+
+| student_id | student_fname | student_lname | student_mname | student_email         | student_phone | student_alternate_phone | years_of_exp | student_company | batch_date | source_of_joining | location  |
++------------+---------------+---------------+---------------+-----------------------+---------------+-------------------------+--------------+-----------------+------------+-------------------+-----------+
+|          8 | Ravi          | Iyer          | NULL          | ravi.iyer@gmail.com   | 9291975191    | NULL                    |           14 | Wipro           | 19-02-2021 | Google            | Chennai   |
+|          3 | Rahul         | Verma         | NULL          | rahul.verma@gmail.com | 9393939393    | NULL                    |           12 | Google          | 19-02-2021 | Google            | Bangalore |
++------------+---------------+---------------+---------------+-----------------------+---------------+-------------------------+--------------+-----------------+------------+-------------------+-----------+
+
+
+
+
+
+
+
+
+8) We want to Know From which Location Students are Joining
+
+SELECT DISTINCT location FROM students;
+
+
+
+Output - 
+
++-----------+
+| location  |
++-----------+
+| Bangalore |
+| Hyderabad |
+| Chennai   |
+| Pune      |
++-----------+
+
+
+
+
+
+
+
+9) We want to Know From which Source Students are Joining
+
+SELECT DISTINCT source_of_joining FROM students;
+
+
+
+Output - 
+
++-------------------+
+| source_of_joining |
++-------------------+
+| LinkedIn          |
+| Google            |
+| Quora             |
+| Friend            |
+| YouTube           |
++-------------------+
+
+
+
+
+
+
+
+
+10) We want to Know From which Company Students are Joining
+
+SELECT DISTINCT student_company FROM students;
+
+
+
+Output - 
+
++-----------------+
+| student_company |
++-----------------+
+| Walmart         |
+| Flipkart        |
+| Google          |
+| Microsoft       |
+| TCS             |
+| Wipro           |
++-----------------+
+
+
+
+
+
+
+
+
+11) We want to know from Which Sources 5 Most Experienced Candidates have Joined Us
+
+SELECT source_of_joining from students ORDER BY years_of_exp DESC LIMIT 5;
+
+
+
+Output - 
+
++-------------------+
+| source_of_joining |
++-------------------+
+| YouTube           |
+| YouTube           |
+| Friend            |
+| Google            |
+| Google            |
++-------------------+
+
+
+
+
+
+
+
+
+
+
+12) The Below Query will Not Work (As Combination of DISTINCT & ORDER BY will not going to work)
+
+SELECT DISTINCT source_of_joining from students ORDER BY years_of_exp DESC LIMIT 5;
+
+
+
+
+
+-- IMP NOTE
+[We will see in the Next Day why the 12th Query Failed]
+
+
+
+
+
+
+
+
+
+
