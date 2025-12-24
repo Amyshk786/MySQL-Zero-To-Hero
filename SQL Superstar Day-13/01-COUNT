@@ -1,0 +1,133 @@
+
+
+Day-13 COUNT and ORDER BY
+============================
+
+
+
+# COUNT
+==========
+
+
+1) If We want to Get the Count of Total Records in a Table we can use below Command
+
+SELECT COUNT(*) FROM customers;
+
+
+
+Output - 
+
++----------+
+| count(*) |
++----------+
+|    12440 |
++----------+
+
+
+
+
+
+
+
+
+2) A) We want to get All the Customers who are from "CA" State
+
+SELECT COUNT(*) FROM customers WHERE customer_state = "CA";
+
+
+
+
+
+Output - 
+
++----------+
+| COUNT(*) |
++----------+
+|     2013 |
++----------+
+
+
+
+
+
+
+
+2) B) We Can Also Give Alias for the Above
+
+SELECT COUNT(*) AS total FROM customers WHERE state = "CA";
+
+
+
+Output - 
+
++-------+
+| total |
++-------+
+|  2013 |
++-------+
+
+
+
+
+
+
+3) Get Number of Employees whose Salary is Greater Than 50000
+
+SELECT COUNT(*) FROM employees WHERE salary > 50000;
+
+
+
+Output - 
+
++----------+
+| COUNT(*) |
++----------+
+|       15 |
++----------+
+
+
+
+
+
+
+
+
+4) Get Count of Employees who Report to a Manager
+
+SELECT COUNT(manager_id) FROM employees;
+
+
+
+Output - 
+
++-------------------+
+| COUNT(manager_id) |
++-------------------+
+|                29 |
++-------------------+
+
+
+
+
+
+
+
+5) Get Count of Employees who Report to a Manager & Salary Greater Than 50000
+
+SELECT COUNT(manager_id) FROM employees WHERE salary > 50000;
+
+
+
+Output - 
+
++-------------------+
+| COUNT(manager_id) |
++-------------------+
+|                12 |
++-------------------+
+
+
+
+
+
+
