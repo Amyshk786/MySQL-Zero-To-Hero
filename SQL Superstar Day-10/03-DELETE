@@ -1,0 +1,18 @@
+
+DELETE
+========
+
+
+DELETE FROM customers
+WHERE customer_id = 7;
+
+
+- Now the Record is Deleted and if we COMMIT the Changes then the Data will be Deleted Permanently
+
+COMMIT;
+
+
+DELETE FROM customers;
+
+ROLLBACK;
+
