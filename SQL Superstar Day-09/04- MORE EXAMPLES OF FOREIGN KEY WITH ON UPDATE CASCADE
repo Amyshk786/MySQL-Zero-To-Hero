@@ -1,0 +1,78 @@
+
+
+-- MORE EXAMPLES OF FOREIGN KEY WITH ON UPDATE CASCADE
+========================================================
+
+
+For example we Are Running an EdTech Company and we have Students Table & Courses Table. So in this case we have Students who have Enrolled in Multiple Courses and We have Courses which are Enrolled by Multiple Students. [So here we have MANY TO MANY Relation] In this case we will need a Third Table which will be Enrollment Table
+
+
+# When we have MANY TO MANY Relationship we will require a Third Table
+
+# When we have ONE TO MANY Relationship there will be 2 Tables
+
+
+
+
+CREATE TABLE students (
+student_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
+);
+
+
+
+
+CREATE TABLE courses (
+course_id INT PRIMARY KEY,
+course_name VARCHAR(100)
+);
+
+
+
+
+CREATE TABLE enrollments (
+student_id INT,
+course_id INT
+enrollment_date DATE,
+PRIMARY KEY (student_id, course_id),
+FOREIGN KEY (student_id) REFERENCES students (student_id),
+FOREIGN KEY (course_id) REFERENCES courses (course_id)
+);
+
+
+
+
+
+
+-> Inserting Data
+
+
+INSERT INTO students (student_id, first_name, last_name)
+VALUES (1, 'Alice', 'Johnson');
+
+
+INSERT INTO courses (course_id, course_name)
+VALUES (101, 'Math 101');
+
+
+INSERT INTO enrollments (student_id, course_id, enrollment_date)
+VALUES (1, 101, '2023-09-01');
+
+
+
+
+-- As we Do not have a Course for which the course_id is 102 so this Insert will Throw an Error [Cannot Add or Update a Child Row A Foreign Key Constraint Fails]
+
+INSERT INTO enrollments (student_id, course_id, enrollment_date)
+VALUES (1, 102, '2023-09-01');
+
+
+
+
+
+
+
+
+
+
