@@ -1,0 +1,69 @@
+
+
+
+Day-16 Master SQL Aggregates: MIN, MAX, COUNT, AVG With Examples
+====================================================================
+
+
+
+In Previous Class we have seen the Order of Execution
+Distinct and Order By does not work together and we have seen that Logically If it would have worked It would given us the Wrong Output. Rather than Geting Wrong Output, Getting No Output is Better. 
+
+
+
+
+Aggregation
+============
+
+Aggregation is Achieved by using Group By, HAVING, COUNT, SUM, MAX, MIN & AVG
+
+
+-- Now we are Creating a Table Named as "Sales"
+
+CREATE TABLE IF NOT EXISTS sales (
+id INT AUTO_INCREMENT PRIMARY KEY,
+product VARCHAR(50),
+category VARCHAR(50),
+amount DECIMAL(10, 2),
+sale_date DATE,
+quantity INT,
+customer_id INT,
+store_location VARCHAR(50)
+);
+
+
+
+—We will be Using the CSV File and Import that from our Workbench
+
+
+—> We can Exit from the DB & Login By Using the below Command
+
+mysql --local-infile=1 -u root -p your_database
+
+
+LOAD DATA LOCAL INFILE '/Users/amirshaikh/Downloads/orders_complete.csv
+INTO TABLE sales
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+
+
+
+
+
+Group By
+- Total Sales
+- Max Order Amount
+- Min Order Amount
+- Avg Order Value
+
+
+
+The Input rows are 10000
+
+The Output row is just 1
+
+
+
