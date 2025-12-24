@@ -1,0 +1,283 @@
+
+
+# ORDER BY
+============
+
+
+
+6) A) Sorting the Employees Table On the Basis of Salary [By Default it is Sorted in ASC Order]
+
+SELECT * FROM employees ORDER BY salary;
+
+
+
+Output - 
+
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+
+| employee_id | first_name | last_name | department_id | salary   | hire_date  | manager_id | email                        | phone_number | job_title            |
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+
+|           7 | James      | Brown     |             1 | 38000.00 | 2020-04-18 |          1 | james.brown@example.com      | 555-1239     | Support              |
+|           5 | Daniel     | Wilson    |             3 | 40000.00 | 2018-11-10 |          4 | daniel.wilson@example.com    | 555-6543     | Sales Representative |
+|          17 | Ethan      | Walker    |             1 | 42000.00 | 2021-02-10 |          1 | ethan.walker@example.com     | 555-8901     | HR Coordinator       |
+|          14 | Noah       | Lopez     |             1 | 43000.00 | 2019-12-10 |          1 | noah.lopez@example.com       | 555-5679     | HR Assistant         |
+|          31 | Alice      | Wonder    |             2 | 45000.00 | 2022-07-13 |          2 | alice.wonderexample.com      | 555-9999     | Intern               |
+|           3 | Michael    | Johnson   |             1 | 45000.00 | 2020-06-11 |          1 | michael.johnson@example.com  | 555-8765     | Analyst              |
+|          27 | Oliver     | Nelson    |             1 | 45000.00 | 2020-01-19 |          1 | oliver.nelson@example.com    | 555-9018     | HR Associate         |
+|          19 | Logan      | Hall      |             3 | 45000.00 | 2020-05-17 |          4 | logan.hall@example.com       | 555-1230     | Sales Associate      |
+|           6 | Sophia     | Martinez  |             2 | 47000.00 | 2021-01-25 |          2 | sophia.martinez@example.com  | 555-7890     | Developer            |
+|          21 | Benjamin   | King      |             1 | 47000.00 | 2017-11-22 |          1 | benjamin.king@example.com    | 555-3452     | HR Manager           |
+|          32 | Bob        | Builder   |             3 | 48000.00 | 2021-11-10 |          3 | bob%builder@example.com      | 555-8888     | Technician           |
+|          10 | Isabella   | Miller    |             2 | 48000.00 | 2020-08-15 |          2 | isabella.miller@example.com  | 555-6789     | QA Engineer          |
+|          29 | Matthew    | Mitchell  |             3 | 48000.00 | 2018-06-07 |          4 | matthew.mitchell@example.com | 555-2340     | Sales Representative |
+|          15 | Ava        | Gonzalez  |             2 | 49000.00 | 2018-07-25 |          2 | ava.gonzalez@example.com     | 555-6780     | QA Analyst           |
+|          23 | Lucas      | Scott     |             3 | 49000.00 | 2016-10-30 |          4 | lucas.scott@example.com      | 555-5674     | Sales Coordinator    |
+|          22 | Amelia     | Wright    |             2 | 50000.00 | 2020-06-13 |          8 | amelia.wright@example.com    | 555-4563     | Software Tester      |
+|           2 | Jane       | Smith     |             2 | 50000.00 | 2019-03-22 |          1 | jane.smith@example.com       | 555-5678     | Developer            |
+|          25 | Aiden      | Adams     |             2 | 51000.00 | 2019-08-26 |          8 | aiden.adams@example.com      | 555-7896     | Backend Developer    |
+|           9 | William    | Garcia    |             3 | 52000.00 | 2018-12-01 |       NULL | william.garcia@example.com   | 555-5670     | Sales Manager        |
+|          26 | Grace      | Baker     |             3 | 52000.00 | 2021-04-21 |          4 | grace.baker@example.com      | 555-8907     | Sales Analyst        |
+|          20 | Charlotte  | Allen     |             2 | 53000.00 | 2019-01-20 |          8 | charlotte.allen@example.com  | 555-2341     | UI/UX Designer       |
+|          24 | Ella       | Green     |             1 | 53000.00 | 2018-02-14 |          1 | ella.green@example.com       | 555-6785     | HR Specialist        |
+|          12 | Liam       | Lee       |             2 | 55000.00 | 2017-05-19 |          8 | liam.lee@example.com         | 555-3457     | Developer            |
+|           4 | Emily      | Davis     |             3 | 55000.00 | 2017-09-30 |       NULL | emily.davis@example.com      | 555-3456     | Sales                |
+|          30 | Harper     | Perez     |             2 | 56000.00 | 2019-03-28 |          8 | harper.perez@example.com     | 555-3451     | Quality Assurance    |
+|          18 | Mia        | Young     |             2 | 57000.00 | 2018-09-15 |          8 | mia.young@example.com        | 555-9012     | Developer            |
+|          13 | Emma       | Clark     |             3 | 58000.00 | 2021-03-14 |          4 | emma.clark@example.com       | 555-4568     | Sales Executive      |
+|          28 | Avery      | Carter    |             2 | 60000.00 | 2017-12-11 |          8 | avery.carter@example.com     | 555-1239     | Front-End Developer  |
+|           1 | John       | Doe       |             1 | 60000.00 | 2018-01-15 |       NULL | john.doe@example.com         | 555-1234     | Manager              |
+|          11 | Alex       | White     |             1 | 61000.00 | 2020-11-23 |          1 | alex.white@example.com       | 555-2345     | HR Specialist        |
+|          16 | Mason      | Harris    |             3 | 61000.00 | 2016-08-29 |          4 | mason.harris@example.com     | 555-7891     | Senior Sales Manager |
+|           8 | Olivia     | Jones     |             2 | 62000.00 | 2019-07-21 |          1 | olivia.jones@example.com     | 555-4321     | Lead Developer       |
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+
+
+
+
+
+
+
+
+
+
+6) B) Sorting the Employees Table On the Basis of Salary in DESC Order
+
+SELECT * FROM employees ORDER BY salary DESC;
+
+
+Output - 
+
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+
+| employee_id | first_name | last_name | department_id | salary   | hire_date  | manager_id | email                        | phone_number | job_title            |
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+
+|           8 | Olivia     | Jones     |             2 | 62000.00 | 2019-07-21 |          1 | olivia.jones@example.com     | 555-4321     | Lead Developer       |
+|          11 | Alex       | White     |             1 | 61000.00 | 2020-11-23 |          1 | alex.white@example.com       | 555-2345     | HR Specialist        |
+|          16 | Mason      | Harris    |             3 | 61000.00 | 2016-08-29 |          4 | mason.harris@example.com     | 555-7891     | Senior Sales Manager |
+|          28 | Avery      | Carter    |             2 | 60000.00 | 2017-12-11 |          8 | avery.carter@example.com     | 555-1239     | Front-End Developer  |
+|           1 | John       | Doe       |             1 | 60000.00 | 2018-01-15 |       NULL | john.doe@example.com         | 555-1234     | Manager              |
+|          13 | Emma       | Clark     |             3 | 58000.00 | 2021-03-14 |          4 | emma.clark@example.com       | 555-4568     | Sales Executive      |
+|          18 | Mia        | Young     |             2 | 57000.00 | 2018-09-15 |          8 | mia.young@example.com        | 555-9012     | Developer            |
+|          30 | Harper     | Perez     |             2 | 56000.00 | 2019-03-28 |          8 | harper.perez@example.com     | 555-3451     | Quality Assurance    |
+|           4 | Emily      | Davis     |             3 | 55000.00 | 2017-09-30 |       NULL | emily.davis@example.com      | 555-3456     | Sales                |
+|          12 | Liam       | Lee       |             2 | 55000.00 | 2017-05-19 |          8 | liam.lee@example.com         | 555-3457     | Developer            |
+|          20 | Charlotte  | Allen     |             2 | 53000.00 | 2019-01-20 |          8 | charlotte.allen@example.com  | 555-2341     | UI/UX Designer       |
+|          24 | Ella       | Green     |             1 | 53000.00 | 2018-02-14 |          1 | ella.green@example.com       | 555-6785     | HR Specialist        |
+|          26 | Grace      | Baker     |             3 | 52000.00 | 2021-04-21 |          4 | grace.baker@example.com      | 555-8907     | Sales Analyst        |
+|           9 | William    | Garcia    |             3 | 52000.00 | 2018-12-01 |       NULL | william.garcia@example.com   | 555-5670     | Sales Manager        |
+|          25 | Aiden      | Adams     |             2 | 51000.00 | 2019-08-26 |          8 | aiden.adams@example.com      | 555-7896     | Backend Developer    |
+|           2 | Jane       | Smith     |             2 | 50000.00 | 2019-03-22 |          1 | jane.smith@example.com       | 555-5678     | Developer            |
+|          22 | Amelia     | Wright    |             2 | 50000.00 | 2020-06-13 |          8 | amelia.wright@example.com    | 555-4563     | Software Tester      |
+|          23 | Lucas      | Scott     |             3 | 49000.00 | 2016-10-30 |          4 | lucas.scott@example.com      | 555-5674     | Sales Coordinator    |
+|          15 | Ava        | Gonzalez  |             2 | 49000.00 | 2018-07-25 |          2 | ava.gonzalez@example.com     | 555-6780     | QA Analyst           |
+|          32 | Bob        | Builder   |             3 | 48000.00 | 2021-11-10 |          3 | bob%builder@example.com      | 555-8888     | Technician           |
+|          10 | Isabella   | Miller    |             2 | 48000.00 | 2020-08-15 |          2 | isabella.miller@example.com  | 555-6789     | QA Engineer          |
+|          29 | Matthew    | Mitchell  |             3 | 48000.00 | 2018-06-07 |          4 | matthew.mitchell@example.com | 555-2340     | Sales Representative |
+|          21 | Benjamin   | King      |             1 | 47000.00 | 2017-11-22 |          1 | benjamin.king@example.com    | 555-3452     | HR Manager           |
+|           6 | Sophia     | Martinez  |             2 | 47000.00 | 2021-01-25 |          2 | sophia.martinez@example.com  | 555-7890     | Developer            |
+|          19 | Logan      | Hall      |             3 | 45000.00 | 2020-05-17 |          4 | logan.hall@example.com       | 555-1230     | Sales Associate      |
+|          27 | Oliver     | Nelson    |             1 | 45000.00 | 2020-01-19 |          1 | oliver.nelson@example.com    | 555-9018     | HR Associate         |
+|           3 | Michael    | Johnson   |             1 | 45000.00 | 2020-06-11 |          1 | michael.johnson@example.com  | 555-8765     | Analyst              |
+|          31 | Alice      | Wonder    |             2 | 45000.00 | 2022-07-13 |          2 | alice.wonderexample.com      | 555-9999     | Intern               |
+|          14 | Noah       | Lopez     |             1 | 43000.00 | 2019-12-10 |          1 | noah.lopez@example.com       | 555-5679     | HR Assistant         |
+|          17 | Ethan      | Walker    |             1 | 42000.00 | 2021-02-10 |          1 | ethan.walker@example.com     | 555-8901     | HR Coordinator       |
+|           5 | Daniel     | Wilson    |             3 | 40000.00 | 2018-11-10 |          4 | daniel.wilson@example.com    | 555-6543     | Sales Representative |
+|           7 | James      | Brown     |             1 | 38000.00 | 2020-04-18 |          1 | james.brown@example.com      | 555-1239     | Support              |
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+
+
+
+
+
+
+
+7) Sort Top 5 Employees with Highest Salary
+
+SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
+
+
+
+Output - 
+
++-------------+------------+-----------+---------------+----------+------------+------------+--------------------------+--------------+----------------------+
+| employee_id | first_name | last_name | department_id | salary   | hire_date  | manager_id | email                    | phone_number | job_title            |
++-------------+------------+-----------+---------------+----------+------------+------------+--------------------------+--------------+----------------------+
+|           8 | Olivia     | Jones     |             2 | 62000.00 | 2019-07-21 |          1 | olivia.jones@example.com | 555-4321     | Lead Developer       |
+|          16 | Mason      | Harris    |             3 | 61000.00 | 2016-08-29 |          4 | mason.harris@example.com | 555-7891     | Senior Sales Manager |
+|          11 | Alex       | White     |             1 | 61000.00 | 2020-11-23 |          1 | alex.white@example.com   | 555-2345     | HR Specialist        |
+|           1 | John       | Doe       |             1 | 60000.00 | 2018-01-15 |       NULL | john.doe@example.com     | 555-1234     | Manager              |
+|          28 | Avery      | Carter    |             2 | 60000.00 | 2017-12-11 |          8 | avery.carter@example.com | 555-1239     | Front-End Developer  |
++-------------+------------+-----------+---------------+----------+------------+------------+--------------------------+--------------+----------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+8) Sort Top 5 Employees with Highest Salary & Department_ID
+
+SELECT * FROM employees ORDER BY salary DESC, department_id  LIMIT 5;
+
+
+
+Output -
+
++-------------+------------+-----------+---------------+----------+------------+------------+--------------------------+--------------+----------------------+
+| employee_id | first_name | last_name | department_id | salary   | hire_date  | manager_id | email                    | phone_number | job_title            |
++-------------+------------+-----------+---------------+----------+------------+------------+--------------------------+--------------+----------------------+
+|           8 | Olivia     | Jones     |             2 | 62000.00 | 2019-07-21 |          1 | olivia.jones@example.com | 555-4321     | Lead Developer       |
+|          11 | Alex       | White     |             1 | 61000.00 | 2020-11-23 |          1 | alex.white@example.com   | 555-2345     | HR Specialist        |
+|          16 | Mason      | Harris    |             3 | 61000.00 | 2016-08-29 |          4 | mason.harris@example.com | 555-7891     | Senior Sales Manager |
+|           1 | John       | Doe       |             1 | 60000.00 | 2018-01-15 |       NULL | john.doe@example.com     | 555-1234     | Manager              |
+|          28 | Avery      | Carter    |             2 | 60000.00 | 2017-12-11 |          8 | avery.carter@example.com | 555-1239     | Front-End Developer  |
++-------------+------------+-----------+---------------+----------+------------+------------+--------------------------+--------------+----------------------+
+
+
+
+
+
+
+
+
+
+
+9) It is Not Necessary to have the Order By Column as Part of Select Statement [We do not have Salary in Select Statement then too it will work]
+
+SELECT employee_id, first_name, last_name FROM employees ORDER BY salary DESC;
+
+
+
+Output - 
+
++-------------+------------+-----------+
+| employee_id | first_name | last_name |
++-------------+------------+-----------+
+|           8 | Olivia     | Jones     |
+|          11 | Alex       | White     |
+|          16 | Mason      | Harris    |
+|          28 | Avery      | Carter    |
+|           1 | John       | Doe       |
+|          13 | Emma       | Clark     |
+|          18 | Mia        | Young     |
+|          30 | Harper     | Perez     |
+|           4 | Emily      | Davis     |
+|          12 | Liam       | Lee       |
+|          20 | Charlotte  | Allen     |
+|          24 | Ella       | Green     |
+|          26 | Grace      | Baker     |
+|           9 | William    | Garcia    |
+|          25 | Aiden      | Adams     |
+|           2 | Jane       | Smith     |
+|          22 | Amelia     | Wright    |
+|          23 | Lucas      | Scott     |
+|          15 | Ava        | Gonzalez  |
+|          32 | Bob        | Builder   |
+|          10 | Isabella   | Miller    |
+|          29 | Matthew    | Mitchell  |
+|          21 | Benjamin   | King      |
+|           6 | Sophia     | Martinez  |
+|          19 | Logan      | Hall      |
+|          27 | Oliver     | Nelson    |
+|           3 | Michael    | Johnson   |
+|          31 | Alice      | Wonder    |
+|          14 | Noah       | Lopez     |
+|          17 | Ethan      | Walker    |
+|           5 | Daniel     | Wilson    |
+|           7 | James      | Brown     |
++-------------+------------+-----------+
+
+
+
+
+
+
+
+
+
+
+10) We can Derive a Column as shown in below Example [We are saying the Salary for every Employee should be Increased by 10%] & We can Also do Order By on Revised Sal
+
+SELECT *,salary + salary * .1 AS revised_salary FROM employees ORDER BY salary DESC;
+
+
+
+OR
+
+SELECT * FROM employees ORDER BY salary + salary * .1 DESC;
+
+
+
+
+Output - 
+
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+----------------+
+| employee_id | first_name | last_name | department_id | salary   | hire_date  | manager_id | email                        | phone_number | job_title            | revised_salary |
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+----------------+
+|           8 | Olivia     | Jones     |             2 | 62000.00 | 2019-07-21 |          1 | olivia.jones@example.com     | 555-4321     | Lead Developer       |      68200.000 |
+|          11 | Alex       | White     |             1 | 61000.00 | 2020-11-23 |          1 | alex.white@example.com       | 555-2345     | HR Specialist        |      67100.000 |
+|          16 | Mason      | Harris    |             3 | 61000.00 | 2016-08-29 |          4 | mason.harris@example.com     | 555-7891     | Senior Sales Manager |      67100.000 |
+|          28 | Avery      | Carter    |             2 | 60000.00 | 2017-12-11 |          8 | avery.carter@example.com     | 555-1239     | Front-End Developer  |      66000.000 |
+|           1 | John       | Doe       |             1 | 60000.00 | 2018-01-15 |       NULL | john.doe@example.com         | 555-1234     | Manager              |      66000.000 |
+|          13 | Emma       | Clark     |             3 | 58000.00 | 2021-03-14 |          4 | emma.clark@example.com       | 555-4568     | Sales Executive      |      63800.000 |
+|          18 | Mia        | Young     |             2 | 57000.00 | 2018-09-15 |          8 | mia.young@example.com        | 555-9012     | Developer            |      62700.000 |
+|          30 | Harper     | Perez     |             2 | 56000.00 | 2019-03-28 |          8 | harper.perez@example.com     | 555-3451     | Quality Assurance    |      61600.000 |
+|           4 | Emily      | Davis     |             3 | 55000.00 | 2017-09-30 |       NULL | emily.davis@example.com      | 555-3456     | Sales                |      60500.000 |
+|          12 | Liam       | Lee       |             2 | 55000.00 | 2017-05-19 |          8 | liam.lee@example.com         | 555-3457     | Developer            |      60500.000 |
+|          20 | Charlotte  | Allen     |             2 | 53000.00 | 2019-01-20 |          8 | charlotte.allen@example.com  | 555-2341     | UI/UX Designer       |      58300.000 |
+|          24 | Ella       | Green     |             1 | 53000.00 | 2018-02-14 |          1 | ella.green@example.com       | 555-6785     | HR Specialist        |      58300.000 |
+|          26 | Grace      | Baker     |             3 | 52000.00 | 2021-04-21 |          4 | grace.baker@example.com      | 555-8907     | Sales Analyst        |      57200.000 |
+|           9 | William    | Garcia    |             3 | 52000.00 | 2018-12-01 |       NULL | william.garcia@example.com   | 555-5670     | Sales Manager        |      57200.000 |
+|          25 | Aiden      | Adams     |             2 | 51000.00 | 2019-08-26 |          8 | aiden.adams@example.com      | 555-7896     | Backend Developer    |      56100.000 |
+|           2 | Jane       | Smith     |             2 | 50000.00 | 2019-03-22 |          1 | jane.smith@example.com       | 555-5678     | Developer            |      55000.000 |
+|          22 | Amelia     | Wright    |             2 | 50000.00 | 2020-06-13 |          8 | amelia.wright@example.com    | 555-4563     | Software Tester      |      55000.000 |
+|          23 | Lucas      | Scott     |             3 | 49000.00 | 2016-10-30 |          4 | lucas.scott@example.com      | 555-5674     | Sales Coordinator    |      53900.000 |
+|          15 | Ava        | Gonzalez  |             2 | 49000.00 | 2018-07-25 |          2 | ava.gonzalez@example.com     | 555-6780     | QA Analyst           |      53900.000 |
+|          32 | Bob        | Builder   |             3 | 48000.00 | 2021-11-10 |          3 | bob%builder@example.com      | 555-8888     | Technician           |      52800.000 |
+|          10 | Isabella   | Miller    |             2 | 48000.00 | 2020-08-15 |          2 | isabella.miller@example.com  | 555-6789     | QA Engineer          |      52800.000 |
+|          29 | Matthew    | Mitchell  |             3 | 48000.00 | 2018-06-07 |          4 | matthew.mitchell@example.com | 555-2340     | Sales Representative |      52800.000 |
+|          21 | Benjamin   | King      |             1 | 47000.00 | 2017-11-22 |          1 | benjamin.king@example.com    | 555-3452     | HR Manager           |      51700.000 |
+|           6 | Sophia     | Martinez  |             2 | 47000.00 | 2021-01-25 |          2 | sophia.martinez@example.com  | 555-7890     | Developer            |      51700.000 |
+|          19 | Logan      | Hall      |             3 | 45000.00 | 2020-05-17 |          4 | logan.hall@example.com       | 555-1230     | Sales Associate      |      49500.000 |
+|          27 | Oliver     | Nelson    |             1 | 45000.00 | 2020-01-19 |          1 | oliver.nelson@example.com    | 555-9018     | HR Associate         |      49500.000 |
+|           3 | Michael    | Johnson   |             1 | 45000.00 | 2020-06-11 |          1 | michael.johnson@example.com  | 555-8765     | Analyst              |      49500.000 |
+|          31 | Alice      | Wonder    |             2 | 45000.00 | 2022-07-13 |          2 | alice.wonderexample.com      | 555-9999     | Intern               |      49500.000 |
+|          14 | Noah       | Lopez     |             1 | 43000.00 | 2019-12-10 |          1 | noah.lopez@example.com       | 555-5679     | HR Assistant         |      47300.000 |
+|          17 | Ethan      | Walker    |             1 | 42000.00 | 2021-02-10 |          1 | ethan.walker@example.com     | 555-8901     | HR Coordinator       |      46200.000 |
+|           5 | Daniel     | Wilson    |             3 | 40000.00 | 2018-11-10 |          4 | daniel.wilson@example.com    | 555-6543     | Sales Representative |      44000.000 |
+|           7 | James      | Brown     |             1 | 38000.00 | 2020-04-18 |          1 | james.brown@example.com      | 555-1239     | Support              |      41800.000 |
++-------------+------------+-----------+---------------+----------+------------+------------+------------------------------+--------------+----------------------+----------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
