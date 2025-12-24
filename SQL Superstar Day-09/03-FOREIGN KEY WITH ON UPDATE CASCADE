@@ -1,0 +1,60 @@
+
+
+-- FOREIGN KEY WITH ON UPDATE CASCADE
+======================================
+
+
+-- If we Update any Changes in the Parent Table that will Automatically Reflect in the Child Table
+
+
+drop table orders;
+
+drop table customers;
+
+
+
+CREATE TABLE customers (
+customer_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
+);
+
+
+
+CREATE TABLE orders (
+order_id INT PRIMARY KEY,
+order_date DATE,
+customer_id INT,
+FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+ON UPDATE CASCADE
+);
+
+
+
+
+-> Inserting Data
+
+INSERT INTO customers (customer_id, first_name, last_name)
+VALUES (1, 'John', 'Doe');
+
+
+INSERT INTO orders (order_id, order_date, customer_id)
+VALUES (1, '2023-07-01', 1);
+
+
+
+
+-> Updating the Data
+
+
+UPDATE TABLE customers SET customer_id = 101 WHERE customer_id = 1;
+
+
+
+Note - As we have Changed the customer_id in the Customers Table to 101 the customer_id will Automatically Updated in the Orders Table as 101.
+
+
+
+
+
+
