@@ -1,0 +1,73 @@
+
+
+Day-15 SQL Order of Execution: What Happens First? (FROM, WHERE, GROUP BY…)
+==============================================================================
+
+
+
+ORDER OF EXECUTION
+===================
+
+Suppose we have a Query and we will see the Order of Execution
+
+SELECT
+DISTINCT source_of_joining
+FROM students
+WHERE location IN ('BANGALORE','HYDERABAD','PUNE')
+ORDER BY years_of_exp DESC
+LIMIT 5;
+
+
+
+———————————————————————
+
+FROM - Load the Table (FROM Always Comes At the Top)
+
+WHERE - Filter the Data
+
+SELECT - Project the Columns (The Columns which we want to Showcase we do that Using the SELECT)
+
+DISTINCT - Remove the Duplicate Records/Data
+
+ORDER BY - Sorting on the basis on ASC or DESC Order
+
+LIMIT - Restrict the Number of Records & (LIMIT Always Comes At the End)
+
+
+
+
+
+
+———————————————————————
+
+
+
+
+ORDER OF EXECUTION IN DETAIL WITH ALL THE KEYWORDS
+====================================================
+
+[FJO WG HS DOL] Short Form to Remember
+
+FROM - Load The Table
+
+JOIN/ON - Combine Tables
+
+WHERE - Filter Rows
+
+GROUP BY - Create Groups
+
+HAVING - Filter Groups
+
+SELECT - Choose Output Columns
+
+DISTINCT - Remove Duplicates
+
+ORDER BY - Sort Results
+
+LIMIT - Restrict Rows
+
+
+
+
+
+
