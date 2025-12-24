@@ -1,0 +1,52 @@
+
+
+-- SELF REFERENCING FOREIGN KEY EXAMPLE
+=========================================
+
+
+-- We will be Creating a Employees Table
+
+CREATE TABLE employees (
+employee_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50),
+manager_id INT
+);
+
+
+
+INSERT INTO employees (employee_id, first_name, last_name, manager_id)
+VALUES (1, 'John', 'Doe', NULL);
+
+
+INSERT INTO employees (employee_id, first_name, last_name, manager_id)
+VALUES (2, 'Jane', 'Smith', 1);
+
+
+INSERT INTO employees (employee_id, first_name, last_name, manager_id)
+VALUES (3, 'Alice', 'Johnson', 99);
+
+
+
+
+
+
+
+
+# CONSTRAINTS IN MySQL
+=========================
+
+CHECK
+NOTNULL
+PRIMARY KEY
+UNIQUE
+DEFAULT
+AUTO INCREMENT
+FOREIGN KEY
+
+
+
+
+
+
+
