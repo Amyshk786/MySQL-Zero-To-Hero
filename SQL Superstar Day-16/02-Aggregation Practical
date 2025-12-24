@@ -1,0 +1,165 @@
+
+
+-- In the Below Example we have used [Count, Sum, Max, Min & Avg] And That will Give us the Output in Horizontal Format.
+
+1)
+
+SELECT count(*) AS total_orders,
+SUM(amount) AS total_sales,
+MAX(amount) AS max_order_amount,
+MIN(amount) AS min_order_amount,
+AVG(amount) AS avg_order_value
+FROM sales;
+
+
+
+
+Output - 
+
++--------------+-------------+------------------+------------------+-----------------+
+| total_orders | total_sales | max_order_amount | min_order_amount | avg_order_value |
++--------------+-------------+------------------+------------------+-----------------+
+|        10000 |  4962971.01 |          1200.50 |             0.42 |      496.297101 |
++--------------+-------------+------------------+------------------+-----------------+
+
+
+
+
+
+
+———————————————————————
+
+
+-- If we want the Output in Vertical Formart we Can Use "UNION" which will Combine the Results of two or more SELECT Queries into a Single Result.
+
+[UNION will Not Show Duplicate Records]
+
+2) SELECT 'total_orders' as Aggregation, count(*) AS value FROM sales
+UNION
+SELECT 'total_sales', SUM(amount) AS total_sales FROM sales
+UNION
+SELECT 'max_order_amount', MAX(amount) AS max_order_amount FROM sales
+UNION
+SELECT 'min_order_amount', MIN(amount) AS min_order_amount FROM sales
+UNION
+SELECT 'avg_order_value', AVG(amount) AS avg_order_value FROM sales;
+
+
+
+
+Output - 
+
++------------------+----------------+
+| Aggregation      | value          |
++------------------+----------------+
+| total_orders     |   10000.000000 |
+| total_sales      | 4962971.010000 |
+| max_order_amount |    1200.500000 |
+| min_order_amount |       0.420000 |
+| avg_order_value  |     496.297101 |
++------------------+----------------+
+
+
+
+
+
+
+
+———————————————————————
+
+
+-- UNION ALL Will Show us the Duplicates Record As well [In the Below Query “total_sales” Has been Duplicated]
+
+
+3) SELECT 'total_orders' as aggregation, count(*) AS value FROM sales
+UNION ALL
+SELECT 'total_sales', SUM(amount) AS total_sales FROM sales
+UNION ALL
+SELECT 'max_order_amount', MAX(amount) AS max_order_amount FROM sales
+UNION ALL
+SELECT 'min_order_amount', MIN(amount) AS min_order_amount FROM sales
+UNION ALL
+SELECT 'avg_order_value', AVG(amount) AS avg_order_value FROM sales
+UNION ALL
+SELECT 'total_sales', SUM(amount) AS total_sales FROM sales;
+
+
+
+
+Output - 
+
++------------------+----------------+
+| aggregation      | value          |
++------------------+----------------+
+| total_orders     |   10000.000000 |
+| total_sales      | 4962971.010000 |
+| max_order_amount |    1200.500000 |
+| min_order_amount |       0.420000 |
+| avg_order_value  |     496.297101 |
+| total_sales      | 4962971.010000 |
++------------------+----------------+
+
+
+
+
+
+
+
+
+
+———————————————————————
+
+-- IMP Points to Note
+==================
+
+- CAN WE APPLY AGGREGATE FUNCTIONS ON DATE
+
+- COUNT WILL WORK WITH EVERYTHING
+
+- MIN AND MAX(THESE WILL WORK WITH NUMERIC , STRING , DATE)
+
+- SUM WILL NOT WORK FOR DATE , VARCHAR
+
+- AVG WONT WORK FOR DATE , VARCHAR
+
+
+
+
+
+
+
+
+
+
+———————————————————————
+
+
+4) In the Below Example we can see that MIN & MAX works on DATE
+
+SELECT count(*) AS total_orders,
+SUM(amount) AS total_sales,
+MAX(amount) AS max_order_amount,
+MIN(amount) AS min_order_amount,
+AVG(amount) AS avg_order_value,
+MIN(sale_date) as min_sale_date,
+MAX(sale_date) as max_sale_date
+FROM sales;
+
+
+
+Output - 
+
++--------------+-------------+------------------+------------------+-----------------+---------------+---------------+
+| total_orders | total_sales | max_order_amount | min_order_amount | avg_order_value | min_sale_date | max_sale_date |
++--------------+-------------+------------------+------------------+-----------------+---------------+---------------+
+|        10000 |  4962971.01 |          1200.50 |             0.42 |      496.297101 | 2023-01-01    | 2023-06-29    |
++--------------+-------------+------------------+------------------+-----------------+---------------+---------------+
+
+
+
+
+
+
+
+
+
