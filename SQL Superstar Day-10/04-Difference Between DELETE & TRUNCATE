@@ -1,0 +1,36 @@
+
+Difference Between DELETE & TRUNCATE
+======================================
+
+
+# Both DELETE & TRUNCATR is used to Delete the Data
+
+
+1) DELETE - This is a DML Operation
+
+Using DELETE we can Delete Selected Data OR We Can Delete All the Data
+
+DELETE FROM customers WHERE customer_id = 7;
+
+DELETE FROM customers;
+
+
+
+
+
+
+2) TRUNCATE - This is a DDL Operation [It Drop's the Table & Re-Create It] [Get Rid of Entire Data in the Table]
+
+
+- In TRUNCATE We Do Not Have an Option to Delete Selected Data [You can Only Delete All the Data]
+
+- It Drops the Table and Recreate It
+
+- To Achieve High Performance Truncate Table More Effective than Using Delete Table Command
+
+- As Truncate is a DDL Operation so it does a Implicit Commit and It Can't be ROLLED back
+
+
+
+
+
