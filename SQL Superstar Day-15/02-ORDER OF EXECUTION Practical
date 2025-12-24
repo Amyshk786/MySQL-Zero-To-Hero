@@ -1,0 +1,254 @@
+
+
+-- ORDER OF EXECUTION Practical
+=================================
+
+1) -- working 
+SELECT source_of_joining
+FROM students
+ORDER BY years_of_exp
+DESC LIMIT 5;
+
+
+Output - 
+
++-------------------+
+| source_of_joining |
++-------------------+
+| YouTube           |
+| YouTube           |
+| Friend            |
+| Google            |
+| Google            |
++-------------------+
+
+
+
+
+
+2) -- not working
+SELECT DISTINCT source_of_joining
+FROM students
+ORDER BY years_of_exp
+DESC LIMIT 5;
+
+
+Output - 
+
+ERROR 3065 (HY000): Expression #1 of ORDER BY clause is not in SELECT list, references column 'retail_db.students.years_of_exp' which is not in SELECT list; this is incompatible with DISTINCT
+
+
+
+
+
+
+3) SELECT source_of_joining
+FROM students
+WHERE location in ('BANGALORE','HYDERABAD','PUNE')
+ORDER BY years_of_exp desc
+LIMIT 5;
+
+
+
+Output - 
+
++-------------------+
+| source_of_joining |
++-------------------+
+| YouTube           |
+| YouTube           |
+| Friend            |
+| Google            |
+| LinkedIn          |
++-------------------+
+
+
+
+FROM - LOAD THE TABLE (*) 10000 rows / 20 columns
+WHERE - FILTER THE DATA 2000rows/ 20 columns
+SELECT- PROJECT THE COLUMNS 2000rows / 4 columns
+DISTINCT- REMOVE THE DUPLICATE RECORDS
+ORDER BY – SORTING BASED ON ASC OR DESC ORDER
+LIMIT - restrict the number of records
+
+
+
+
+
+
+4) -- IF SELECT IS HAPPENING BEFORE WHERE THEN THIS SHOULD NOT HAVE WORKED
+SELECT student_fname
+FROM students
+WHERE years_of_exp > 15;
+
+
+Output - 
+
++---------------+
+| student_fname |
++---------------+
+| Asha          |
+| Kiran         |
++---------------+
+
+
+
+
+
+
+5) -- IF SELECT IS HAPPENING BEFORE WHERE THEN THIS SHOULD HAVE WORKED
+SELECT first_name, salary * 1.1 as revised_salary
+FROM employees
+WHERE revised_salary > 60000;
+
+
+Output - 
+
+ERROR 1054 (42S22): Unknown column 'revised_salary' in 'where clause'
+
+
+
+-- UNKNOWN COLUMN REVISED SALARY IN WHERE CLAUSE
+FROM -> WHERE -> SELECT
+
+
+
+
+
+
+6) -- we are able to use derived column in order by
+SELECT first_name, salary * 1.1 as revised_salary
+FROM employees
+WHERE job_title != 'Manager'
+ORDER BY revised_salary desc
+LIMIT 5;
+
+
+FROM -> WHERE -> SELECT -> ORDER BY -> LIMIT
+we cannot use the derived column in where clause
+but we can use the derived column in order by
+
+
+
+Output - 
+
++------------+----------------+
+| first_name | revised_salary |
++------------+----------------+
+| Olivia     |      68200.000 |
+| Mason      |      67100.000 |
+| Alex       |      67100.000 |
+| Avery      |      66000.000 |
+| Emma       |      63800.000 |
++------------+----------------+
+
+
+
+
+
+
+
+7) SELECT first_name
+FROM employees
+WHERE job_title != 'Manager'
+ORDER By salary desc
+LIMIT 5;
+
+
+FROM (32 ROWS / 10 COLUMNS ) -> WHERE ( 31 ROWS / 10 COLUMNS ) -> SELECT ( 31 ROWS / 1
+COLUMN first_name, salary) -> ORDER BY SALARY -> DISCARD THE SALARY COLUMN -> LIMIT
+
+
+
+Output - 
+
++------------+
+| first_name |
++------------+
+| Olivia     |
+| Mason      |
+| Alex       |
+| Avery      |
+| Emma       |
++------------+
+
+
+
+
+
+
+
+8) SELECT DISTINCT source_of_joining
+FROM students
+WHERE location in ('BANGALORE','HYDERABAD','PUNE')
+ORDER BY years_of_exp desc
+LIMIT 5;
+
+
+
+Output - 
+
+ERROR 3065 (HY000): Expression #1 of ORDER BY clause is not in SELECT list, references column 'retail_db.students.years_of_exp' which is not in SELECT list; this is incompatible with DISTINCT
+
+
+
+
+
+
+
+
+9) SELECT source_of_joining
+FROM students
+WHERE location in ('BANGALORE','HYDERABAD','PUNE')
+ORDER BY years_of_exp desc
+LIMIT 5;
+
+
+FROM -> FILTER -> SELECT source_of_joining, years_of_exp -> ORDER BY -> LIMIT
+
+
+
+
+Output - 
+
++-------------------+
+| source_of_joining |
++-------------------+
+| YouTube           |
+| YouTube           |
+| Friend            |
+| Google            |
+| LinkedIn          |
++-------------------+
+
+
+
+
+
+
+10) SELECT DISTINCT source_of_joining
+FROM students
+WHERE location in ('BANGALORE','HYDERABAD','PUNE')
+ORDER BY years_of_exp desc
+LIMIT 5;
+
+
+FROM -> FILTER -> SELECT source_of_joining, years_of_exp -> DISTINCT ORDER BY -> LIMIT
+we wanted - DISTINCT source_of_joining
+but what is happening is DISTINCT (source_of_joining,years_of_exp)
+
+
+
+
+Output - 
+
+ERROR 3065 (HY000): Expression #1 of ORDER BY clause is not in SELECT list, references column 'retail_db.students.years_of_exp' which is not in SELECT list; this is incompatible with DISTINCT
+
+
+
+
+
+
+
+
+
