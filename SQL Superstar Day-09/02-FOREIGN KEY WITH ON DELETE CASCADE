@@ -1,0 +1,72 @@
+
+
+-- FOREIGN KEY WITH ON DELETE CASCADE
+======================================
+
+# We have  Customers Table and Orders Table we can Only Add or Enter Orders For the Customers which are Existing in the Customers Table. If we try to Put some Other Customer ID it will Not Allow.
+
+# Also if we Try to Delete a Customer Record from the Customers Table It will Not Allow Us to Delete as the Customers Table is Linked with the Orders Table and if a Customer record is Deleted then there will be Some Floating Records of that Customer in the Orders Table. So in this Case we can use On Delete Cascade.
+
+
+-- IF WE DELETE A CUSTOMER RECORD FROM CUSTOMERS TABLE ALL THE RECORD RELATED ORDERS SHOULD BE DELETED IN THE ORDERS TABLE
+
+-- So in this Case we can use DELETE CASCADE
+
+-- Because if the Customer Data is Deleted & there are Entries in the Orders table for that Customer Then the Entries in the Orders Table will be Non-Relevant
+[The Constraint will be Violated]
+
+
+
+
+-> Now we will Drop the Previous Customers & Orders Table and Re-Create them
+
+drop table orders;
+
+drop table customers;
+
+
+-> Creating Customers Table
+
+CREATE TABLE customers (
+customer_id INT PRIMARY KEY,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
+);
+
+
+
+
+
+-> Creating Orders Table
+
+CREATE TABLE orders (
+order_id INT PRIMARY KEY,
+order_date DATE,
+customer_id INT,
+FOREIGN KEY (customer_id) REFERENCES customers (customer_id)
+ON DELETE CASCADE
+);
+
+
+
+
+-> Inserting Data
+
+INSERT INTO customers (customer_id, first_name, last_name)
+VALUES (1, 'John', 'Doe');
+
+INSERT INTO orders (order_id, order_date, customer_id)
+VALUES (1, '2023-07-01', 1);
+
+
+
+-> Now if we Try Deleting the Customers Table It will Also Delete the Data from the Orders Table as well.
+
+
+# Also if we Try to Delete a Customer Record from the Customers Table It will Not Allow Us to Delete as the Customers Table is Linked with the Orders Table and if a Customer record is Deleted then there will be Some Floating Records of that Customer in the Orders Table. So in this Case we can use On Delete Cascade.
+
+
+
+
+
+
