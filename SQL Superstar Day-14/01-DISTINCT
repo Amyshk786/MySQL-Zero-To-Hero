@@ -1,0 +1,221 @@
+
+
+Day-14 DISTINCT in SQL - The Complete Guide
+=============================================
+
+
+DISTINCT
+==========
+
+1) If we want to Know From Which States Customers are there In Our Customers Table
+
+SELECT DISTINCT customer_state from customers;
+
+
+Output - 
+
++-------+
+| state |
++-------+
+| TX    |
+| NY    |
+| PR    |
+| CA    |
+| CO    |
+| NJ    |
+| MA    |
+| VA    |
+| MI    |
+| AZ    |
+| IL    |
+| WA    |
+| NM    |
+| LA    |
+| GA    |
+| OH    |
+| MD    |
+| PA    |
+| NC    |
+| TN    |
+| FL    |
+| NV    |
+| MN    |
+| OR    |
+| WI    |
+| UT    |
+| OK    |
+| MO    |
+| KY    |
+| CT    |
+| WV    |
+| HI    |
+| IA    |
+| DE    |
+| DC    |
+| SC    |
+| IN    |
+| ID    |
+| RI    |
+| AR    |
+| KS    |
+| AL    |
+| MT    |
+| ND    |
++-------+
+
+
+
+
+
+
+
+
+
+2) If we want to Know The COUNT of customer_state In Our Customers Table
+
+SELECT COUNT(DISTINCT customer_state) AS distinct_count from customers;
+
+
+
+Output - 
+
++----------------+
+| distinct_count |
++----------------+
+|             44 |
++----------------+
+
+
+
+
+
+
+
+3) If we want to Know The COUNT of customer_city In Our Customers Table
+
+SELECT COUNT(DISTINCT customer_city) AS distinct_count from customers;
+
+
+
+Output - 
+
++----------------+
+| distinct_count |
++----------------+
+|            562 |
++----------------+
+
+
+
+
+
+
+
+
+———————————————————————
+
+
+
+
+
+
+-- Creating a New Employees Table
+
+CREATE TABLE employees_new (
+id INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+department VARCHAR(255) NOT NULL,
+role VARCHAR(255) NOT NULL
+);
+
+
+
+
+-- Inserting Data in Table
+
+
+INSERT INTO employees_new (name, department, role) VALUES
+('John Doe', 'Sales', 'Manager'),
+('Jane Smith', 'Sales', 'Representative'),
+('Alice Johnson', 'Marketing', 'Manager'),
+('Chris Lee', 'IT', 'Developer'),
+('Jack White', 'Sales', 'Representative'),
+('Eve Davis', 'IT', 'Support'),
+('Frank Brown', 'Marketing', 'Representative'),
+('Grace Wilson', 'HR', 'Manager'),
+('Henry Taylor', 'HR', 'Recruiter'),
+('Chris Lee', 'IT', 'Developer');
+
+
+
+
+
+
+SELECT * FROM employees_new;
+
+
+Output - 
+
++----+---------------+------------+----------------+
+| id | name          | department | role           |
++----+---------------+------------+----------------+
+|  1 | John Doe      | Sales      | Manager        |
+|  2 | Jane Smith    | Sales      | Representative |
+|  3 | Alice Johnson | Marketing  | Manager        |
+|  4 | Chris Lee     | IT         | Developer      |
+|  5 | Jack White    | Sales      | Representative |
+|  6 | Eve Davis     | IT         | Support        |
+|  7 | Frank Brown   | Marketing  | Representative |
+|  8 | Grace Wilson  | HR         | Manager        |
+|  9 | Henry Taylor  | HR         | Recruiter      |
+| 10 | Chris Lee     | IT         | Developer      |
++----+---------------+------------+----------------+
+
+
+
+
+
+
+
+4) We want DISTINCT of Department and Role from Employee_New Table
+
+SELECT DISTINCT department, role FROM employees_new;
+
+
+Output - 
+
++------------+----------------+
+| department | role           |
++------------+----------------+
+| Sales      | Manager        |
+| Sales      | Representative |
+| Marketing  | Manager        |
+| IT         | Developer      |
+| IT         | Support        |
+| Marketing  | Representative |
+| HR         | Manager        |
+| HR         | Recruiter      |
++------------+----------------+
+
+
+
+
+
+
+5) If we want COUNT of DISTINCT Department & Role
+
+SELECT COUNT(DISTINCT department, role) FROM employees_new;
+
+
+
+Output - 
+
++----------------------------------+
+| COUNT(DISTINCT department, role) |
++----------------------------------+
+|                                8 |
++----------------------------------+
+
+
+
+
