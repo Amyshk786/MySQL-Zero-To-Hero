@@ -1,0 +1,99 @@
+
+
+
+Day-10 - SQL UPDATE vs ALTER and DELETE vs TRUNCATE | What’s the Real Difference?
+===================================================================================
+
+
+
+UPDATE
+========
+
+CREATE TABLE retail_db.customers (
+customer_id INT,
+customer_fname VARCHAR(45),
+customer_lname VARCHAR(45),
+customer_email VARCHAR(45),
+customer_phone VARCHAR(45),
+customer_street VARCHAR(255),
+customer_city VARCHAR(45),
+customer_state VARCHAR(45),
+customer_zipcode VARCHAR(45)
+);
+
+
+
+SELECT * FROM customers;
+
+
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | customer_email      | customer_phone | customer_street          | city        | state | pincode |
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | richard@hotmail.com | 9999999999     | 6303 Heather Plaza       | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | mary@gmail.com      | 8888888888     | 7869 Crystal View Villas | Brooklyn    | NY    | 80126   |
+|           3 | Ann            | Smith          | ann@outlook.com     | 7777777777     | 3422 Blue Pioneer Bend   | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | mjones@gmail.com    | 6666666666     | 8324 Little Common       | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | robert@gmail.com    | 5555555555     | 10 Crystal River Mall    | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+
+
+
+
+- New Address
+'7869 Crystal View Villas',
+'Brooklyn',
+'NY'
+
+
+
+
+- Now We Want to Change the Address of customer-2 as they have shifted to above mentioned address
+
+
+UPDATE customers
+SET customer_street = '7869 Crystal View Villas',
+city = 'Brooklyn',
+state = 'NY'
+WHERE customer_id =2;
+
+
+
+SELECT * FROM customers;
+
+
+
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | customer_email      | customer_phone | customer_street          | city        | state | pincode |
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | richard@hotmail.com | 9999999999     | 6303 Heather Plaza       | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | mary@gmail.com      | 8888888888     | 7869 Crystal View Villas | Brooklyn    | NY    | 80126   |
+|           3 | Ann            | Smith          | ann@outlook.com     | 7777777777     | 3422 Blue Pioneer Bend   | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | mjones@gmail.com    | 6666666666     | 8324 Little Common       | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | robert@gmail.com    | 5555555555     | 10 Crystal River Mall    | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+
+
+
+- If the Auto Commit is Disabled and we want to Rollback to the Previous Address so we can use the below Command
+
+ROLLBACK;
+
+
+SELECT * FROM customers;
+
+
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | customer_email      | customer_phone | customer_street          | city        | state | pincode |
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | richard@hotmail.com | 9999999999     | 6303 Heather Plaza       | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | mary@gmail.com      | 8888888888     | 7869 Crystal View Villas | Brooklyn    | NY    | 80126   |
+|           3 | Ann            | Smith          | ann@outlook.com     | 7777777777     | 3422 Blue Pioneer Bend   | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | mjones@gmail.com    | 6666666666     | 8324 Little Common       | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | robert@gmail.com    | 5555555555     | 10 Crystal River Mall    | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+---------------------+----------------+--------------------------+-------------+-------+---------+
+
+
+
+
+
+
