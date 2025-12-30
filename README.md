@@ -37,7 +37,14 @@ Data analysts
 Anyone practicing MySQL locally or in VS Code
 
 
+
+
+
+
 =======================================================================================================
+
+SQL-Superstar Course
+======================
 
 Become a SQL Superstar in 50 Days - Free Course
 
