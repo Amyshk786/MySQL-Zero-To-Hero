@@ -1,6 +1,6 @@
 
 
-Cross Join - Fpr Eg In the Left Table we Have 4 Records and In the Right Table we Have 7 Records. Then It will Try to Combine Each Record On the Left Table with Each Record On The Right Table. That Will be 8x4= 32
+Cross Join - For Eg In the Left Table we Have 4 Records and In the Right Table we Have 8 Records. Then It will Try to Combine Each Record On the Left Table with Each Record On The Right Table. That Will be 8x4= 32
 
 
 6) Cross Join Will Multiply The Values of Both The tables.
