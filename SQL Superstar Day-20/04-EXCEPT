@@ -1,0 +1,34 @@
+
+
+— EXCEPT
+============
+
+
+— Except Will Return the Rows which Appear in 1st Table & Not in the 2nd Table
+
+3) Customers Who Have Purchased A Product But NOT Subscribed to the Newsletter 
+
+
+SELECT customer_id, first_name, last_name, email FROM purchases WHERE purchase_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+EXCEPT
+SELECT customer_id, first_name, last_name, email FROM newsletter_subscriptions WHERE subscription_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH);
+
+
+Output —
+
++-------------+------------+-----------+---------------------------+
+| customer_id | first_name | last_name | email                     |
++-------------+------------+-----------+---------------------------+
+|         102 | Vihaan     | Singh     | vihaan.singh@example.com  |
+|         103 | Aditi      | Mehta     | aditi.mehta@example.com   |
+|         109 | Saanvi     | Gupta     | sanvi.gupta@example.com   |
+|         110 | Kabir      | Agarwal   | kabir.agarwal@example.com |
+|         111 | Neha       | Saxena    | neha.saxena@example.com   |
++-------------+------------+-----------+---------------------------+
+
+
+
+
+
+
+
