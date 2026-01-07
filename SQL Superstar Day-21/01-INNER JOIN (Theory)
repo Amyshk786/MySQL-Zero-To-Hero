@@ -1,0 +1,194 @@
+
+
+Day-21 SQL Inner Join - The Only Video You Need To Watch
+===========================================================
+
+
+
+—Now we will be Creating a New Database named as “practice_joins” & We will Use the Script 
+
+
+— USE practice_joins
+
+
+
+— We will List All the Tables
+
+show tables;
+
++--------------------------+
+| Tables_in_practice_joins |
++--------------------------+
+| categories               |
+| customers                |
+| departments              |
+| order_items              |
+| orders                   |
+| products                 |
++--------------------------+
+
+
+
+
+
+
+— Categories Table
+
+SELECT * FROM categories LIMIT 5;
+
++-------------+------------------------+---------------------+
+| category_id | category_department_id | category_name       |
++-------------+------------------------+---------------------+
+|           1 |                      2 | Football            |
+|           2 |                      2 | Soccer              |
+|           3 |                      2 | Baseball & Softball |
+|           4 |                      2 | Basketball          |
+|           5 |                      2 | Lacrosse            |
++-------------+------------------------+---------------------+
+
+
+
+
+
+
+
+— Customers Table
+
+SELECT * FROM customers LIMIT 5;
+
++-------------+----------------+----------------+----------------+-------------------+-------------------------+---------------+----------------+------------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_password | customer_street         | customer_city | customer_state | customer_zipcode |
++-------------+----------------+----------------+----------------+-------------------+-------------------------+---------------+----------------+------------------+
+|           1 | Richard        | Hernandez      | XXXXXXXXX      | XXXXXXXXX         | 6303 Heather Plaza      | Brownsville   | TX             | 78521            |
+|           2 | Mary           | Barrett        | XXXXXXXXX      | XXXXXXXXX         | 9526 Noble Embers Ridge | Littleton     | CO             | 80126            |
+|           3 | Ann            | Smith          | XXXXXXXXX      | XXXXXXXXX         | 3422 Blue Pioneer Bend  | Caguas        | PR             | 00725            |
+|           4 | Mary           | Jones          | XXXXXXXXX      | XXXXXXXXX         | 8324 Little Common      | San Marcos    | CA             | 92069            |
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX         | 10 Crystal River Mall   | Caguas        | PR             | 00725            |
++-------------+----------------+----------------+----------------+-------------------+-------------------------+---------------+----------------+------------------+
+
+
+
+
+
+
+
+— Departments Table
+
+SELECT * FROM departments LIMIT 5;
+
++---------------+-----------------+
+| department_id | department_name |
++---------------+-----------------+
+|             2 | Fitness         |
+|             3 | Footwear        |
+|             4 | Apparel         |
+|             5 | Golf            |
+|             6 | Outdoors        |
++---------------+-----------------+
+
+
+
+
+
+
+
+
+— Order_Items Table
+
+SELECT * FROM order_items LIMIT 5;
+
++---------------+---------------------+-----------------------+---------------------+---------------------+--------------------------+
+| order_item_id | order_item_order_id | order_item_product_id | order_item_quantity | order_item_subtotal | order_item_product_price |
++---------------+---------------------+-----------------------+---------------------+---------------------+--------------------------+
+|             1 |                   1 |                   957 |                   1 |              299.98 |                   299.98 |
+|             2 |                   2 |                  1073 |                   1 |              199.99 |                   199.99 |
+|             3 |                   2 |                   502 |                   5 |                 250 |                       50 |
+|             4 |                   2 |                   403 |                   1 |              129.99 |                   129.99 |
+|             5 |                   4 |                   897 |                   2 |               49.98 |                    24.99 |
++---------------+---------------------+-----------------------+---------------------+---------------------+--------------------------+
+
+
+
+
+
+
+
+
+— Orders Table
+
+SELECT * FROM orders LIMIT 5;
+
++----------+---------------------+-------------------+-----------------+
+| order_id | order_date          | order_customer_id | order_status    |
++----------+---------------------+-------------------+-----------------+
+|        1 | 2013-07-25 00:00:00 |             11599 | CLOSED          |
+|        2 | 2013-07-25 00:00:00 |               256 | PENDING_PAYMENT |
+|        3 | 2013-07-25 00:00:00 |             12111 | COMPLETE        |
+|        4 | 2013-07-25 00:00:00 |              8827 | CLOSED          |
+|        5 | 2013-07-25 00:00:00 |             11318 | COMPLETE        |
++----------+---------------------+-------------------+-----------------+
+
+
+
+
+
+
+
+
+— Products Table
+
+SELECT * FROM products LIMIT 5;
+
++------------+---------------------+-----------------------------------------------+---------------------+---------------+---------------------------------------------------------------------------------------+
+| product_id | product_category_id | product_name                                  | product_description | product_price | product_image                                                                         |
++------------+---------------------+-----------------------------------------------+---------------------+---------------+---------------------------------------------------------------------------------------+
+|          1 |                   2 | Quest Q64 10 FT. x 10 FT. Slant Leg Instant U |                     |         59.98 | http://images.acmesports.sports/Quest+Q64+10+FT.+x+10+FT.+Slant+Leg+Instant+Up+Canopy |
+|          2 |                   2 | Under Armour Men's Highlight MC Football Clea |                     |        129.99 | http://images.acmesports.sports/Under+Armour+Men%27s+Highlight+MC+Football+Cleat      |
+|          3 |                   2 | Under Armour Men's Renegade D Mid Football Cl |                     |         89.99 | http://images.acmesports.sports/Under+Armour+Men%27s+Renegade+D+Mid+Football+Cleat    |
+|          4 |                   2 | Under Armour Men's Renegade D Mid Football Cl |                     |         89.99 | http://images.acmesports.sports/Under+Armour+Men%27s+Renegade+D+Mid+Football+Cleat    |
+|          5 |                   2 | Riddell Youth Revolution Speed Custom Footbal |                     |        199.99 | http://images.acmesports.sports/Riddell+Youth+Revolution+Speed+Custom+Football+Helmet |
++------------+---------------------+-----------------------------------------------+---------------------+---------------+---------------------------------------------------------------------------------------+
+
+
+
+
+
+
+
+
+
+
+———————————————————————————————————————
+
+
+— In the Below Image we Can See All the 6 Tables which are Created Above has Relation Between Them.
+
+
+customer_id is a Primary Key in the Customers Table and Foreign Key in the Orders Table
+
+
+order_id is a Primary Key in the Orders Table and Foreign Key in the order_items Table
+
+
+product_id is a Primary Key in the Products Table and Foreign Key in the order_items Table
+
+
+category_id is a Primary Key in the Categories Table and Foreign Key in the Products Table
+
+
+department_id is a Primary Key in the Departments Table and Foreign Key in the CategoriesTable
+
+
+
+
+￼
+
+
+
+
+
+
+
+
+
+
