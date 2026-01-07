@@ -1,0 +1,222 @@
+
+INNER JOIN
+===========
+
+— By Default It is a Inner Join
+
+— Only Matching Records are Considered Non Matching Records are Discarded.
+
+
+1) What is the Name of the Customer who has Placed Order_id 1
+
+
+# If we Don’t Use JOINS we will need to follow the Below Mentioned 2 Steps but this is a Tedious Process so We Can Use Join 
+
+
+Step 1 - First we will Check the Customer_id Where Order_Id =1
+
+select order_customer_id from orders where order_id = 1;
+
++-------------------+
+| order_customer_id |
++-------------------+
+|             11599 |
++-------------------+
+
+
+
+
+Step 2 - As we Know the Customer_id of the Customer is 11599 who has Placed the order-1, So Now we will Check the Customer Details Where the Customer_Id = 11599
+
+select * from customers where customer_id = 11599;
+
++-------------+----------------+----------------+----------------+-------------------+---------------------------+---------------+----------------+------------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_password | customer_street           | customer_city | customer_state | customer_zipcode |
++-------------+----------------+----------------+----------------+-------------------+---------------------------+---------------+----------------+------------------+
+|       11599 | Mary           | Malone         | XXXXXXXXX      | XXXXXXXXX         | 8708 Indian Horse Highway | Hickory       | NC             | 28601            |
++-------------+----------------+----------------+----------------+-------------------+---------------------------+---------------+----------------+------------------+
+
+
+
+
+
+
+
+
+— In this Case we will Need to Join the 2 Tables Orders & Customers 
+
+
+SELECT * FROM orders INNER JOIN customers ON orders.order_customer_id = customers.customer_id WHERE order_id = 1;
+
++----------+---------------------+-------------------+--------------+-------------+----------------+----------------+----------------+-------------------+---------------------------+---------------+----------------+------------------+
+| order_id | order_date          | order_customer_id | order_status | customer_id | customer_fname | customer_lname | customer_email | customer_password | customer_street           | customer_city | customer_state | customer_zipcode |
++----------+---------------------+-------------------+--------------+-------------+----------------+----------------+----------------+-------------------+---------------------------+---------------+----------------+------------------+
+|        1 | 2013-07-25 00:00:00 |             11599 | CLOSED       |       11599 | Mary           | Malone         | XXXXXXXXX      | XXXXXXXXX         | 8708 Indian Horse Highway | Hickory       | NC             | 28601            |
++----------+---------------------+-------------------+--------------+-------------+----------------+----------------+----------------+-------------------+---------------------------+---------------+----------------+------------------+
+
+
+
+
+
+
+
+— In the Below Example we Have Given a Alias for Orders Table as “o” and Customers Table as “c” & We Have Selected the Columns which we want to Select as There are More than 68k Records so I have Set Limit to 20
+
+SELECT o.order_id , date(o.order_date) , o.order_customer_id , o.order_status, c.customer_fname, c.customer_city, c.customer_state FROM orders o INNER JOIN customers c ON o.order_customer_id = c.customer_id LIMIT 20;
+
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+| order_id | date(o.order_date) | order_customer_id | order_status    | customer_fname | customer_city | customer_state |
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+|        1 | 2013-07-25         |             11599 | CLOSED          | Mary           | Hickory       | NC             |
+|        2 | 2013-07-25         |               256 | PENDING_PAYMENT | David          | Chicago       | IL             |
+|        3 | 2013-07-25         |             12111 | COMPLETE        | Amber          | Santa Cruz    | CA             |
+|        4 | 2013-07-25         |              8827 | CLOSED          | Brian          | San Antonio   | TX             |
+|        5 | 2013-07-25         |             11318 | COMPLETE        | Mary           | Caguas        | PR             |
+|        6 | 2013-07-25         |              7130 | COMPLETE        | Alice          | Brooklyn      | NY             |
+|        7 | 2013-07-25         |              4530 | COMPLETE        | Mary           | Miami         | FL             |
+|        8 | 2013-07-25         |              2911 | PROCESSING      | Mary           | Caguas        | PR             |
+|        9 | 2013-07-25         |              5657 | PENDING_PAYMENT | Mary           | Lakewood      | OH             |
+|       10 | 2013-07-25         |              5648 | PENDING_PAYMENT | Joshua         | Memphis       | TN             |
+|       11 | 2013-07-25         |               918 | PAYMENT_REVIEW  | Nathan         | Caguas        | PR             |
+|       12 | 2013-07-25         |              1837 | CLOSED          | Mary           | Caguas        | PR             |
+|       13 | 2013-07-25         |              9149 | PENDING_PAYMENT | Ronald         | Santa Ana     | CA             |
+|       14 | 2013-07-25         |              9842 | PROCESSING      | Mary           | Caguas        | PR             |
+|       15 | 2013-07-25         |              2568 | COMPLETE        | Maria          | Memphis       | TN             |
+|       16 | 2013-07-25         |              7276 | PENDING_PAYMENT | Pamela         | Caguas        | PR             |
+|       17 | 2013-07-25         |              2667 | COMPLETE        | Tammy          | Sun Valley    | CA             |
+|       18 | 2013-07-25         |              1205 | CLOSED          | Mary           | Miami         | FL             |
+|       19 | 2013-07-25         |              9488 | PENDING_PAYMENT | Mary           | Hialeah       | FL             |
+|       20 | 2013-07-25         |              9198 | PROCESSING      | David          | Bowling Green | KY             |
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+
+
+
+
+
+
+
+
+
+
+— In the Below Example we Have Checked How Many Total Records are There
+
+SELECT count(*)
+FROM orders o
+JOIN customers c
+ON o.order_customer_id = c.customer_id;
+
++----------+
+| count(*) |
++----------+
+|    68883 |
++----------+
+
+
+
+
+
+
+
+
+
+— In the Below Example we Have Checked How Many Customers Are There In the Customers Table
+
+
+SELECT COUNT(*) FROM customers;
+
++----------+
+| COUNT(*) |
++----------+
+|    12435 |
++----------+
+
+
+
+
+
+
+
+
+
+— In the Below Example we Have Checked How Many Customers have Placed At least One Order
+
+
+SELECT COUNT(distinct c.customer_id)
+FROM orders o
+INNER JOIN customers c
+ON o.order_customer_id = c.customer_id;
+
++-------------------------------+
+| count(distinct c.customer_id) |
++-------------------------------+
+|                         12405 |
++-------------------------------+
+
+There Are 12405 are the number of customers who have placed At least 1 order
+
+
+
+
+OR
+
+— Using SET Operations
+
+SELECT COUNT(*) FROM (SELECT customer_id FROM customers INTERSECT SELECT order_customer_id FROM orders) c;
+
++----------+
+| COUNT(*) |
++----------+
+|    12405 |
++----------+
+
+
+
+
+
+
+
+
+— In the Below Example we Have Checked How Many Customers have NOT Placed Any Order  [Using SET Operations]
+
+
+SELECT COUNT(*) FROM (SELECT customer_id FROM customers EXCEPT SELECT order_customer_id FROM orders) c;
+
++----------+
+| COUNT(*) |
++----------+
+|       30 |
++----------+
+
+
+
+
+
+
+
+— In the Below Example we Have Checked How Many Customers have NOT Placed Any Order  
+
+
+IMP NOTE — INNER JOIN Will Not Work Here as it Only Shows Matching Records, So we will Have to Use Left Outer Join 
+
+
+
+SELECT COUNT(*) FROM customers c LEFT OUTER JOIN orders o ON c.customer_id = o.order_customer_id WHERE o.order_customer_id is NULL;
+
++----------+
+| COUNT(*) |
++----------+
+|       30 |
++----------+
+
+
+
+
+
+
+
+
+
+
+
+
+
