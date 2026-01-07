@@ -1,0 +1,54 @@
+
+
+Day-19 Master SQL Date & Numeric Functions in 1 Hour (With Real Scenarios & Examples)
+========================================================================================
+
+
+
+Date Related Functions
+========================
+
+
+1) To Print Current Date we can use the Below Command 
+
+SELECT CURRENT_DATE();
+
++----------------+
+| CURRENT_DATE() |
++----------------+
+| 2025-12-26     |
++----------------+
+
+
+
+
+
+
+2) To Print Current Time we can use the Below Command 
+
+SELECT CURRENT_TIME();
+
++----------------+
+| CURRENT_TIME() |
++----------------+
+| 23:44:23       |
++----------------+
+
+
+
+
+
+
+3) If we want to get Both Today’s Date & Time then we can use Below Command 
+
+SELECT CURRENT_TIMESTAMP();
+
++---------------------+
+| CURRENT_TIMESTAMP() |
++---------------------+
+| 2025-12-26 23:46:25 |
++---------------------+
+
+
+
+
