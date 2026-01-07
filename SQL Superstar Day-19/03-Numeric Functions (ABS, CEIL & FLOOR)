@@ -1,0 +1,112 @@
+
+
+Numeric Functions
+====================
+
+— ABS
+
+— CEIL
+
+— FLOOR
+
+— ROUND
+
+— TRUNCATE
+
+— MOD
+
+— POWER
+
+— SQRT
+
+— SIGN
+
+
+Absolute is Used when we want to Convert a Negative Number Into Positive 
+
+
+13) A)  “ABS”
+
+SELECT ABS(-10);
+
++----------+
+| ABS(-10) |
++----------+
+|       10 |
++----------+
+
+
+
+
+
+
+
+
+13) B)  “CEIL” [If the Number is Positive it will Give the Next Big Number and If it is Negative It will Give the Next Big Number] As Shown Below
+
+
+SELECT CEIL(10.5); [11 is Bigger Than 10.5]
+
++------------+
+| CEIL(10.5) |
++------------+
+|         11 |
++------------+
+
+
+
+
+
+
+SELECT CEIL(-8.5); [-8 Is Bigger Than -8.5]
+
++------------+
+| CEIL(-8.5) |
++------------+
+|         -8 |
++------------+
+
+
+
+
+
+
+
+
+
+
+
+13) C)  “FLOOR” [If the Number is Positive it will Give the Next Lower Number and If it is Negative It will Give the Next Lower Number] As Shown Below
+
+
+
+
+SELECT FLOOR(19.7); [19 Is Lower Than 19.7]
+
++-------------+
+| FLOOR(19.7) |
++-------------+
+|          19 |
++-------------+
+
+
+
+
+
+
+
+
+SELECT FLOOR(-8.1); [-9 Is Lower Than 8.1]
+
++-------------+
+| FLOOR(-8.1) |
++-------------+
+|          -9 |
++-------------+
+
+
+
+
+
+
+
