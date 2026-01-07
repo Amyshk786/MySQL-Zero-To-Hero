@@ -1,0 +1,126 @@
+
+
+13) G)  “POWER” [This will Show Us 2x2x2 which is 8]
+
+
+SELECT POWER(2,3);
+
++------------+
+| POWER(2,3) |
++------------+
+|          8 |
++------------+
+
+
+
+
+
+SELECT POWER(5,3); [This is 5x5x5=125]
+
++------------+
+| POWER(5,3) |
++------------+
+|        125 |
++------------+
+
+
+
+
+
+
+
+
+
+13) H)  “SQRT” [This will Show Us Square Root of Any Number] As shown Below 
+
+
+SELECT SQRT(144);
+
++-----------+
+| SQRT(144) |
++-----------+
+|        12 |
++-----------+
+
+
+
+
+
+SELECT SQRT(400);
+
++-----------+
+| SQRT(400) |
++-----------+
+|        20 |
++-----------+
+
+
+
+
+
+
+
+
+13) I)  “SIGN” [This will Show Us “-1” If the Number is Negative, “1” If the Number is Positive & “0” If the Number is Zero] As shown Below 
+
+
+SELECT SIGN(-4000);
+
++-------------+
+| SIGN(-4000) |
++-------------+
+|          -1 |
++-------------+
+
+
+
+
+
+
+SELECT SIGN(4000);
+
++------------+
+| SIGN(4000) |
++------------+
+|          1 |
++------------+
+
+
+
+
+
+
+
+SELECT SIGN(0);
+
++---------+
+| SIGN(0) |
++---------+
+|       0 |
++---------+
+
+
+
+
+
+
+
+
+
+13) J)  “RAND” [This will Give us Random Value from 0 to 1] As shown Below 
+
+
+SELECT RAND();
+
++--------------------+
+| RAND()             |
++--------------------+
+| 0.2745072033950195 |
++--------------------+
+
+
+
+
+
+
+
