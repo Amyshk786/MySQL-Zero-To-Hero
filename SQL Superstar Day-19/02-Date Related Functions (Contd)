@@ -1,0 +1,254 @@
+
+
+
+6) If we want Total Sales, And Also the Year and Month of Sale we can use below
+
+A) 
+SELECT CONCAT(EXTRACT(YEAR FROM sale_date),'-',EXTRACT(MONTH FROM sale_date)) AS yearmonth, SUM(amount) AS total_sales FROM sales GROUP BY yearmonth;
+
++-----------+-------------+
+| yearmonth | total_sales |
++-----------+-------------+
+| 2023-1    |   879637.76 |
+| 2023-2    |   748929.85 |
+| 2023-3    |   863352.33 |
+| 2023-6    |   788915.70 |
+| 2023-5    |   854181.71 |
+| 2023-4    |   827953.66 |
++-----------+-------------+
+
+
+
+
+OR  [We can Use the Below One as we have Use the YEAR_MONTH Function in that]
+
+
+
+B)
+SELECT EXTRACT(YEAR_MONTH FROM sale_date) AS yearmonth, SUM(amount) AS total_sales FROM sales GROUP BY yearmonth;
+
++-----------+-------------+
+| yearmonth | total_sales |
++-----------+-------------+
+|    202301 |   879637.76 |
+|    202302 |   748929.85 |
+|    202303 |   863352.33 |
+|    202306 |   788915.70 |
+|    202305 |   854181.71 |
+|    202304 |   827953.66 |
++-----------+-------------+
+
+
+
+
+
+
+
+
+
+ DATE_ADD  /  DATE_SUB
+======================
+
+7) If we want to Add 10 Days to the Current Date
+
+SELECT date_add(current_date, interval 10 day) AS new_date;
+
++------------+
+| newdate    |
++------------+
+| 2026-01-06 |
++------------+
+
+
+
+
+
+
+
+8) If we want to Sub 10 Days to the Current Date
+
+
+SELECT date_sub(current_date, interval 10 day) AS new_date;
+
++------------+
+| new_date   |
++------------+
+| 2025-12-17 |
++------------+
+
+
+
+
+
+
+
+
+
+
+DATEDIFF
+===========
+
+— DATEDIFF is Used to Check the Difference Between 2 Dates
+
+
+
+9) In the below Example we will check the Difference between 2 Dates
+ 
+SELECT DATEDIFF('1998-03-06','1997-03-23');
+
++-------------------------------------+
+| DATEDIFF('1998-03-06','1997-03-23') |
++-------------------------------------+
+|                                 348 |
++-------------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+DATE_FORMAT
+==============
+
+
+10) A) If we Use Capital “Y” It will Give Year in below format
+
+SELECT DATE_FORMAT('1998-03-06', '%Y');
+
++---------------------------------+
+| DATE_FORMAT('1998-03-06', '%Y') |
++---------------------------------+
+| 1998                            |
++---------------------------------+
+
+
+
+
+10) B) If we Use Capital “M” It will Give Month in below format
+
+SELECT DATE_FORMAT('1998-03-06', '%M');
+
++---------------------------------+
+| DATE_FORMAT('1998-03-06', '%M') |
++---------------------------------+
+| March                           |
++---------------------------------+
+
+
+
+10) C) If we Use Capital “D” It will Give Day in below format
+
+SELECT DATE_FORMAT('1998-03-06', '%D');
+
++---------------------------------+
+| DATE_FORMAT('1998-03-06', '%D') |
++---------------------------------+
+| 6th                             |
++---------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+11) A) If we Use Small “y” It will Give Year in below format
+
+SELECT DATE_FORMAT('1998-03-06', '%y');
+
++---------------------------------+
+| DATE_FORMAT('1998-03-06', '%y') |
++---------------------------------+
+| 98                              |
++---------------------------------+
+
+
+
+
+
+
+
+
+
+11) B) If we Use Small “m” It will Give Month in below format
+
+SELECT DATE_FORMAT('1998-03-06', '%m');
+
++---------------------------------+
+| DATE_FORMAT('1998-03-06', '%m') |
++---------------------------------+
+| 03                              |
++---------------------------------+
+
+
+
+
+
+
+
+
+
+11) C) If we Use Small “d” It will Give Day in below format
+
+SELECT DATE_FORMAT('1998-03-06', '%d');
+
++---------------------------------+
+| DATE_FORMAT('1998-03-06', '%d') |
++---------------------------------+
+| 06                              |
++---------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+— UNIX Time or EPOCH Time Means  Number of Seconds Since 1st Jan 1970
+
+12) A) 
+
+SELECT UNIX_TIMESTAMP();
+
++------------------+
+| UNIX_TIMESTAMP() |
++------------------+
+|       1766793061 |
++------------------+
+
+
+
+
+
+
+12) B) 
+
+If we want to Convert the UNIX Time Into Our Current Time we can Use Below
+
+SELECT FROM_UNIXTIME(1766793061);
+
++---------------------------+
+| FROM_UNIXTIME(1766793061) |
++---------------------------+
+| 2025-12-27 05:21:01       |
++---------------------------+
+
+
+
+
+
