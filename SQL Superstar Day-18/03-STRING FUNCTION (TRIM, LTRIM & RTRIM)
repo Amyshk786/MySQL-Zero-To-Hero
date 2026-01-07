@@ -1,0 +1,117 @@
+
+
+E) TRIM  /  LTRIM  /  RTRIM 
+===============================
+
+# LTRIM will Remove the Spaces from the Left Side
+
+# RTRIM will Remove the Spaces from the Right Side
+
+
+
+— In the Below Command we have Spaces Before SQL and After Program so we can Use TRIM for Removing these Spaces [As Shown in the Below Example]
+
+SELECT ('   SQL Champion Program    ');
+
++-----------------------------+
+| SQL Champion Program        |
++-----------------------------+
+|    SQL Champion Program     |
++-----------------------------+
+
+
+
+
+
+
+— Below we Have Used TRIM for Removing the Spaces
+
+SELECT TRIM('   SQL Champion Program    ');
+
++-------------------------------------+
+| TRIM('   SQL Champion Program    ') |
++-------------------------------------+
+| SQL Champion Program                |
++-------------------------------------+
+
+
+
+
+
+
+
+— Find All the Customers who have Leading or Trailing Spaces in Customer Street Column
+
+
+SELECT * FROM customers WHERE TRIM(customer_street) != customer_street;
+
+Output — [So there are 97 Such Records which have Spaces]
+
++-------------+----------------+----------------+----------------+----------------+------------------------------+-------------------+----------------+------------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street              | customer_city     | customer_state | customer_zipcode |
++-------------+----------------+----------------+----------------+----------------+------------------------------+-------------------+----------------+------------------+
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX      | 10 Crystal River Mall        | Caguas            | PR             | 00725            |
+|          21 | William        | Zimmerman      | XXXXXXXXX      | XXXXXXXXX      | 3323 Old Willow Mall         | Caguas            | PR             | 00725            |
+|         109 | Mary           | Thompson       | XXXXXXXXX      | XXXXXXXXX      | 8662 Clear Nectar Mall       | Caguas            | PR             | 00725            |
+|         323 | Joshua         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3758 Sunny Mall              | New York          | NY             | 10025            |
+|         470 | Mary           | Cannon         | XXXXXXXXX      | XXXXXXXXX      | 9916 Silent Mall             | Far Rockaway      | NY             | 11691            |
+|         484 | Shirley        | Richardson     | XXXXXXXXX      | XXXXXXXXX      | 19 Gentle Shadow Mall        | Hyattsville       | MD             | 20783            |
+|         637 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 9879 Lazy Horse Mall         | Caguas            | PR             | 00725            |
+|         704 | Mary           | Mccullough     | XXXXXXXXX      | XXXXXXXXX      | 9972 Rocky Mall              | Caguas            | PR             | 00725            |
+|         738 | Mary           | Wood           | XXXXXXXXX      | XXXXXXXXX      | 3587 Blue Mall               | Caguas            | PR             | 00725            |
+|        1215 | Joe            | Hart           | XXXXXXXXX      | XXXXXXXXX      | 7868 Iron Fawn Mall          | Las Vegas         | NV             | 89123            |
+|        1437 | Mary           | Watson         | XXXXXXXXX      | XXXXXXXXX      | 4389 Colonial Mall           | Caguas            | PR             | 00725            |
+|        1467 | Mary           | Bradley        | XXXXXXXXX      | XXXXXXXXX      | 3567 Broad Mall              | Phoenix           | AZ             | 85035            |
+|        1537 | Linda          | Murray         | XXXXXXXXX      | XXXXXXXXX      | 4951 Misty Pioneer Mall      | Pompano Beach     | FL             | 33064            |
+|        1577 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5274 Hidden Mall             | Caguas            | PR             | 00725            |
+|        1627 | Mary           | Gonzales       | XXXXXXXXX      | XXXXXXXXX      | 7320 Wishing Rise Mall       | Caguas            | PR             | 00725            |
+|        1711 | Jason          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 690 Pleasant Autumn Mall     | Salem             | OR             | 97301            |
+|        2164 | Ethan          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 9972 Rocky Mall              | Caguas            | PR             | 00725            |
+|        2188 | James          | Patel          | XXXXXXXXX      | XXXXXXXXX      | 657 Gentle Mountain Mall     | Tulare            | CA             | 93274            |
+|        2234 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 7731 Heather Mall            | Chicago           | IL             | 60640            |
+|        2305 | Donna          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 712 Thunder Mall             | Temecula          | CA             | 92592            |
+|        2307 | Sharon         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2407 Bright Blossom Mall     | Atlanta           | GA             | 30331            |
+|        2313 | Mary           | Forbes         | XXXXXXXXX      | XXXXXXXXX      | 5452 Broad Mall              | Scottsdale        | AZ             | 85254            |
+|        2542 | Ryan           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3444 Jagged Brook Mall       | Memphis           | TN             | 38109            |
+|        2667 | Tammy          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8906 Rustic Mall             | Sun Valley        | CA             | 91352            |
+|        2823 | Danielle       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3614 Misty Mall              | Chicago           | IL             | 60626            |
+|        2946 | Mary           | Stanley        | XXXXXXXXX      | XXXXXXXXX      | 8906 Rustic Mall             | Caguas            | PR             | 00725            |
+|        3015 | Alice          | Sherman        | XXXXXXXXX      | XXXXXXXXX      | 3444 Jagged Brook Mall       | Rio Grande        | PR             | 00745            |
+|        3083 | Timothy        | Lee            | XXXXXXXXX      | XXXXXXXXX      | 7868 Iron Fawn Mall          | Caguas            | PR             | 00725            |
+|        3109 | Jack           | James          | XXXXXXXXX      | XXXXXXXXX      | 5876 Burning Mall            | Fort Worth        | TX             | 76133            |
+|        3132 | Mary           | Gutierrez      | XXXXXXXXX      | XXXXXXXXX      | 3444 Jagged Brook Mall       | Caguas            | PR             | 00725            |
+|        3167 | Janice         | Ward           | XXXXXXXXX      | XXXXXXXXX      | 657 Gentle Mountain Mall     | Caguas            | PR             | 00725            |
+|        3366 | Mary           | Herring        | XXXXXXXXX      | XXXXXXXXX      | 4439 Tawny Mall              | Caguas            | PR             | 00725            |
+|        3395 | Mark           | Matthews       | XXXXXXXXX      | XXXXXXXXX      | 4569 Jagged Mall             | Caguas            | PR             | 00725            |
+|        3524 | John           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2647 Emerald Mall            | Lawrenceville     | GA             | 30043            |
+|        3552 | Kathleen       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 4951 Misty Pioneer Mall      | La Mesa           | CA             | 91941            |
+|        3578 | Christian      | Cameron        | XXXXXXXXX      | XXXXXXXXX      | 690 Pleasant Autumn Mall     | Fort Lauderdale   | FL             | 33324            |
+|        3632 | Albert         | Flores         | XXXXXXXXX      | XXXXXXXXX      | 3587 Blue Mall               | Caguas            | PR             | 00725            |
+|        3665 | Philip         | Wyatt          | XXXXXXXXX      | XXXXXXXXX      | 7436 Quaking Nectar Mall     | Caguas            | PR             | 00725            |
+|        4295 | Jessica        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3587 Blue Mall               | New York          | NY             | 10029            |
++-------------+----------------+----------------+----------------+----------------+------------------------------+-------------------+----------------+------------------+
+97 rows in set (0.021 sec)
+
+
+
+
+
+
+
+— We can Also get the Count of Such records
+
+SELECT COUNT(*) FROM customers WHERE TRIM(customer_street) != customer_street;
+
++----------+
+| COUNT(*) |
++----------+
+|       97 |
++----------+
+
+
+
+
+
+
+
+
