@@ -1,0 +1,134 @@
+
+
+Real World Use Case
+===================
+
+
+— For Example we have 3 Tables which have Employees from India, U.S & Canada. Now if we want to Analyse All this Data Together Employees from All the 3 Countries then we Must Use “UNION ALL” Because UNION ALL will Provide Us All the Employees Record. UNION Will check for Duplicates but In this Case there are No Duplicates so there is no use of UNION so we will use UNION ALL.
+
+india_employees
+
+us_employees
+
+canada_employees
+
+
+
+
+
+
+
+
+
+
+— We Have Customers Table & We Have an Orders Table, Now we want to get the Customer_id of the Customers who Have Only Registered their Account and Not Purchased Any Product. In this Case we will Use EXCEPT  This will Check the Customer_id which is there in the Customers Table & Not in Orders Table. [Humein Un Customers ko Find Out krna h Jo Customers Table mein hai but Orders Table me nhi h]
+
+
+SELECT customer_id FROM customers 
+EXCEPT 
+SELECT customer_id FROM orders; 
+
+
+
+Output —
+
++-------------+
+| customer_id |
++-------------+
+|        1187 |
+|        2073 |
+|        6072 |
+|        6613 |
+|        7011 |
+|        8343 |
+|        8778 |
+|        9060 |
+|        1481 |
+|        1808 |
+|        7552 |
+|        8882 |
+|        9315 |
+|       10060 |
+|       12175 |
+|         219 |
+|        2096 |
+|        2450 |
+|        4555 |
+|       12190 |
+|         339 |
+|         469 |
+|        4927 |
+|        8243 |
+|        8575 |
+|       10330 |
+|       10439 |
+|       10913 |
+|       10958 |
+|       12392 |
++-------------+
+
+
+
+
+
+
+
+
+
+
+— As Part of Data Quality Check We want to Find If there Any Customer Who Have Placed a Order But it is not there in the Customers Table
+
+
+SELECT customer_id FROM orders 
+EXCEPT 
+SELECT customer_id FROM customers;
+
+
+Output —
+
+Empty set (0.083 sec)
+
+
+
+
+
+
+
+
+— We want to Find Customers Who Have Purchased Any Product Or Subscribed to the Newsletter But Not Both In the Last 1 Month 
+
+A) First we will Find the Customers who have Purchased But Not Subscribed 
+
+B) Then we will Find the Customers who have Subscribed But Not Purchased 
+
+C) Then At Last we will Do UNION ALL
+
+
+(SELECT customer_id, first_name, last_name, email FROM purchases WHERE purchase_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+EXCEPT
+SELECT customer_id, first_name, last_name, email FROM newsletter_subscriptions WHERE subscription_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+UNION ALL
+SELECT customer_id, first_name, last_name, email FROM newsletter_subscriptions WHERE subscription_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+EXCEPT
+SELECT customer_id, first_name, last_name, email FROM purchases WHERE purchase_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH));
+
+
+
+Output —
+
++-------------+------------+-----------+------------------------------+
+| customer_id | first_name | last_name | email                        |
++-------------+------------+-----------+------------------------------+
+|         109 | Saanvi     | Gupta     | saanvi.gupta@example.com     |
+|         116 | Lakshay    | Malhotra  | lakshay.malhotra@example.com |
+|         117 | Sneha      | Chawla    | sneha.chawla@example.com     |
+|         118 | Rahul      | Pillai    | rahul.pillai@example.com     |
+|         119 | Nikhil     | Chandra   | nikhil.chandra@example.com   |
++-------------+------------+-----------+------------------------------+
+
+
+
+
+
+
+
