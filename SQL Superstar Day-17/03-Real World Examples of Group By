@@ -1,0 +1,248 @@
+
+
+14) From Each Store we want Count of Unique Customers
+
+SELECT store_location, COUNT(DISTINCT customer_id) AS customer_count
+FROM sales
+GROUP BY store_location;
+
+
+
+Output - 
+
++----------------+----------------+
+| store_location | customer_count |
++----------------+----------------+
+| Chicago        |            494 |
+| Houston        |            490 |
+| Los Angeles    |            487 |
+| Miami          |            484 |
+| New York       |            489 |
++----------------+----------------+
+
+
+
+
+
+
+
+15) We want Monthly Sales By Each Customer 
+
+SELECT DATE_FORMAT (sale_date,’%Y-%m’) AS sale_month, customer_id, SUM(amount) AS total_sales
+FROM sales
+GROUP BY sale_month, customer_id;
+
+
+
+
+Output - 
+
++------------+-------------+-------------+
+| sale_month | customer_id | total_sales |
++------------+-------------+-------------+
+| 2023-01    |         101 |     3178.18 |
+| 2023-01    |         102 |     2889.91 |
+| 2023-01    |         103 |     4493.36 |
+| 2023-01    |         104 |     2684.13 |
+| 2023-01    |         105 |     1772.51 |
+| 2023-01    |         106 |     1411.85 |
+| 2023-02    |         107 |      947.98 |
+| 2023-02    |         108 |      525.32 |
+| 2023-02    |         109 |     1598.32 |
+| 2023-02    |         110 |     4987.97 |
+| 2023-02    |         111 |     1572.01 |
+| 2023-02    |         112 |     3483.71 |
+| 2023-03    |         348 |     1370.93 |
+| 2023-06    |         173 |     1346.28 |
+| 2023-01    |         145 |     1881.90 |
+| 2023-02    |         276 |     3263.58 |
+| 2023-03    |          90 |     1807.33 |
+| 2023-02    |         494 |     1875.83 |
+| 2023-06    |         456 |     2528.95 |
+| 2023-05    |         414 |      378.93 |
+| 2023-04    |         474 |     2222.72 |
+| 2023-03    |          10 |     2805.13 |
+| 2023-04    |         241 |     1583.47 |
+| 2023-05    |         199 |      788.39 |
+| 2023-04    |         499 |      934.96 |
+| 2023-06    |         403 |     1984.41 |
+| 2023-04    |         429 |      703.78 |
+| 2023-06    |          77 |     3442.27 |
+| 2023-05    |          22 |     1892.62 |
++------------+-------------+-------------+
+
+2901 rows in set (0.018 sec)
+
+
+
+
+
+
+
+16) We want Monthly Sales By Each Customer Who Have Placed At least 8 Orders [By Using HAVING we Have Reduced the Count of Rows from 2901 To 67]
+
+SELECT DATE_FORMAT (sale_date,’%Y-%m’) AS sale_month, customer_id, SUM(amount) AS total_sales
+FROM sales
+GROUP BY sale_month, customer_id
+HAVING COUNT(*) >= 8;
+
+
+
+
+Output - 
+
++------------+-------------+-------------+
+| sale_month | customer_id | total_sales |
++------------+-------------+-------------+
+| 2023-02    |         110 |     4987.97 |
+| 2023-06    |          77 |     3442.27 |
+| 2023-06    |         162 |     4615.63 |
+| 2023-04    |         407 |     4704.46 |
+| 2023-05    |         248 |     4047.88 |
+| 2023-06    |          43 |     6867.14 |
+| 2023-01    |          50 |     5197.10 |
+| 2023-06    |         320 |     2807.91 |
+| 2023-02    |         480 |     4696.37 |
+| 2023-03    |         454 |     5129.09 |
+| 2023-05    |          97 |     4717.15 |
+| 2023-05    |         123 |     2787.11 |
+| 2023-01    |         110 |     4528.65 |
+| 2023-01    |          34 |     4324.10 |
+| 2023-01    |         447 |     3066.07 |
+| 2023-04    |          26 |     5560.16 |
+| 2023-06    |          91 |     3943.52 |
+| 2023-05    |         335 |     5210.51 |
+| 2023-02    |         437 |     3850.11 |
+| 2023-04    |          11 |     5224.16 |
+| 2023-02    |         254 |     5055.24 |
+| 2023-04    |         123 |     4080.52 |
+| 2023-01    |         331 |     4659.15 |
+| 2023-05    |         261 |     4066.15 |
+| 2023-04    |         349 |     4679.20 |
++------------+-------------+-------------+
+67 rows in set (0.017 sec)
+
+
+
+
+
+
+
+
+
+17) Total Sales Amount By Category in January-2023
+
+SELECT category, SUM(amount) AS total_sales_amount
+FROM sales
+WHERE MONTH(sale_date) = 1 AND YEAR(sale_date) = 2023 
+GROUP BY category;
+
+
+
+
+Output - 
+
++-------------+--------------------+
+| category    | total_sales_amount |
++-------------+--------------------+
+| Electronics |          173874.94 |
+| Furniture   |          174523.20 |
+| Toys        |          171815.09 |
+| Clothing    |          188686.98 |
+| Books       |          170737.55 |
++-------------+--------------------+
+
+
+
+
+
+
+
+
+18) Find Total Sales Amount of A Customer who has Purchased More Than 7000 Consider as a Premium Customer & Purchased on Weekdays
+
+SELECT customer_id, SUM(amount) AS total_sales
+FROM sales
+WHERE DAYOFWEEK(sale_date) BETWEEN 2 AND 6
+GROUP BY customer_id
+HAVING total_sales > 7000;
+
+
+
+
+Output - 
+
++-------------+-------------+
+| customer_id | total_sales |
++-------------+-------------+
+|         102 |     9629.18 |
+|         103 |     9895.87 |
+|         104 |     7615.76 |
+|         106 |     7252.67 |
+|         108 |     8347.02 |
+|         110 |    12525.32 |
+|         111 |     9773.88 |
+|         348 |     7978.11 |
+|         145 |    10346.24 |
+|         494 |    10531.55 |
+|         456 |     8479.84 |
+|         429 |    10320.01 |
+|          77 |     7167.31 |
+|          22 |     7079.78 |
+|          47 |     8647.29 |
+|          11 |    11978.05 |
+|         114 |     8352.23 |
+|         162 |    12300.67 |
+|         157 |     7591.44 |
+|         203 |     7405.93 |
+|         417 |     8110.83 |
+|         412 |     7393.86 |
+|          55 |     7089.35 |
+|         220 |    11941.57 |
+|         407 |    10172.09 |
+|         198 |     9834.15 |
+|         216 |     7682.77 |
+|         410 |     9274.41 |
+|         433 |     7581.03 |
+|         248 |    13899.41 |
+|         154 |     7518.16 |
+|         249 |     9262.57 |
+|         336 |     9660.08 |
++-------------+-------------+
+
+
+
+
+
+
+
+
+19) Total Sales & Number of Orders Per Store Location With Sales happening in the Month of January-2023, Ordered By Number of Transactions 
+
+SELECT store_location, SUM(amount) AS total_sales, COUNT(*) AS number_of_transactions
+FROM sales
+WHERE sale_date BETWEEN ‘2023-01-01’ AND ‘2023-01-31’
+GROUP BY store_location
+ORDER BY number_of_transactions DESC;
+
+
+
+
+Output -
+
++----------------+-------------+------------------------+
+| store_location | total_sales | number_of_transactions |
++----------------+-------------+------------------------+
+| Houston        |   183005.30 |                    370 |
+| New York       |   176189.33 |                    356 |
+| Miami          |   177086.83 |                    356 |
+| Los Angeles    |   176789.11 |                    354 |
+| Chicago        |   166567.19 |                    334 |
++----------------+-------------+------------------------+
+
+
+
+
+
+
+
