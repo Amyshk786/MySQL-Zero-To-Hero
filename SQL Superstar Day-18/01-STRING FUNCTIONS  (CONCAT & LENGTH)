@@ -1,0 +1,300 @@
+
+
+Day-18 The Only SQL String Functions Video You Need - SUBSTR, CONCAT, TRIM, LENGTH & More!
+==============================================================================================
+
+
+In Built Functions
+===============
+
+These are Functions Given by your Database and If we Perform them you will able to Manipulate the Data in Some Way
+
+- String
+- Date
+- Numeric
+- Others
+
+
+
+
+1) String Functions  [CONCAT, LENGTH, LOWER & UPPER,SUBSTRING, TRIM, REPLACE, LOCATE, INSTIR & SUBSTR]
+================
+
+
+A) Concat — This is Used to Combine 2 Strings
+
+
+— First we will Check the Customers Table
+
+
+SELECT * FROM customers LIMIT 20;
+
+
+Output — 
+
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street             | city          | state | pincode |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+
+|           1 | Richard        | Hernandez      | XXXXXXXXX      | XXXXXXXXX      | 6303 Heather Plaza          | Brownsville   | TX    | 78521   |
+|           2 | Mary           | Barrett        | XXXXXXXXX      | XXXXXXXXX      | 9526 Noble Embers Ridge     | Littleton     | CO    | 80126   |
+|           3 | Ann            | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3422 Blue Pioneer Bend      | Caguas        | PR    | 00725   |
+|           4 | Mary           | Jones          | XXXXXXXXX      | XXXXXXXXX      | 8324 Little Common          | San Marcos    | CA    | 92069   |
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX      | 10 Crystal River Mall       | Caguas        | PR    | 00725   |
+|           6 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3151 Sleepy Quail Promenade | Passaic       | NJ    | 07055   |
+|           7 | Melissa        | Wilcox         | XXXXXXXXX      | XXXXXXXXX      | 9453 High Concession        | Caguas        | PR    | 00725   |
+|           8 | Megan          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3047 Foggy Forest Plaza     | Lawrence      | MA    | 01841   |
+|           9 | Mary           | Perez          | XXXXXXXXX      | XXXXXXXXX      | 3616 Quaking Street         | Caguas        | PR    | 00725   |
+|          10 | Melissa        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8598 Harvest Beacon Plaza   | Stafford      | VA    | 22554   |
+|          11 | Mary           | Huffman        | XXXXXXXXX      | XXXXXXXXX      | 3169 Stony Woods            | Caguas        | PR    | 00725   |
+|          12 | Christopher    | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5594 Jagged Embers By-pass  | San Antonio   | TX    | 78227   |
+|          13 | Mary           | Baldwin        | XXXXXXXXX      | XXXXXXXXX      | 7922 Iron Oak Gardens       | Caguas        | PR    | 00725   |
+|          14 | Katherine      | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5666 Hazy Pony Square       | Pico Rivera   | CA    | 90660   |
+|          15 | Jane           | Luna           | XXXXXXXXX      | XXXXXXXXX      | 673 Burning Glen            | Fontana       | CA    | 92336   |
+|          16 | Tiffany        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 6651 Iron Port              | Caguas        | PR    | 00725   |
+|          17 | Mary           | Robinson       | XXXXXXXXX      | XXXXXXXXX      | 1325 Noble Pike             | Taylor        | MI    | 48180   |
+|          18 | Robert         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2734 Hazy Butterfly Circle  | Martinez      | CA    | 94553   |
+|          19 | Stephanie      | Mitchell       | XXXXXXXXX      | XXXXXXXXX      | 3543 Red Treasure Bay       | Caguas        | PR    | 00725   |
+|          20 | Mary           | Ellis          | XXXXXXXXX      | XXXXXXXXX      | 4703 Old Route              | West New York | NJ    | 07093   |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+
+
+
+
+
+
+— Now we will Do the Concatenation
+
+SELECT *, CONCAT(customer_fname, ‘ ’, customer_lname) AS full_name FROM customers LIMIT 20;
+
+
+
+Output —
+
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+--------------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street             | city          | state | pincode | full_name          |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+--------------------+
+|           1 | Richard        | Hernandez      | XXXXXXXXX      | XXXXXXXXX      | 6303 Heather Plaza          | Brownsville   | TX    | 78521   | Richard Hernandez  |
+|           2 | Mary           | Barrett        | XXXXXXXXX      | XXXXXXXXX      | 9526 Noble Embers Ridge     | Littleton     | CO    | 80126   | Mary Barrett       |
+|           3 | Ann            | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3422 Blue Pioneer Bend      | Caguas        | PR    | 00725   | Ann Smith          |
+|           4 | Mary           | Jones          | XXXXXXXXX      | XXXXXXXXX      | 8324 Little Common          | San Marcos    | CA    | 92069   | Mary Jones         |
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX      | 10 Crystal River Mall       | Caguas        | PR    | 00725   | Robert Hudson      |
+|           6 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3151 Sleepy Quail Promenade | Passaic       | NJ    | 07055   | Mary Smith         |
+|           7 | Melissa        | Wilcox         | XXXXXXXXX      | XXXXXXXXX      | 9453 High Concession        | Caguas        | PR    | 00725   | Melissa Wilcox     |
+|           8 | Megan          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3047 Foggy Forest Plaza     | Lawrence      | MA    | 01841   | Megan Smith        |
+|           9 | Mary           | Perez          | XXXXXXXXX      | XXXXXXXXX      | 3616 Quaking Street         | Caguas        | PR    | 00725   | Mary Perez         |
+|          10 | Melissa        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8598 Harvest Beacon Plaza   | Stafford      | VA    | 22554   | Melissa Smith      |
+|          11 | Mary           | Huffman        | XXXXXXXXX      | XXXXXXXXX      | 3169 Stony Woods            | Caguas        | PR    | 00725   | Mary Huffman       |
+|          12 | Christopher    | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5594 Jagged Embers By-pass  | San Antonio   | TX    | 78227   | Christopher Smith  |
+|          13 | Mary           | Baldwin        | XXXXXXXXX      | XXXXXXXXX      | 7922 Iron Oak Gardens       | Caguas        | PR    | 00725   | Mary Baldwin       |
+|          14 | Katherine      | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5666 Hazy Pony Square       | Pico Rivera   | CA    | 90660   | Katherine Smith    |
+|          15 | Jane           | Luna           | XXXXXXXXX      | XXXXXXXXX      | 673 Burning Glen            | Fontana       | CA    | 92336   | Jane Luna          |
+|          16 | Tiffany        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 6651 Iron Port              | Caguas        | PR    | 00725   | Tiffany Smith      |
+|          17 | Mary           | Robinson       | XXXXXXXXX      | XXXXXXXXX      | 1325 Noble Pike             | Taylor        | MI    | 48180   | Mary Robinson      |
+|          18 | Robert         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2734 Hazy Butterfly Circle  | Martinez      | CA    | 94553   | Robert Smith       |
+|          19 | Stephanie      | Mitchell       | XXXXXXXXX      | XXXXXXXXX      | 3543 Red Treasure Bay       | Caguas        | PR    | 00725   | Stephanie Mitchell |
+|          20 | Mary           | Ellis          | XXXXXXXXX      | XXXXXXXXX      | 4703 Old Route              | West New York | NJ    | 07093   | Mary Ellis         |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+--------------------+
+
+
+
+
+
+
+
+
+
+
+
+— We Can Also Combine Customer Street, City, State & Zipcode and Derive a Column Named as Address
+
+
+SELECT *, CONCAT(customer_street, ' ', city, ' ', state, ' ', pincode) AS address FROM customers LIMIT 20;
+
+
+Output — 
+
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+-------------------------------------------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street             | city          | state | pincode | address                                         |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+-------------------------------------------------+
+|           1 | Richard        | Hernandez      | XXXXXXXXX      | XXXXXXXXX      | 6303 Heather Plaza          | Brownsville   | TX    | 78521   | 6303 Heather Plaza Brownsville TX 78521         |
+|           2 | Mary           | Barrett        | XXXXXXXXX      | XXXXXXXXX      | 9526 Noble Embers Ridge     | Littleton     | CO    | 80126   | 9526 Noble Embers Ridge Littleton CO 80126      |
+|           3 | Ann            | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3422 Blue Pioneer Bend      | Caguas        | PR    | 00725   | 3422 Blue Pioneer Bend Caguas PR 00725          |
+|           4 | Mary           | Jones          | XXXXXXXXX      | XXXXXXXXX      | 8324 Little Common          | San Marcos    | CA    | 92069   | 8324 Little Common San Marcos CA 92069          |
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX      | 10 Crystal River Mall       | Caguas        | PR    | 00725   | 10 Crystal River Mall  Caguas PR 00725          |
+|           6 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3151 Sleepy Quail Promenade | Passaic       | NJ    | 07055   | 3151 Sleepy Quail Promenade Passaic NJ 07055    |
+|           7 | Melissa        | Wilcox         | XXXXXXXXX      | XXXXXXXXX      | 9453 High Concession        | Caguas        | PR    | 00725   | 9453 High Concession Caguas PR 00725            |
+|           8 | Megan          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3047 Foggy Forest Plaza     | Lawrence      | MA    | 01841   | 3047 Foggy Forest Plaza Lawrence MA 01841       |
+|           9 | Mary           | Perez          | XXXXXXXXX      | XXXXXXXXX      | 3616 Quaking Street         | Caguas        | PR    | 00725   | 3616 Quaking Street Caguas PR 00725             |
+|          10 | Melissa        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8598 Harvest Beacon Plaza   | Stafford      | VA    | 22554   | 8598 Harvest Beacon Plaza Stafford VA 22554     |
+|          11 | Mary           | Huffman        | XXXXXXXXX      | XXXXXXXXX      | 3169 Stony Woods            | Caguas        | PR    | 00725   | 3169 Stony Woods Caguas PR 00725                |
+|          12 | Christopher    | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5594 Jagged Embers By-pass  | San Antonio   | TX    | 78227   | 5594 Jagged Embers By-pass San Antonio TX 78227 |
+|          13 | Mary           | Baldwin        | XXXXXXXXX      | XXXXXXXXX      | 7922 Iron Oak Gardens       | Caguas        | PR    | 00725   | 7922 Iron Oak Gardens Caguas PR 00725           |
+|          14 | Katherine      | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5666 Hazy Pony Square       | Pico Rivera   | CA    | 90660   | 5666 Hazy Pony Square Pico Rivera CA 90660      |
+|          15 | Jane           | Luna           | XXXXXXXXX      | XXXXXXXXX      | 673 Burning Glen            | Fontana       | CA    | 92336   | 673 Burning Glen Fontana CA 92336               |
+|          16 | Tiffany        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 6651 Iron Port              | Caguas        | PR    | 00725   | 6651 Iron Port Caguas PR 00725                  |
+|          17 | Mary           | Robinson       | XXXXXXXXX      | XXXXXXXXX      | 1325 Noble Pike             | Taylor        | MI    | 48180   | 1325 Noble Pike Taylor MI 48180                 |
+|          18 | Robert         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2734 Hazy Butterfly Circle  | Martinez      | CA    | 94553   | 2734 Hazy Butterfly Circle Martinez CA 94553    |
+|          19 | Stephanie      | Mitchell       | XXXXXXXXX      | XXXXXXXXX      | 3543 Red Treasure Bay       | Caguas        | PR    | 00725   | 3543 Red Treasure Bay Caguas PR 00725           |
+|          20 | Mary           | Ellis          | XXXXXXXXX      | XXXXXXXXX      | 4703 Old Route              | West New York | NJ    | 07093   | 4703 Old Route West New York NJ 07093           |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+-------------------------------------------------+
+
+
+
+
+
+
+
+
+
+———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+B) Length
+========= 
+
+
+Note — This is Used to Count the Length of a Integer or a String and it also counts the Spaces
+
+
+— We want to get the Length of the Customer First Name
+
+SELECT *, LENGTH(customer_fname) AS name_length FROM customers LIMIT 20;
+
+
+
+Output —
+
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+-------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street             | city          | state | pincode | name_length |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+-------------+
+|           1 | Richard        | Hernandez      | XXXXXXXXX      | XXXXXXXXX      | 6303 Heather Plaza          | Brownsville   | TX    | 78521   |           7 |
+|           2 | Mary           | Barrett        | XXXXXXXXX      | XXXXXXXXX      | 9526 Noble Embers Ridge     | Littleton     | CO    | 80126   |           4 |
+|           3 | Ann            | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3422 Blue Pioneer Bend      | Caguas        | PR    | 00725   |           3 |
+|           4 | Mary           | Jones          | XXXXXXXXX      | XXXXXXXXX      | 8324 Little Common          | San Marcos    | CA    | 92069   |           4 |
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX      | 10 Crystal River Mall       | Caguas        | PR    | 00725   |           6 |
+|           6 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3151 Sleepy Quail Promenade | Passaic       | NJ    | 07055   |           4 |
+|           7 | Melissa        | Wilcox         | XXXXXXXXX      | XXXXXXXXX      | 9453 High Concession        | Caguas        | PR    | 00725   |           7 |
+|           8 | Megan          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3047 Foggy Forest Plaza     | Lawrence      | MA    | 01841   |           5 |
+|           9 | Mary           | Perez          | XXXXXXXXX      | XXXXXXXXX      | 3616 Quaking Street         | Caguas        | PR    | 00725   |           4 |
+|          10 | Melissa        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8598 Harvest Beacon Plaza   | Stafford      | VA    | 22554   |           7 |
+|          11 | Mary           | Huffman        | XXXXXXXXX      | XXXXXXXXX      | 3169 Stony Woods            | Caguas        | PR    | 00725   |           4 |
+|          12 | Christopher    | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5594 Jagged Embers By-pass  | San Antonio   | TX    | 78227   |          11 |
+|          13 | Mary           | Baldwin        | XXXXXXXXX      | XXXXXXXXX      | 7922 Iron Oak Gardens       | Caguas        | PR    | 00725   |           4 |
+|          14 | Katherine      | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5666 Hazy Pony Square       | Pico Rivera   | CA    | 90660   |           9 |
+|          15 | Jane           | Luna           | XXXXXXXXX      | XXXXXXXXX      | 673 Burning Glen            | Fontana       | CA    | 92336   |           4 |
+|          16 | Tiffany        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 6651 Iron Port              | Caguas        | PR    | 00725   |           7 |
+|          17 | Mary           | Robinson       | XXXXXXXXX      | XXXXXXXXX      | 1325 Noble Pike             | Taylor        | MI    | 48180   |           4 |
+|          18 | Robert         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2734 Hazy Butterfly Circle  | Martinez      | CA    | 94553   |           6 |
+|          19 | Stephanie      | Mitchell       | XXXXXXXXX      | XXXXXXXXX      | 3543 Red Treasure Bay       | Caguas        | PR    | 00725   |           9 |
+|          20 | Mary           | Ellis          | XXXXXXXXX      | XXXXXXXXX      | 4703 Old Route              | West New York | NJ    | 07093   |           4 |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+-------------+
+
+
+
+
+
+
+
+
+
+
+— If we Only Want the Customer First Name Which has 8 Characters we can Use below Command
+
+SELECT *, LENGTH(customer_fname) AS name_length FROM customers HAVING name_length >= 8 LIMIT 20;
+
+
+
+Output —
+
++-------------+----------------+----------------+----------------+----------------+----------------------------+--------------+-------+---------+-------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street            | city         | state | pincode | name_length |
++-------------+----------------+----------------+----------------+----------------+----------------------------+--------------+-------+---------+-------------+
+|          23 | Benjamin       | Duarte         | XXXXXXXXX      | XXXXXXXXX      | 8811 High Horse Impasse    | San Juan     | PR    | 00921   |           8 |
+|          35 | Margaret       | Wright         | XXXXXXXXX      | XXXXXXXXX      | 9456 Sleepy Jetty          | Oceanside    | CA    | 92056   |           8 |
+|          36 | Michelle       | Carey          | XXXXXXXXX      | XXXXXXXXX      | 6336 Fallen Village        | Caguas       | PR    | 00725   |           8 |
+|          37 | Virginia       | Conrad         | XXXXXXXXX      | XXXXXXXXX      | 6115 Indian Beacon Close   | Norfolk      | VA    | 23503   |           8 |
+|          41 | Victoria       | Mason          | XXXXXXXXX      | XXXXXXXXX      | 7869 Crystal View Villas   | Brooklyn     | NY    | 11230   |           8 |
+|          46 | Jennifer       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5463 Rocky Autoroute       | Freeport     | NY    | 11520   |           8 |
+|          61 | Margaret       | Summers        | XXXXXXXXX      | XXXXXXXXX      | 8963 Hidden Panda Meadow   | Caguas       | PR    | 00725   |           8 |
+|          65 | Jennifer       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 7126 Shady Bluff Promenade | Princeton    | NJ    | 08540   |           8 |
+|          67 | Samantha       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 7869 Wishing Anchor Court  | Chicago      | IL    | 60619   |           8 |
+|          82 | Jonathan       | Cook           | XXXXXXXXX      | XXXXXXXXX      | 7885 Sleepy Cove           | San Antonio  | TX    | 78240   |           8 |
+|          96 | Virginia       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 6080 Blue Close            | Caguas       | PR    | 00725   |           8 |
+|         113 | Patricia       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2457 Blue Hills Heights    | Caguas       | PR    | 00725   |           8 |
+|         137 | Jonathan       | Perkins        | XXXXXXXXX      | XXXXXXXXX      | 182 Bright Embers Cove     | Broken Arrow | OK    | 74012   |           8 |
+|         155 | Brittany       | Juarez         | XXXXXXXXX      | XXXXXXXXX      | 1809 Lost Pine Ledge       | Caguas       | PR    | 00725   |           8 |
+|         191 | Victoria       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8311 Round Lookout         | Portland     | OR    | 97206   |           8 |
+|         210 | Jonathan       | Burns          | XXXXXXXXX      | XXXXXXXXX      | 432 Rocky Link             | Caguas       | PR    | 00725   |           8 |
+|         230 | Kimberly       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5835 Harvest Vista         | Caguas       | PR    | 00725   |           8 |
+|         263 | Margaret       | Bradley        | XXXXXXXXX      | XXXXXXXXX      | 7509 Harvest Highlands     | Caguas       | PR    | 00725   |           8 |
+|         265 | Michelle       | Solis          | XXXXXXXXX      | XXXXXXXXX      | 3440 Emerald Knoll         | Dubuque      | IA    | 52001   |           8 |
+|         273 | Benjamin       | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8950 Thunder Fawn Farm     | Jamaica      | NY    | 11435   |           8 |
++-------------+----------------+----------------+----------------+----------------+----------------------------+--------------+-------+---------+-------------+
+
+
+
+
+
+
+
+
+
+
+— Length Can Also be Used on Integer
+
+SELECT *, LENGTH(customer_id) FROM customers LIMIT 20;
+
+
+Output —
+
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+---------------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_phone | customer_street             | city          | state | pincode | LENGTH(customer_id) |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+---------------------+
+|           1 | Richard        | Hernandez      | XXXXXXXXX      | XXXXXXXXX      | 6303 Heather Plaza          | Brownsville   | TX    | 78521   |                   1 |
+|           2 | Mary           | Barrett        | XXXXXXXXX      | XXXXXXXXX      | 9526 Noble Embers Ridge     | Littleton     | CO    | 80126   |                   1 |
+|           3 | Ann            | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3422 Blue Pioneer Bend      | Caguas        | PR    | 00725   |                   1 |
+|           4 | Mary           | Jones          | XXXXXXXXX      | XXXXXXXXX      | 8324 Little Common          | San Marcos    | CA    | 92069   |                   1 |
+|           5 | Robert         | Hudson         | XXXXXXXXX      | XXXXXXXXX      | 10 Crystal River Mall       | Caguas        | PR    | 00725   |                   1 |
+|           6 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3151 Sleepy Quail Promenade | Passaic       | NJ    | 07055   |                   1 |
+|           7 | Melissa        | Wilcox         | XXXXXXXXX      | XXXXXXXXX      | 9453 High Concession        | Caguas        | PR    | 00725   |                   1 |
+|           8 | Megan          | Smith          | XXXXXXXXX      | XXXXXXXXX      | 3047 Foggy Forest Plaza     | Lawrence      | MA    | 01841   |                   1 |
+|           9 | Mary           | Perez          | XXXXXXXXX      | XXXXXXXXX      | 3616 Quaking Street         | Caguas        | PR    | 00725   |                   1 |
+|          10 | Melissa        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 8598 Harvest Beacon Plaza   | Stafford      | VA    | 22554   |                   2 |
+|          11 | Mary           | Huffman        | XXXXXXXXX      | XXXXXXXXX      | 3169 Stony Woods            | Caguas        | PR    | 00725   |                   2 |
+|          12 | Christopher    | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5594 Jagged Embers By-pass  | San Antonio   | TX    | 78227   |                   2 |
+|          13 | Mary           | Baldwin        | XXXXXXXXX      | XXXXXXXXX      | 7922 Iron Oak Gardens       | Caguas        | PR    | 00725   |                   2 |
+|          14 | Katherine      | Smith          | XXXXXXXXX      | XXXXXXXXX      | 5666 Hazy Pony Square       | Pico Rivera   | CA    | 90660   |                   2 |
+|          15 | Jane           | Luna           | XXXXXXXXX      | XXXXXXXXX      | 673 Burning Glen            | Fontana       | CA    | 92336   |                   2 |
+|          16 | Tiffany        | Smith          | XXXXXXXXX      | XXXXXXXXX      | 6651 Iron Port              | Caguas        | PR    | 00725   |                   2 |
+|          17 | Mary           | Robinson       | XXXXXXXXX      | XXXXXXXXX      | 1325 Noble Pike             | Taylor        | MI    | 48180   |                   2 |
+|          18 | Robert         | Smith          | XXXXXXXXX      | XXXXXXXXX      | 2734 Hazy Butterfly Circle  | Martinez      | CA    | 94553   |                   2 |
+|          19 | Stephanie      | Mitchell       | XXXXXXXXX      | XXXXXXXXX      | 3543 Red Treasure Bay       | Caguas        | PR    | 00725   |                   2 |
+|          20 | Mary           | Ellis          | XXXXXXXXX      | XXXXXXXXX      | 4703 Old Route              | West New York | NJ    | 07093   |                   2 |
++-------------+----------------+----------------+----------------+----------------+-----------------------------+---------------+-------+---------+---------------------+
+
+
+
+
+
+
+
+
+
+
+— In Real World we can Implement Data Quality Checks that the Customer State Must have Only 2 Characters and Zipcode Must only have 5 Characters 
+
+SELECT COUNT(*) FROM customers WHERE LENGTH(state) != 2 OR LENGTH(pincode) != 5 LIMIT 20; 
+
+
+Output —
+
++----------+
+| COUNT(*) |
++----------+
+|        0 |
++----------+
+
+
+
+
+
+
