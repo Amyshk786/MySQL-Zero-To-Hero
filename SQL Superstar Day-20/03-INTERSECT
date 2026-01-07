@@ -1,0 +1,40 @@
+
+
+— INTERSECT
+==============
+
+
+— Intersect Will Return the Rows which Appear in Both the Tables
+
+3) Customers Who Have Purchased A Product & Also Subscribed to the Newsletter 
+
+
+SELECT customer_id, first_name, last_name, email FROM purchases WHERE purchase_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+INTERSECT
+SELECT customer_id, first_name, last_name, email FROM newsletter_subscriptions WHERE subscription_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH);
+
+
+Output —
+
++-------------+------------+-----------+--------------------------+
+| customer_id | first_name | last_name | email                    |
++-------------+------------+-----------+--------------------------+
+|         101 | Aarav      | Sharma    | aarav.sharma@example.com |
+|         104 | Rohan      | Kumar     | rohan.kumar@example.com  |
+|         105 | Isha       | Patel     | isha.patel@example.com   |
+|         106 | Kavya      | Verma     | kavya.verma@example.com  |
+|         107 | Arjun      | Reddy     | arjun.reddy@example.com  |
+|         108 | Anaya      | Nair      | anaya.nair@example.com   |
+|         112 | Tanishq    | Rana      | tanishq.rana@example.com |
+|         113 | Mira       | Bhatt     | mira.bhatt@example.com   |
+|         114 | Dev        | Kapoor    | dev.kapoor@example.com   |
+|         115 | Riya       | Joshi     | riya.joshi@example.com   |
++-------------+------------+-----------+--------------------------+
+
+
+
+
+
+
+
+
