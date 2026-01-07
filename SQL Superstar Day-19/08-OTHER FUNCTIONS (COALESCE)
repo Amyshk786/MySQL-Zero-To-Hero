@@ -1,0 +1,241 @@
+
+
+COALESCE
+===========
+
+
+— Coalesce is a Very Important Function When you need to Handle NULL Values. 
+
+— It Ensures that you have a Default or a Fallback Value [Agar Koi Value Null h and Humko wo chi show karna h toh we can Define the Value which we want to show Instead of NULL]
+
+
+
+
+—> We will be Creating a New Table Named as Products
+
+CREATE TABLE products (
+product_name VARCHAR(50),
+discount_price DECIMAL(10,2),
+regular_price DECIMAL(10,2)
+);
+
+
+
+
+—> Now we will be Inserting Data Into it
+
+INSERT INTO products (product_name, discount_price, regular_price) 
+VALUES 
+('Laptop', NULL, 1200.00), 
+('Smartphone', 800.00, 1000.00), 
+('Tablet', NULL, 300);
+
+
+
+
+
+—> Now we will Check if the Data is Inserted or Not
+
+
+SELECT * FROM products;
+
++--------------+----------------+---------------+
+| product_name | discount_price | regular_price |
++--------------+----------------+---------------+
+| Laptop       |           NULL |       1200.00 |
+| Smartphone   |         800.00 |       1000.00 |
+| Tablet       |           NULL |        300.00 |
++--------------+----------------+---------------+
+
+
+
+
+
+
+16) A) We Have 3 Products Laptop, Smartphone & Tablet  For Laptop and Table we Only have Regular Price But for Smartphone we have a Discounted Price
+
+Now we have a Use case where we first want to show the Discounted Price to the Customer and If the Discounted Price is Not Available then we will Show the Regular Price
+
+As the Laptop and Tablet does not Have a Discounted Price this will show the Regular Price 
+
+
+SELECT product_name, COALESCE(discount_price, regular_price) AS display_price FROM products;
+
++--------------+---------------+
+| product_name | display_price |
++--------------+---------------+
+| Laptop       |       1200.00 |
+| Smartphone   |        800.00 |
+| Tablet       |        300.00 |
++--------------+---------------+
+
+
+
+
+
+
+
+
+
+
+
+16) B) We Have “Billing_Add”, “Shipping_Add” & “Customer_Add“  We have a Use case where we have have to Show Billing Add if that is NULL, Show Shipping Add & If that is also NULL show Customer Add
+
+—> Now we are Creating a New Table Named as Orders2
+
+CREATE TABLE orders2 ( 
+order_id INT, 
+billing_address VARCHAR(100), 
+shipping_address VARCHAR(100), 
+customer_address VARCHAR(100) 
+);
+
+
+
+
+
+
+—> Now we will be Inserting Data Into it
+
+INSERT INTO orders2 (order_id, billing_address, shipping_address, customer_address) 
+VALUES 
+(1, '123 Main St', NULL, '789 Oak Ave'), 
+(2, NULL, '456 Maple Rd', '101 Pine St'), 
+(3, NULL, NULL, '303 Elm St');
+
+
+
+
+
+—> Now we will Check if the Data is Inserted or Not
+
+
+SELECT * FROM orders2;
+
++----------+-----------------+------------------+------------------+
+| order_id | billing_address | shipping_address | customer_address |
++----------+-----------------+------------------+------------------+
+|        1 | 123 Main St     | NULL             | 789 Oak Ave      |
+|        2 | NULL            | 456 Maple Rd     | 101 Pine St      |
+|        3 | NULL            | NULL             | 303 Elm St       |
++----------+-----------------+------------------+------------------+
+
+
+
+
+
+
+What the Below Command is Giving us the Output
+
+— In the Below Command for 1st Order Billing Add is there so it will show the Result
+
+— For 2nd Order Billing Add is Null so it will show the Shipping Add
+
+— For 3rd Order Both Billing and Shipping Add is NULL so it will Show the Customer Add
+
+
+
+SELECT order_id, COALESCE(billing_address, shipping_address, customer_address) AS preferred_address FROM orders2;
+
++----------+-------------------+
+| order_id | preferred_address |
++----------+-------------------+
+|        1 | 123 Main St       |
+|        2 | 456 Maple Rd      |
+|        3 | 303 Elm St        |
++----------+-------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+16) C) We Have Created a Sales Table in which we have Sales Coming from 2 Sources Online and from Store [We want total_sales for all the 3]  But if Any Value is Added with Null the Value shown is Null so we can use the “COALESCE”
+
+
+—> Now we are Creating a New Table Named as Sales_new
+
+
+CREATE TABLE sales_new (
+sale_id INT,
+online_sales DECIMAL(10,2),
+store_sales DECIMAL(10,2)
+);
+
+
+
+
+
+
+
+—> Now we will be Inserting Data Into it
+
+
+INSERT INTO sales_new (sale_id, online_sales, store_sales) VALUES (1, 1500.50, NULL), (2, NULL, 2500.75), (3, 1000.25, 500.00);
+
+
+
+
+
+
+
+—> Now we will Check if the Data is Inserted or Not
+
+
+SELECT * FROM sales_new;
++---------+--------------+-------------+
+| sale_id | online_sales | store_sales |
++---------+--------------+-------------+
+|       1 |      1500.50 |        NULL |
+|       2 |         NULL |     2500.75 |
+|       3 |      1000.25 |      500.00 |
++---------+--------------+-------------+
+
+
+
+
+
+
+
+What the Below Command is Giving us the Output
+
+— In the Below Command for 1st Order Billing Add is there so it will show the Result
+
+— For 2nd Order Billing Add is Null so it will show the Shipping Add
+
+— For 3rd Order Both Billing and Shipping Add is NULL so it will Show the Customer Add
+
+
+
+SELECT sale_id, COALESCE(online_sales, 0) + COALESCE(store_sales, 0) AS total_sales FROm sales_new;
+
+
++---------+-------------+
+| sale_id | total_sales |
++---------+-------------+
+|       1 |     1500.50 |
+|       2 |     2500.75 |
+|       3 |     1500.25 |
++---------+-------------+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
