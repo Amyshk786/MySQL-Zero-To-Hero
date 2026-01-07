@@ -1,0 +1,146 @@
+
+
+— UNION
+===========
+
+
+IMP Note Before Using UNION & UNION ALL 
+===========================================
+
+— THE NUMBER OF COLUMNS SHOULD MATCH
+
+— AND EVEN THE DATATYPES SHOULD BE COMPATIBLE
+
+
+1) Now we want the Data of the Peoples who have Made Any Interaction in Last 1 Month      [UNION Does Not Show Duplicate Records]
+
+
+SELECT customer_id, first_name, last_name, email FROM purchases WHERE purchase_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+UNION 
+SELECT customer_id, first_name, last_name, email FROM newsletter_subscriptions WHERE subscription_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+UNION 
+SELECT customer_id, first_name, last_name, email FROM returns WHERE return_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH);
+
+
+
+Output —
+
++-------------+------------+-----------+------------------------------+
+| customer_id | first_name | last_name | email                        |
++-------------+------------+-----------+------------------------------+
+|         101 | Aarav      | Sharma    | aarav.sharma@example.com     |
+|         102 | Vihaan     | Singh     | vihaan.singh@example.com     |
+|         103 | Aditi      | Mehta     | aditi.mehta@example.com      |
+|         104 | Rohan      | Kumar     | rohan.kumar@example.com      |
+|         105 | Isha       | Patel     | isha.patel@example.com       |
+|         106 | Kavya      | Verma     | kavya.verma@example.com      |
+|         107 | Arjun      | Reddy     | arjun.reddy@example.com      |
+|         108 | Anaya      | Nair      | anaya.nair@example.com       |
+|         109 | Saanvi     | Gupta     | sanvi.gupta@example.com      |
+|         110 | Kabir      | Agarwal   | kabir.agarwal@example.com    |
+|         111 | Neha       | Saxena    | neha.saxena@example.com      |
+|         112 | Tanishq    | Rana      | tanishq.rana@example.com     |
+|         113 | Mira       | Bhatt     | mira.bhatt@example.com       |
+|         114 | Dev        | Kapoor    | dev.kapoor@example.com       |
+|         115 | Riya       | Joshi     | riya.joshi@example.com       |
+|         109 | Saanvi     | Gupta     | saanvi.gupta@example.com     |
+|         116 | Lakshay    | Malhotra  | lakshay.malhotra@example.com |
+|         117 | Sneha      | Chawla    | sneha.chawla@example.com     |
+|         118 | Rahul      | Pillai    | rahul.pillai@example.com     |
+|         119 | Nikhil     | Chandra   | nikhil.chandra@example.com   |
++-------------+------------+-----------+------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+— UNION ALL
+=============
+
+
+IMP Note Before Using UNION & UNION ALL 
+===========================================
+
+— THE NUMBER OF COLUMNS SHOULD MATCH
+
+— AND EVEN THE DATATYPES SHOULD BE COMPATIBLE
+
+
+
+2) Now we want the Data of the Peoples who have Made Any Interaction in Last 1 Month    [UNION ALL Will Show Duplicate Records]
+
+
+SELECT customer_id, first_name, last_name, email FROM purchases WHERE purchase_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+UNION ALL
+SELECT customer_id, first_name, last_name, email FROM newsletter_subscriptions WHERE subscription_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH)
+UNION ALL
+SELECT customer_id, first_name, last_name, email FROM returns WHERE return_date <= DATE_SUB(current_date(), INTERVAL 1 MONTH);
+
+
+
+Output —
+
++-------------+------------+-----------+------------------------------+
+| customer_id | first_name | last_name | email                        |
++-------------+------------+-----------+------------------------------+
+|         101 | Aarav      | Sharma    | aarav.sharma@example.com     |
+|         102 | Vihaan     | Singh     | vihaan.singh@example.com     |
+|         103 | Aditi      | Mehta     | aditi.mehta@example.com      |
+|         104 | Rohan      | Kumar     | rohan.kumar@example.com      |
+|         105 | Isha       | Patel     | isha.patel@example.com       |
+|         106 | Kavya      | Verma     | kavya.verma@example.com      |
+|         107 | Arjun      | Reddy     | arjun.reddy@example.com      |
+|         108 | Anaya      | Nair      | anaya.nair@example.com       |
+|         109 | Saanvi     | Gupta     | sanvi.gupta@example.com      |
+|         110 | Kabir      | Agarwal   | kabir.agarwal@example.com    |
+|         111 | Neha       | Saxena    | neha.saxena@example.com      |
+|         112 | Tanishq    | Rana      | tanishq.rana@example.com     |
+|         113 | Mira       | Bhatt     | mira.bhatt@example.com       |
+|         114 | Dev        | Kapoor    | dev.kapoor@example.com       |
+|         115 | Riya       | Joshi     | riya.joshi@example.com       |
+|         101 | Aarav      | Sharma    | aarav.sharma@example.com     |
+|         104 | Rohan      | Kumar     | rohan.kumar@example.com      |
+|         105 | Isha       | Patel     | isha.patel@example.com       |
+|         106 | Kavya      | Verma     | kavya.verma@example.com      |
+|         107 | Arjun      | Reddy     | arjun.reddy@example.com      |
+|         108 | Anaya      | Nair      | anaya.nair@example.com       |
+|         109 | Saanvi     | Gupta     | saanvi.gupta@example.com     |
+|         112 | Tanishq    | Rana      | tanishq.rana@example.com     |
+|         113 | Mira       | Bhatt     | mira.bhatt@example.com       |
+|         114 | Dev        | Kapoor    | dev.kapoor@example.com       |
+|         115 | Riya       | Joshi     | riya.joshi@example.com       |
+|         116 | Lakshay    | Malhotra  | lakshay.malhotra@example.com |
+|         117 | Sneha      | Chawla    | sneha.chawla@example.com     |
+|         118 | Rahul      | Pillai    | rahul.pillai@example.com     |
+|         119 | Nikhil     | Chandra   | nikhil.chandra@example.com   |
+|         101 | Aarav      | Sharma    | aarav.sharma@example.com     |
+|         102 | Vihaan     | Singh     | vihaan.singh@example.com     |
+|         103 | Aditi      | Mehta     | aditi.mehta@example.com      |
+|         104 | Rohan      | Kumar     | rohan.kumar@example.com      |
+|         105 | Isha       | Patel     | isha.patel@example.com       |
+|         107 | Arjun      | Reddy     | arjun.reddy@example.com      |
+|         108 | Anaya      | Nair      | anaya.nair@example.com       |
+|         109 | Saanvi     | Gupta     | saanvi.gupta@example.com     |
+|         110 | Kabir      | Agarwal   | kabir.agarwal@example.com    |
+|         111 | Neha       | Saxena    | neha.saxena@example.com      |
+|         112 | Tanishq    | Rana      | tanishq.rana@example.com     |
+|         113 | Mira       | Bhatt     | mira.bhatt@example.com       |
+|         114 | Dev        | Kapoor    | dev.kapoor@example.com       |
+|         116 | Lakshay    | Malhotra  | lakshay.malhotra@example.com |
+|         117 | Sneha      | Chawla    | sneha.chawla@example.com     |
++-------------+------------+-----------+------------------------------+
+
+
+
+
+
+
+
