@@ -1,0 +1,191 @@
+
+
+Day-22 The Only LEFT, RIGHT, FULL OUTER & CROSS JOIN Explanation You’ll Ever Need
+====================================================================================
+
+
+IMP NOTE - 
+
+
+# When to Use INNER JOIN,  When to Use LEFT OUTER JOIN,  When to Use LEFT OUTER JOIN & When to Use FULL OUTER JOIN  
+————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+— We will Use Inner Join When we are Concerned about Matching Data, If the Data is Not Matching on Any of the Table Discard it
+
+
+— We will Use Left Outer Join When the Left Table is Very Important for us Even If the Data is Not Matching on the Right Side we still want the Data From the Left Table
+
+
+— We will Use Right Outer Join When the Right Table is Very Important for us Even If the Data is Not Matching on the Left Side we still want the Data From the Right Table
+
+
+— We will Use Full Outer Join When Both Left & Right Table is Very Important for us and we don’t want to Lose Any Data.
+
+
+
+
+
+
+
+
+
+LEFT OUTER JOIN 
+=================
+
+— All the Matching Records From Left and Right Table  Are Considered
++
+— All The Non Matching Records In the Left table which does not have the match in the Right Padded with Null
+
+
+
+
+
+# For Example we have 2 Tables “T-1” & “T-2” which has 100 Records Each and Only 50 Records Are Matching
+
+
+T-1 Has 100 Records With Column Name  C1,  C2,  C3
+
+T-2 Has 100 Records With Column Name  C4,  C5,  C6
+
+
+
+Left Outer Join will Give the  [50 Matching Records]  +  [50 Non Matching Records From the Left Table] 
+
+
+
+So the First 50 Records will Have All the 6 Columns from C1 to C6,  But the Other 50 Non Matching Records Will Have Data in the Column C1,  C2,  C3 &  C4,  C5,  C6 will have NULL  [As Shown Below]
+
+
+C1         C2         C3       C4        C5          C6
+C1         C2         C3      NULL    NULL     NULL
+
+
+
+
+
+
+— In the Below Query we Have Mentioned “Customers” Table as the Left Table & “Orders” Table As the Right Table    (And we have Got 68913 Records) 
+
+
+SELECT o.order_id , DATE(o.order_date) , o.order_customer_id , o.order_status, c.customer_fname, c.customer_city, c.customer_state FROM customers c LEFT OUTER JOIN orders o ON c.customer_id = o.order_customer_id LIMIT 20;
+
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+| order_id | DATE(o.order_date) | order_customer_id | order_status    | customer_fname | customer_city | customer_state |
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+|      921 | 2013-07-30         |                12 | PENDING_PAYMENT | Christopher    | San Antonio   | TX             |
+|     2109 | 2013-08-05         |                13 | COMPLETE        | Mary           | Caguas        | PR             |
+|     1559 | 2013-08-02         |                15 | COMPLETE        | Jane           | Fontana       | CA             |
+|      191 | 2013-07-26         |                16 | CLOSED          | Tiffany        | Caguas        | PR             |
+|      789 | 2013-07-29         |                17 | COMPLETE        | Mary           | Taylor        | MI             |
+|     3742 | 2013-08-15         |                18 | COMPLETE        | Robert         | Martinez      | CA             |
+|     1018 | 2013-07-30         |                19 | COMPLETE        | Stephanie      | Caguas        | PR             |
+|     1995 | 2013-08-04         |                22 | CLOSED          | Joseph         | North Bergen  | NJ             |
+|     2167 | 2013-08-06         |                24 | PENDING_PAYMENT | Mary           | Caguas        | PR             |
+|     2299 | 2013-08-06         |                25 | COMPLETE        | Paul           | Peoria        | AZ             |
+|      243 | 2013-07-26         |                32 | ON_HOLD         | Alice          | Caguas        | PR             |
+|      240 | 2013-07-26         |                32 | PENDING         | Alice          | Caguas        | PR             |
+|     1712 | 2013-08-02         |                33 | COMPLETE        | Adam           | Norfolk       | VA             |
+|     1529 | 2013-08-01         |                34 | ON_HOLD         | Mary           | Caguas        | PR             |
+|     1896 | 2013-08-04         |                37 | CLOSED          | Virginia       | Norfolk       | VA             |
+|     3919 | 2013-08-17         |                41 | PENDING_PAYMENT | Victoria       | Brooklyn      | NY             |
+|      253 | 2013-07-26         |                45 | COMPLETE        | Mary           | Denver        | CO             |
+|      916 | 2013-07-30         |                48 | PENDING         | Mary           | Strongsville  | OH             |
+|     3638 | 2013-08-15         |                51 | CLOSED          | Jessica        | Caguas        | PR             |
+|     1717 | 2013-08-02         |                51 | PROCESSING      | Jessica        | Caguas        | PR             |
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+68913 rows in set (0.093 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+— In the Below Query We will Get the Records of the Customers Who Have Not Placed Any Order [You Can See the Values In the Orders Table is Showing as NULL As Order Table is the Right Table]
+
+
+SELECT * FROM customers c LEFT OUTER JOIN orders o ON c.customer_id = o.order_customer_id WHERE o.order_customer_id is NULL;
+
++-------------+----------------+----------------+----------------+-------------------+------------------------------+----------------------+----------------+------------------+----------+------------+-------------------+--------------+
+| customer_id | customer_fname | customer_lname | customer_email | customer_password | customer_street              | customer_city        | customer_state | customer_zipcode | order_id | order_date | order_customer_id | order_status |
++-------------+----------------+----------------+----------------+-------------------+------------------------------+----------------------+----------------+------------------+----------+------------+-------------------+--------------+
+|        7552 | Carl           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 9966 Cinder Loop             | Howell               | MI             | 48843            |     NULL | NULL       |              NULL | NULL         |
+|       10958 | Joan           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 8771 Middle Quail Heath      | Los Angeles          | CA             | 90024            |     NULL | NULL       |              NULL | NULL         |
+|       12392 | Alan           | Wolf           | XXXXXXXXX      | XXXXXXXXX         | 6470 Fallen Barn Autoroute   | Santa Ana            | CA             | 92704            |     NULL | NULL       |              NULL | NULL         |
+|        9060 | Matthew        | Patel          | XXXXXXXXX      | XXXXXXXXX         | 7190 Silver Horse Glade      | Henderson            | NV             | 89014            |     NULL | NULL       |              NULL | NULL         |
+|         469 | Randy          | Smith          | XXXXXXXXX      | XXXXXXXXX         | 252 Golden Goose Loop        | South San Francisco  | CA             | 94080            |     NULL | NULL       |              NULL | NULL         |
+|        6613 | Ashley         | Smith          | XXXXXXXXX      | XXXXXXXXX         | 9847 Dusty Horse Corner      | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|       12175 | Amanda         | Smith          | XXXXXXXXX      | XXXXXXXXX         | 3729 Cinder Grove Concession | Tonawanda            | NY             | 14150            |     NULL | NULL       |              NULL | NULL         |
+|        2096 | Jose           | Tanner         | XXXXXXXXX      | XXXXXXXXX         | 8976 Old Hickory Landing     | Bronx                | NY             | 10467            |     NULL | NULL       |              NULL | NULL         |
+|        8778 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 4015 Tawny Rise Crescent     | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|        2073 | Donna          | Stephens       | XXXXXXXXX      | XXXXXXXXX         | 9792 Cozy Corners            | Sunnyvale            | CA             | 94087            |     NULL | NULL       |              NULL | NULL         |
+|        2450 | James          | Smith          | XXXXXXXXX      | XXXXXXXXX         | 4063 Little Creek Court      | Newark               | DE             | 19702            |     NULL | NULL       |              NULL | NULL         |
+|        1808 | Albert         | Ellison        | XXXXXXXXX      | XXXXXXXXX         | 9795 Heather Wynd            | Billings             | MT             | 59102            |     NULL | NULL       |              NULL | NULL         |
+|        7011 | Kevin          | Smith          | XXXXXXXXX      | XXXXXXXXX         | 1915 Thunder Hickory Freeway | Wyandotte            | MI             | 48192            |     NULL | NULL       |              NULL | NULL         |
+|        1481 | Grace          | Smith          | XXXXXXXXX      | XXXXXXXXX         | 2171 Clear Lake Isle         | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|        6072 | Stephen        | Smith          | XXXXXXXXX      | XXXXXXXXX         | 849 Noble Apple Private      | Malden               | MA             | 02148            |     NULL | NULL       |              NULL | NULL         |
+|       10330 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 3410 Lazy Shadow Pathway     | Hamilton             | OH             | 45013            |     NULL | NULL       |              NULL | NULL         |
+|        4555 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 5455 Red Lagoon Maze         | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|         219 | Mary           | Harrell        | XXXXXXXXX      | XXXXXXXXX         | 9016 Foggy Robin Expressway  | Denver               | CO             | 80219            |     NULL | NULL       |              NULL | NULL         |
+|        8575 | Mary           | Mueller        | XXXXXXXXX      | XXXXXXXXX         | 9714 Emerald Bear Lookout    | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|        4927 | Carolyn        | Green          | XXXXXXXXX      | XXXXXXXXX         | 7550 Sleepy View Court       | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|        9315 | Mary           | Lewis          | XXXXXXXXX      | XXXXXXXXX         | 2993 Burning Dale Farms      | North Richland Hills | TX             | 76180            |     NULL | NULL       |              NULL | NULL         |
+|         339 | Mary           | Greene         | XXXXXXXXX      | XXXXXXXXX         | 4271 Hazy Close              | Long Beach           | CA             | 90805            |     NULL | NULL       |              NULL | NULL         |
+|       10060 | Mary           | Shaw           | XXXXXXXXX      | XXXXXXXXX         | 4645 Fallen Timber By-pass   | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|       10439 | Emma           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 1465 Clear Elk Diversion     | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|        8243 | Gary           | Walker         | XXXXXXXXX      | XXXXXXXXX         | 2447 Stony Barn Street       | New York             | NY             | 10128            |     NULL | NULL       |              NULL | NULL         |
+|        8343 | Mary           | Bolton         | XXXXXXXXX      | XXXXXXXXX         | 7302 Sunny Valley            | Caguas               | PR             | 00725            |     NULL | NULL       |              NULL | NULL         |
+|        8882 | Kenneth        | Smith          | XXXXXXXXX      | XXXXXXXXX         | 6754 Iron Leaf Line          | Hickory              | NC             | 28601            |     NULL | NULL       |              NULL | NULL         |
+|       10913 | Mary           | Williams       | XXXXXXXXX      | XXXXXXXXX         | 9113 Grand Hills Parade      | San Jose             | CA             | 95123            |     NULL | NULL       |              NULL | NULL         |
+|       12190 | Mary           | Smith          | XXXXXXXXX      | XXXXXXXXX         | 4462 Little Lagoon Route     | Tempe                | AZ             | 85283            |     NULL | NULL       |              NULL | NULL         |
+|        1187 | Dorothy        | Vazquez        | XXXXXXXXX      | XXXXXXXXX         | 363 Green Goose Run          | Danbury              | CT             | 06810            |     NULL | NULL       |              NULL | NULL         |
++-------------+----------------+----------------+----------------+-------------------+------------------------------+----------------------+----------------+------------------+----------+------------+-------------------+--------------+
+
+
+
+
+— Now if we do COUNT * It will show Us the Number of Records
+
+SELECT COUNT(*) FROM customers c LEFT OUTER JOIN orders o ON c.customer_id = o.order_customer_id WHERE o.order_customer_id is NULL;
+
++----------+
+| COUNT(*) |
++----------+
+|       30 |
++----------+
+
+
+
+
+
+
+
+# When to Use INNER JOIN,  When to Use LEFT OUTER JOIN,  When to Use LEFT OUTER JOIN & When to Use FULL OUTER JOIN  
+———————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+— We will Use Inner Join When we are Concerned about Matching Data, If the Data is Not Matching on Any of the Table Discard it
+
+
+— We will Use Left Outer Join When the Left Table is Very Important for us Even If the Data is Not Matching on the Right Side we still want the Data From the Left Table
+
+
+— We will Use Right Outer Join When the Right Table is Very Important for us Even If the Data is Not Matching on the Left Side we still want the Data From the Right Table
+
+
+— We will Use Full Outer Join When Both Left & Right Table is Very Important for us and we don’t want to Lose Any Data.
+
+
+
+
+
+
+
+
+
