@@ -1,0 +1,283 @@
+
+
+7) We Can Also Use All the Aggregation Functions in the Above Command
+
+SELECT customer_id, 
+AVG(amount) AS average_sale_amount, 
+SUM(amount) AS total_purchase_amount, 
+COUNT(*) AS total_num_of_orders, 
+SUM(amount) / COUNT(*) AS avgsale 
+FROM sales 
+GROUP BY customer_id;
+
+
+
+Output - 
+
++-------------+---------------------+-----------------------+---------------------+------------+
+| customer_id | average_sale_amount | total_purchase_amount | total_num_of_orders | avgsale    |
++-------------+---------------------+-----------------------+---------------------+------------+
+|         101 |          498.167368 |               9465.18 |                  19 | 498.167368 |
+|         102 |          574.466667 |              12063.80 |                  21 | 574.466667 |
+|         103 |          537.627407 |              14515.94 |                  27 | 537.627407 |
+|         104 |          504.573810 |              10596.05 |                  21 | 504.573810 |
+|         105 |          484.108947 |               9198.07 |                  19 | 484.108947 |
+|         106 |          584.055294 |               9928.94 |                  17 | 584.055294 |
+|         107 |          355.960588 |               6051.33 |                  17 | 355.960588 |
+|         108 |          422.491154 |              10984.77 |                  26 | 422.491154 |
+|         109 |          414.413478 |               9531.51 |                  23 | 414.413478 |
+|         110 |          535.120000 |              17123.84 |                  32 | 535.120000 |
+|         111 |          569.676190 |              11963.20 |                  21 | 569.676190 |
+|         112 |          576.955263 |              10962.15 |                  19 | 576.955263 |
+|         348 |          500.829524 |              10517.42 |                  21 | 500.829524 |
+|         173 |          609.134286 |               8527.88 |                  14 | 609.134286 |
+|         145 |          474.714167 |              11393.14 |                  24 | 474.714167 |
+|         276 |          575.168421 |              10928.20 |                  19 | 575.168421 |
+|          90 |          514.933913 |              11843.48 |                  23 | 514.933913 |
+|         494 |          617.443182 |              13583.75 |                  22 | 617.443182 |
+|         456 |          511.025789 |               9709.49 |                  19 | 511.025789 |
+|         414 |          452.661053 |               8600.56 |                  19 | 452.661053 |
+|         474 |          469.393810 |               9857.27 |                  21 | 469.393810 |
+|          10 |          496.105000 |               9922.10 |                  20 | 496.105000 |
+|         241 |          533.363333 |               9600.54 |                  18 | 533.363333 |
+|         199 |          347.527778 |               6255.50 |                  18 | 347.527778 |
+|         499 |          541.741333 |               8126.12 |                  15 | 541.741333 |
+|         403 |          553.529259 |              14945.29 |                  27 | 553.529259 |
+|         429 |          543.815909 |              11963.95 |                  22 | 543.815909 |
+|          77 |          540.717826 |              12436.51 |                  23 | 540.717826 |
+|          22 |          461.320000 |               9687.72 |                  21 | 461.320000 |
+|         166 |          544.471053 |              10344.95 |                  19 | 544.471053 |
+|          47 |          497.445714 |              10446.36 |                  21 | 497.445714 |
+|         119 |          503.629091 |              11079.84 |                  22 | 503.629091 |
+|         251 |          414.721579 |               7879.71 |                  19 | 414.721579 |
++-------------+---------------------+-----------------------+---------------------+------------+
+
+
+
+
+
+
+
+
+
+
+8) We want Total Sales By Month & Category
+
+We have 5 Categories & 6 Months so the Output Rows will be 30
+
+
+—> First we will Extract the Months from the Sale Date Column By Using Below Command [Y means 2025, y means 25, & M means Month in Words, m means 12]
+
+SELECT DISTINCT DATE_FORMAT(sale_date, ‘%Y-%m’) FROM sales
+
+
+SELECT DATE_FORMAT(sale_date,’%Y-%m’) AS sale_month, category, SUM(amount) AS total_sales
+FROM sales
+GROUP BY sale_month, category;
+
+
+
+Output - 
+
++------------+-------------+-------------+
+| sale_month | category    | total_sales |
++------------+-------------+-------------+
+| 2023-01    | Electronics |   173874.94 |
+| 2023-01    | Furniture   |   174523.20 |
+| 2023-02    | Electronics |   148533.01 |
+| 2023-02    | Furniture   |   141893.22 |
+| 2023-03    | Clothing    |   185666.26 |
+| 2023-06    | Furniture   |   148540.05 |
+| 2023-01    | Toys        |   171815.09 |
+| 2023-02    | Toys        |   146288.45 |
+| 2023-05    | Toys        |   167224.22 |
+| 2023-04    | Furniture   |   167778.87 |
+| 2023-03    | Toys        |   168396.51 |
+| 2023-05    | Furniture   |   156995.05 |
+| 2023-04    | Clothing    |   182848.69 |
+| 2023-06    | Books       |   172626.63 |
+| 2023-05    | Books       |   153634.14 |
+| 2023-03    | Furniture   |   162096.81 |
+| 2023-06    | Clothing    |   161970.78 |
+| 2023-02    | Books       |   164654.15 |
+| 2023-03    | Books       |   173287.52 |
+| 2023-03    | Electronics |   173905.23 |
+| 2023-02    | Clothing    |   147561.02 |
+| 2023-04    | Books       |   152747.08 |
+| 2023-04    | Electronics |   168235.37 |
+| 2023-04    | Toys        |   156343.65 |
+| 2023-05    | Clothing    |   192921.05 |
+| 2023-01    | Clothing    |   188686.98 |
+| 2023-05    | Electronics |   183407.25 |
+| 2023-01    | Books       |   170737.55 |
+| 2023-06    | Electronics |   139573.66 |
+| 2023-06    | Toys        |   166204.58 |
++------------+-------------+-------------+
+
+
+
+
+
+9) We want Total Sales By Store Location Where Total Sales Exceeds 1 Million    [Example of HAVING]
+
+Note - If we want to Apply Filter on Aggregation Like SUM, COUNT, MIN, MAX, AVG Then we will Use “HAVING”
+
+
+SELECT store_location, SUM(amount) AS total_sales
+FROM sales
+GROUP BY store_location;
+HAVING total_sales >=1000000
+
+
+
+Output - 
+
++----------------+-------------+
+| store_location | total_sales |
++----------------+-------------+
+| New York       |  1022916.18 |
+| Los Angeles    |  1028429.01 |
++----------------+-------------+
+
+
+
+
+
+
+10) We want Highest Order Amount in Each Category 
+
+SELECT category, MAX(amount) AS highest_order_amount 
+FROM sales
+GROUP BY category;
+
+
+
+Output - 
+
++-------------+----------------------+
+| category    | highest_order_amount |
++-------------+----------------------+
+| Electronics |              1200.50 |
+| Furniture   |               999.53 |
+| Clothing    |               999.90 |
+| Toys        |               998.16 |
+| Books       |               998.79 |
++-------------+----------------------+
+
+
+
+
+
+
+
+11) We want Total Sales Amount & Average Quantity Sold Per Product Sold in New York
+
+SELECT product, 
+SUM(amount) AS total_sales_amount, 
+AVG(quantity) AS avg_quantity_sold 
+FROM sales 
+WHERE store_location = 'New York' 
+GROUP BY product;
+
+
+
+Output - 
+
++--------------------+--------------------+-------------------+
+| product            | total_sales_amount | avg_quantity_sold |
++--------------------+--------------------+-------------------+
+| Laptop             |           14884.19 |            6.0938 |
+| Tablet             |           15499.28 |            5.8000 |
+| Monitor            |           16956.99 |            5.2895 |
+| Keyboard           |           24349.93 |            5.0698 |
+| Bed                |           19177.69 |            4.6512 |
+| Shoes              |           38712.29 |            5.1667 |
+| Coffee Table       |           25014.91 |            5.5532 |
+| Bookshelf          |           27816.33 |            5.2917 |
+| Dress              |           42463.08 |            5.6353 |
+| History Book       |           47256.01 |            6.0000 |
+| Smartwatch         |           22310.09 |            5.5909 |
+| Puzzle             |           43029.83 |            5.8590 |
+| Speaker            |           23382.87 |            5.4468 |
+| Science Book       |           30682.38 |            4.6721 |
+| T-shirt            |           41967.58 |            5.6296 |
+| Doll               |           37102.79 |            6.1714 |
+| Non-fiction Book   |           38893.67 |            5.7375 |
+| Nightstand         |           22209.36 |            5.4857 |
+| Jeans              |           49248.51 |            5.9579 |
+| Camera             |           24701.49 |            5.8400 |
+| Headphones         |           22978.92 |            4.6078 |
+| Mouse              |           15899.66 |            5.7568 |
+| Board Game         |           43644.76 |            5.8395 |
+| Art Book           |           42226.01 |            5.5366 |
+| Dresser            |           15857.01 |            5.9024 |
+| Fiction Book       |           40490.14 |            4.7204 |
+| Remote Control Car |           48468.80 |            5.3789 |
+| Wardrobe           |           17084.97 |            5.3684 |
+| Jacket             |           39285.79 |            5.5200 |
+| Action Figure      |           33604.03 |            5.6056 |
+| Smartphone         |           22494.26 |            4.6000 |
+| Sofa               |           17190.27 |            5.5500 |
+| Chair              |           24669.04 |            5.7317 |
+| Desk               |           13138.18 |            4.7097 |
+| Table Lamp         |           20225.07 |            5.2333 |
++--------------------+--------------------+-------------------+
+
+
+
+
+
+
+
+
+12) We Just need to do Analysis on Product ‘Tablet’
+
+
+SELECT product, 
+SUM(amount) AS total_sales_amount, 
+SUM(quantity) AS avg_quantity_sold 
+FROM sales 
+WHERE store_location = 'New York' AND product = ‘Tablet’
+GROUP BY product; 
+
+
+
+Output - 
+
++---------+--------------------+---------------------+
+| product | total_sales_amount | total_quantity_sold |
++---------+--------------------+---------------------+
+| Tablet  |           15499.28 |                 174 |
++---------+--------------------+---------------------+
+
+
+
+
+
+
+
+13) We want Total Sales & Total Quantity Sold in Each Month
+
+SELECT DATE_FORMAT(sale_date, ‘%Y-%m’) as sale_month, SUM(amount) AS total_sales, SUM(quantity) AS total_quantity
+FROM sales
+GROUP BY sale_month;
+
+
+
+Output - 
+
++------------+-------------+----------------+
+| sale_month | total_sales | total_quantity |
++------------+-------------+----------------+
+| 2023-01    |   879637.76 |           9648 |
+| 2023-02    |   748929.85 |           8206 |
+| 2023-03    |   863352.33 |           9480 |
+| 2023-06    |   788915.70 |           8815 |
+| 2023-05    |   854181.71 |           9536 |
+| 2023-04    |   827953.66 |           9005 |
++------------+-------------+----------------+
+
+
+
+
+
