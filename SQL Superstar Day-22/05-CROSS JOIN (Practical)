@@ -1,0 +1,203 @@
+
+
+Practical of Cross Join
+=========================
+
+
+
+
+1) In the Left Table we Have 3 Records & In the Right Table we Have 3 Records. If we Use Cross Join It will Try to Combine Each Record On the Left Table with Each Record On The Right Table. 
+
+That Will be 3x3= 9 (As Shown Below)
+
+
+SELECT p.*,c.* FROM product p JOIN color c;
+
++------------+--------------+----------+------------+
+| product_id | product_name | color_id | color_name |
++------------+--------------+----------+------------+
+|          3 | Mug          |        1 | Red        |
+|          2 | Hoodie       |        1 | Red        |
+|          1 | T-shirt      |        1 | Red        |
+|          3 | Mug          |        2 | Blue       |
+|          2 | Hoodie       |        2 | Blue       |
+|          1 | T-shirt      |        2 | Blue       |
+|          3 | Mug          |        3 | Green      |
+|          2 | Hoodie       |        3 | Green      |
+|          1 | T-shirt      |        3 | Green      |
++------------+--------------+----------+------------+
+
+
+
+
+
+
+2) Below is the Count of the Records which Cross Join is Providing
+
+SELECT COUNT(*) FROM product p JOIN color c;
+
++----------+
+| COUNT(*) |
++----------+
+|        9 |
++----------+
+
+
+
+
+
+
+
+
+
+———————————————————————————————————————
+
+3) In the Below Query we have Found the 3 States Which has Received Maximum Number of Orders 
+
+
+SELECT c.customer_state, COUNT(*) AS num_of_orders 
+FROM customers c 
+INNER JOIN orders o ON o.order_customer_id = c.customer_id 
+GROUP BY c.customer_state 
+ORDER BY num_of_orders DESC
+LIMIT 3;
+
++----------------+---------------+
+| customer_state | num_of_orders |
++----------------+---------------+
+| PR             |         26510 |
+| CA             |         11051 |
+| NY             |          4331 |
++----------------+---------------+
+
+
+
+
+
+
+
+
+
+4) Find Top 5 Customers With Maximum Orders in Closed Status
+
+SELECT order_customer_id, COUNT(*) AS num_of_orders 
+FROM orders 
+WHERE order_status = 'CLOSED' 
+GROUP BY order_customer_id 
+ORDER BY num_of_orders DESC 
+LIMIT 5; 
+
++-------------------+---------------+
+| order_customer_id | num_of_orders |
++-------------------+---------------+
+|              1833 |             6 |
+|              1687 |             5 |
+|              1363 |             5 |
+|              5493 |             5 |
+|              3736 |             4 |
++-------------------+---------------+
+
+
+
+
+
+
+
+— List the customer_street from where we have orders will all possible order status
+
+
+In the Orders Table we Have 9 Different Order Status (As Listed Below)
+
+
+SELECT DISTINCT order_status FROM orders;
+
++-----------------+
+| order_status    |
++-----------------+
+| CLOSED          |
+| PENDING_PAYMENT |
+| COMPLETE        |
+| PROCESSING      |
+| PAYMENT_REVIEW  |
+| PENDING         |
+| ON_HOLD         |
+| CANCELED        |
+| SUSPECTED_FRAUD |
++-----------------+
+
+
+
+
+SELECT c.customer_street, COUNT(DISTINCT o.order_status) AS total 
+FROM customers c JOIN orders o ON c.customer_id = o.order_customer_id 
+GROUP BY customer_street 
+HAVING COUNT(DISTINCT o.order_status) = 9;
+
++------------------------------+-------+
+| customer_street              | total |
++------------------------------+-------+
+| 2557 Gentle Hills Wynd       |     9 |
+| 2584 Round Square            |     9 |
+| 3200 Amber Bend              |     9 |
+| 4166 Golden Willow Circuit   |     9 |
+| 5010 Emerald Hollow          |     9 |
+| 5271 Quaking Deer Bend       |     9 |
+| 599 Sleepy Townline          |     9 |
+| 6312 Noble Apple Woods       |     9 |
+| 6324 Jagged Orchard          |     9 |
+| 6716 Wishing Pioneer Thicket |     9 |
+| 7247 Honey Prairie Field     |     9 |
+| 8421 Sunny Butterfly Trace   |     9 |
+| 8428 Honey Freeway           |     9 |
+| 8668 Emerald Elk Mount       |     9 |
+| 870 Amber Quail Circuit      |     9 |
+| 9739 Round Spring Expressway |     9 |
+| 9882 Cotton Abbey            |     9 |
++------------------------------+-------+
+17 rows in set (0.234 sec)
+
+
+
+
+
+
+OR 
+
+
+
+SELECT c.customer_street, COUNT(DISTINCT o.order_status) AS total 
+FROM customers c JOIN orders o ON c.customer_id = o.order_customer_id 
+GROUP BY customer_street 
+HAVING COUNT(T o.order_status) = (SELECT COUNT(DISTINCT order_status) FROM orders);
+
++------------------------------+-------+
+| customer_street              | total |
++------------------------------+-------+
+| 2557 Gentle Hills Wynd       |     9 |
+| 2584 Round Square            |     9 |
+| 3200 Amber Bend              |     9 |
+| 4166 Golden Willow Circuit   |     9 |
+| 5010 Emerald Hollow          |     9 |
+| 5271 Quaking Deer Bend       |     9 |
+| 599 Sleepy Townline          |     9 |
+| 6312 Noble Apple Woods       |     9 |
+| 6324 Jagged Orchard          |     9 |
+| 6716 Wishing Pioneer Thicket |     9 |
+| 7247 Honey Prairie Field     |     9 |
+| 8421 Sunny Butterfly Trace   |     9 |
+| 8428 Honey Freeway           |     9 |
+| 8668 Emerald Elk Mount       |     9 |
+| 870 Amber Quail Circuit      |     9 |
+| 9739 Round Spring Expressway |     9 |
+| 9882 Cotton Abbey            |     9 |
++------------------------------+-------+
+17 rows in set (0.249 sec)
+
+
+
+
+
+
+
+
+
