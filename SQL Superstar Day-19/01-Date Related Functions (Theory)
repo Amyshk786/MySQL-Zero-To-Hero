@@ -52,3 +52,168 @@ SELECT CURRENT_TIMESTAMP();
 
 
 
+
+
+
+
+————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+
+
+
+— We are Now Creating a Table Named as ‘orders1’
+
+
+CREATE TABLE orders1 (
+order_id INT AUTO_INCREMENT PRIMARY KEY,
+customer_id INT,
+product_id INT,
+quantity INT,
+order_date DATE,
+total_amount DECIMAL(10,2)
+);
+
+
+
+
+
+— Inserting Data Into the Table
+
+INSERT INTO orders1 (customer_id, product_id, quantity, order_date, total_amount) 
+VALUES 
+(1, 101, 2, CURRENT_DATE, 199.98), 
+(2, 102, 1, CURRENT_DATE, 99.99), 
+(3, 103, 5, CURRENT_DATE, 499.95), 
+(4, 104, 3, CURRENT_DATE, 299.97), 
+(5, 105, 4, CURRENT_DATE, 399.96);
+
+
+
+
+— Checking if the Data is Properly Inserted or Not
+
+SELECT * FROM orders1;
+
++----------+-------------+------------+----------+------------+--------------+
+| order_id | customer_id | product_id | quantity | order_date | total_amount |
++----------+-------------+------------+----------+------------+--------------+
+|        1 |           1 |        101 |        2 | 2025-12-27 |       199.98 |
+|        2 |           2 |        102 |        1 | 2025-12-27 |        99.99 |
+|        3 |           3 |        103 |        5 | 2025-12-27 |       499.95 |
+|        4 |           4 |        104 |        3 | 2025-12-27 |       299.97 |
+|        5 |           5 |        105 |        4 | 2025-12-27 |       399.96 |
++----------+-------------+------------+----------+------------+--------------+
+
+
+
+
+
+4) If we Want to Extract Date or Time From a DATE_TIME we can use Below Command
+
+
+— This is the DATE_TIME from which we want to Extract the Date & Time
+
+SELECT CURRENT_TIMESTAMP();
+
++---------------------+
+| CURRENT_TIMESTAMP() |
++---------------------+
+| 2025-12-26 23:46:25 |
++---------------------+
+
+
+
+
+— For Extracting Date use Below
+
+SELECT DATE('2025-12-26 23:46:25') AS date_only;
+
++------------+
+| date_only  |
++------------+
+| 2025-12-26 |
++------------+
+
+
+
+
+
+— For Extracting Time use Below
+
+SELECT TIME('2025-12-26 23:46:25') AS time_only;
++-----------+
+| time_only |
++-----------+
+| 23:46:25  |
++-----------+
+
+
+
+
+
+
+
+
+
+5) If we Want to Extract Year, Month or Day From a DATE_TIME we can use Below Command
+
+
+— This is the DATE_TIME from which we want to Extract the Date & Time
+
+SELECT CURRENT_TIMESTAMP();
+
++---------------------+
+| CURRENT_TIMESTAMP() |
++---------------------+
+| 2025-12-26 23:46:25 |
++---------------------+
+
+
+
+
+— For Extracting Year use Below
+
+SELECT EXTRACT(YEAR FROM '2025-12-27 00:17:05') AS year_only;
+
++-----------+
+| year_only |
++-----------+
+|      2025 |
++-----------+
+
+
+
+
+
+— For Extracting Month use Below
+
+SELECT EXTRACT(MONTH FROM '2025-12-27 00:17:05') AS month_only;
+
++------------+
+| month_only |
++------------+
+|         12 |
++------------+
+
+
+
+
+
+— For Extracting Day use Below
+
+SELECT EXTRACT(DAY FROM '2025-12-27 00:17:05') AS day_only;
+
++----------+
+| day_only |
++----------+
+|       27 |
++----------+
+
+
+
+
+
+
+
+
