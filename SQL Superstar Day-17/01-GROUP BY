@@ -1,0 +1,313 @@
+
+
+Day-17 The Only SQL GROUP BY & HAVING Video You Need (Full 100 Minute Tutorial)
+===================================================================================
+
+
+IMP NOTE - If we are Using GROUP BY so in the Select Column we Can Only Add Aggregation Functions like (COUNT, SUM, AVG, MIN, MAX) If we enter any other thing this will Throw an Error.
+
+
+GROUP BY
+=========
+
+1) We have a Business Requirement that we want Total Sales Category Wise
+
+
+
+
+A) So first we will have to Check How many Categories we have 
+
+SELECT DISTINCT category FROM sales;
+
+
+Output - 
+
++-------------+
+| category    |
++-------------+
+| Electronics |
+| Furniture   |
+| Clothing    |
+| Toys        |
+| Books       |
++-------------+
+
+
+
+
+
+
+B) 
+
+SELECT category, SUM(amount) AS total_sales
+FROM sales
+GROUP BY category;
+
+
+
+Output - 
+
++-------------+-------------+
+| category    | total_sales |
++-------------+-------------+
+| Electronics |   987529.46 |
+| Furniture   |   951827.20 |
+| Clothing    |  1059654.78 |
+| Toys        |   976272.50 |
+| Books       |   987687.07 |
++-------------+-------------+
+
+
+
+
+
+
+
+
+2) Count of Products in Each Category
+
+SELECT category, COUNT(DISTINCT product) AS total_products FROM sales GROUP BY category;
+
+
+Output - 
+
++-------------+----------------+
+| category    | total_products |
++-------------+----------------+
+| Books       |              5 |
+| Clothing    |              5 |
+| Electronics |             10 |
+| Furniture   |             10 |
+| Toys        |              5 |
++-------------+----------------+
+
+
+
+
+
+
+
+
+3) A) We want to Find Total Quantity Sold for Each Product
+
+SELECT product, SUM(quantity) AS total_quantity FROM sales GROUP BY product;
+
+
+
+Output - 
+
++--------------------+----------------+
+| product            | total_quantity |
++--------------------+----------------+
+| Laptop             |           1243 |
+| Smartphone         |           1067 |
+| Tablet             |            950 |
+| Desk               |           1123 |
+| Chair              |            963 |
+| Sofa               |           1026 |
+| Monitor            |            961 |
+| Keyboard           |           1038 |
+| Mouse              |            980 |
+| Bookshelf          |           1032 |
+| Bed                |           1242 |
+| Table Lamp         |            888 |
+| Shoes              |           2376 |
+| Board Game         |           2055 |
+| Action Figure      |           2167 |
+| Coffee Table       |           1207 |
+| Wardrobe           |           1006 |
+| Jacket             |           2198 |
+| Art Book           |           2192 |
+| History Book       |           2127 |
+| Fiction Book       |           2207 |
+| Dress              |           2409 |
+| Science Book       |           1943 |
+| Remote Control Car |           2266 |
+| Smartwatch         |           1159 |
+| Puzzle             |           2172 |
+| T-shirt            |           2147 |
+| Jeans              |           2385 |
+| Speaker            |           1208 |
+| Non-fiction Book   |           2332 |
+| Dresser            |           1059 |
+| Doll               |           2218 |
+| Nightstand         |           1204 |
+| Headphones         |           1054 |
+| Camera             |           1086 |
++--------------------+----------------+
+
+
+
+
+
+
+
+3) B) We want to Find Total Quantity Sold for Each Product and Total Number of Orders
+
+SELECT product, COUNT(*) AS total_orders, SUM(quantity) AS total_quantity FROM SALES GROUP BY product;
+
+
+Output - 
+
++--------------------+--------------+----------------+
+| product            | total_orders | total_quantity |
++--------------------+--------------+----------------+
+| Laptop             |          213 |           1243 |
+| Smartphone         |          205 |           1067 |
+| Tablet             |          177 |            950 |
+| Desk               |          201 |           1123 |
+| Chair              |          168 |            963 |
+| Sofa               |          191 |           1026 |
+| Monitor            |          178 |            961 |
+| Keyboard           |          209 |           1038 |
+| Mouse              |          190 |            980 |
+| Bookshelf          |          186 |           1032 |
+| Bed                |          227 |           1242 |
+| Table Lamp         |          163 |            888 |
+| Shoes              |          440 |           2376 |
+| Board Game         |          378 |           2055 |
+| Action Figure      |          404 |           2167 |
+| Coffee Table       |          217 |           1207 |
+| Wardrobe           |          187 |           1006 |
+| Jacket             |          404 |           2198 |
+| Art Book           |          387 |           2192 |
+| History Book       |          403 |           2127 |
+| Fiction Book       |          412 |           2207 |
+| Dress              |          441 |           2409 |
+| Science Book       |          375 |           1943 |
+| Remote Control Car |          426 |           2266 |
+| Smartwatch         |          212 |           1159 |
+| Puzzle             |          392 |           2172 |
+| T-shirt            |          377 |           2147 |
+| Jeans              |          427 |           2385 |
+| Speaker            |          205 |           1208 |
+| Non-fiction Book   |          419 |           2332 |
+| Dresser            |          190 |           1059 |
+| Doll               |          394 |           2218 |
+| Nightstand         |          210 |           1204 |
+| Headphones         |          197 |           1054 |
+| Camera             |          195 |           1086 |
++--------------------+--------------+----------------+
+
+
+
+
+
+
+
+
+4) 3 Products with Maximum Sales
+
+SELECT product, SUM (quantity) AS total_quantity, 
+FROM sales 
+GROUP BY product 
+ORDER BY total_quantity DESC 
+LIMIT 3; 
+
+
+
+Output - 
+
++---------+----------------+
+| product | total_quantity |
++---------+----------------+
+| Dress   |           2409 |
+| Jeans   |           2385 |
+| Shoes   |           2376 |
++---------+----------------+
+
+
+
+
+
+
+
+
+5) We want Total Sales & Number of Transactions Per Store Location 
+
+SELECT store_location, SUM(amount) AS total_sales, COUNT(*) AS total_num_of_transactions  
+FROM sales
+GROUP BY store_location;
+
+
+
+Output - 
+
++----------------+-------------+---------------------------+
+| store_location | total_sales | total_num_of_transactions |
++----------------+-------------+---------------------------+
+| New York       |  1022916.18 |                      2016 |
+| Los Angeles    |  1028429.01 |                      2050 |
+| Chicago        |   953286.49 |                      1952 |
+| Miami          |   979553.09 |                      1986 |
+| Houston        |   978786.24 |                      1996 |
++----------------+-------------+---------------------------+
+
+
+
+
+
+
+
+6) Average Sale Amount By Each Customer
+
+SELECT customer_id, AVG(amount) AS average_sale_amount
+FROM sales
+GROUP BY customer_id
+
+
+
+
+Output - [There Are 1k Customers That’s why I have just pasted few Columns]
+
++-------------+---------------------+
+| customer_id | avearge_sale_amount |
++-------------+---------------------+
+|         101 |          498.167368 |
+|         102 |          574.466667 |
+|         103 |          537.627407 |
+|         104 |          504.573810 |
+|         105 |          484.108947 |
+|         106 |          584.055294 |
+|         107 |          355.960588 |
+|         108 |          422.491154 |
+|         109 |          414.413478 |
+|         110 |          535.120000 |
+|         111 |          569.676190 |
+|         112 |          576.955263 |
+|         348 |          500.829524 |
+|         173 |          609.134286 |
+|         145 |          474.714167 |
+|         276 |          575.168421 |
+|          90 |          514.933913 |
+|         494 |          617.443182 |
+|         456 |          511.025789 |
+|         414 |          452.661053 |
+|         474 |          469.393810 |
+|          10 |          496.105000 |
+|         241 |          533.363333 |
+|         199 |          347.527778 |
+|         499 |          541.741333 |
+|         403 |          553.529259 |
+|         429 |          543.815909 |
+|          77 |          540.717826 |
+|          22 |          461.320000 |
+|         166 |          544.471053 |
+|          47 |          497.445714 |
+|         119 |          503.629091 |
+|         251 |          414.721579 |
+|          79 |          406.278636 |
+|         192 |          484.128947 |
+|          86 |          413.661000 |
+|          11 |          538.452917 |
+|         318 |          509.048261 |
+|         410 |          730.590588 |
+|          31 |          465.905000 |
+|         114 |          504.925714 |
+|          29 |          502.663889 |
++-------------+---------------------+
+
+
+
+
+
