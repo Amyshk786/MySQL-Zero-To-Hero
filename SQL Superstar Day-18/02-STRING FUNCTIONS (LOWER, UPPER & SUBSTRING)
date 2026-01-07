@@ -1,0 +1,157 @@
+
+
+C) Lower & Upper
+================
+
+
+— Currently the Database which we are using is Case Insensitive but Some of the Databases are Case Sensitive so in that case Lower and Upper is Used
+
+
+
+
+— Lower Example
+
+SELECT LOWER('SQL Champion Program');
+
+Output —
+
+
++-------------------------------+
+| LOWER('SQL Champion Program') |
++-------------------------------+
+| sql champion program          |
++-------------------------------+
+
+
+
+
+
+
+— Upper Example 
+
+SELECT UPPER('SQL Champion Program');
+
+Output —
+
+
++-------------------------------+
+| UPPER('SQL Champion Program') |
++-------------------------------+
+| SQL CHAMPION PROGRAM          |
++-------------------------------+
+
+
+
+
+
+
+
+
+
+
+
+
+—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+D) Substring 
+===============
+
+
+
+— In the Below Example we have entered the String as Hello World so they are In total 11 Characters Including space [7,5 Means Hello is 5 words and space is 6th word] So it will give us the from 7th Character & It will give 5 Characters 
+In this case it has given World which is of 5 Characters
+
+
+SELECT SUBSTRING('Hello World', 7,5);
+
+
++-------------------------------+
+| SUBSTRING('Hello World', 7,5) |
++-------------------------------+
+| World                         |
++-------------------------------+
+
+
+
+
+
+
+
+
+— We can Also Give the Starting Number so it will start from that and give the result till the end [In the Below Eg we have given 3 and l is the 3rd Char and it has provided the Output till end]
+
+
+SELECT SUBSTRING('Hello World', 3);
+
+
++-----------------------------+
+| SUBSTRING('Hello World', 3) |
++-----------------------------+
+| llo World                   |
++-----------------------------+
+
+
+
+
+
+
+
+
+
+
+— -5 Matlab sirf World print krega
+
+
+SELECT SUBSTRING('Hello World', -5);
+
+
++------------------------------+
+| SUBSTRING('Hello World', -5) |
++------------------------------+
+| World                        |
++------------------------------+
+
+
+
+
+
+
+
+
+— In the Below Command we have Selected Customer Firstname & last 4 characters of first name and you can see the Output
+
+
+SELECT customer_fname, SUBSTRING(customer_fname, -4) FROM customers LIMIT 20;
+
+
++----------------+-------------------------------+
+| customer_fname | SUBSTRING(customer_fname, -4) |
++----------------+-------------------------------+
+| Richard        | hard                          |
+| Mary           | Mary                          |
+| Ann            |                               |
+| Mary           | Mary                          |
+| Robert         | bert                          |
+| Mary           | Mary                          |
+| Melissa        | issa                          |
+| Megan          | egan                          |
+| Mary           | Mary                          |
+| Melissa        | issa                          |
+| Mary           | Mary                          |
+| Christopher    | pher                          |
+| Mary           | Mary                          |
+| Katherine      | rine                          |
+| Jane           | Jane                          |
+| Tiffany        | fany                          |
+| Mary           | Mary                          |
+| Robert         | bert                          |
+| Stephanie      | anie                          |
+| Mary           | Mary                          |
++----------------+-------------------------------+
+
+
+
+
+
+
