@@ -1,0 +1,71 @@
+
+
+13) D)  “ROUND” [It will Round Up the Number & we can Also mention till How Many Decimal Places we want] As Shown Below it is 3 Decimal Places
+
+
+
+
+
+SELECT ROUND(26.7587,3); [Round will Round it up if the next digit is Greater than 5]
+
++------------------+
+| ROUND(26.7587,3) |
++------------------+
+|           26.759 |
++------------------+
+
+
+
+
+
+
+
+
+13) E)  “TRUNCATE” [It will Show till the last Decimal Value and will Not Round Up] As Shown Below it is 3 Decimal Places
+
+
+SELECT TRUNCATE(26.7587,3); [Truncate will show only the last digit and discard the other digits]
+
++---------------------+
+| TRUNCATE(26.7587,3) |
++---------------------+
+|              26.758 |
++---------------------+
+
+
+
+
+
+
+
+
+
+
+13) F)  “MOD” [This will Show Us the Remainder Value]  (3x3=9  & 10 - 9  is  1) So the Answer is 1
+
+
+SELECT MOD(10,3);
+
++-----------+
+| MOD(10,3) |
++-----------+
+|         1 |
++-----------+
+
+
+
+
+
+SELECT MOD(14,3);
+
++-----------+
+| MOD(14,3) |
++-----------+
+|         2 |
++-----------+
+
+
+
+
+
+
