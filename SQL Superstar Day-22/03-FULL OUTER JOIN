@@ -1,0 +1,60 @@
+
+
+FULL OUTER JOIN
+=================
+
+
+All Matching Records Are Shown
++
+Non Matching Records From Left
++
+Non Matching Records From Right
+
+
+
+Important Note - In MySQL We Do Not have a Keyword as "Full Outer Join"  We Use "UNION"
+
+[Left Outer Join & Right Outer Join Ki Query Likh k Beech me UNION Likhne ka]
+
+
+
+SELECT o.order_id , DATE(o.order_date) , o.order_customer_id , o.order_status , c.customer_fname , c.customer_city , c.customer_state FROM customers c LEFT OUTER JOIN  orders o ON c.customer_id = o.order_customer_id
+UNION
+SELECT o.order_id , DATE(o.order_date) , o.order_customer_id , o.order_status , c.customer_fname , c.customer_city , c.customer_state FROM customers c RIGHT OUTER JOIN  orders o ON c.customer_id = o.order_customer_id LIMIT 20;
+
+
+
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+| order_id | DATE(o.order_date) | order_customer_id | order_status    | customer_fname | customer_city | customer_state |
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+|      921 | 2013-07-30         |                12 | PENDING_PAYMENT | Christopher    | San Antonio   | TX             |
+|     2109 | 2013-08-05         |                13 | COMPLETE        | Mary           | Caguas        | PR             |
+|     1559 | 2013-08-02         |                15 | COMPLETE        | Jane           | Fontana       | CA             |
+|      191 | 2013-07-26         |                16 | CLOSED          | Tiffany        | Caguas        | PR             |
+|      789 | 2013-07-29         |                17 | COMPLETE        | Mary           | Taylor        | MI             |
+|     3742 | 2013-08-15         |                18 | COMPLETE        | Robert         | Martinez      | CA             |
+|     1018 | 2013-07-30         |                19 | COMPLETE        | Stephanie      | Caguas        | PR             |
+|     1995 | 2013-08-04         |                22 | CLOSED          | Joseph         | North Bergen  | NJ             |
+|     2167 | 2013-08-06         |                24 | PENDING_PAYMENT | Mary           | Caguas        | PR             |
+|     2299 | 2013-08-06         |                25 | COMPLETE        | Paul           | Peoria        | AZ             |
+|      243 | 2013-07-26         |                32 | ON_HOLD         | Alice          | Caguas        | PR             |
+|      240 | 2013-07-26         |                32 | PENDING         | Alice          | Caguas        | PR             |
+|     1712 | 2013-08-02         |                33 | COMPLETE        | Adam           | Norfolk       | VA             |
+|     1529 | 2013-08-01         |                34 | ON_HOLD         | Mary           | Caguas        | PR             |
+|     1896 | 2013-08-04         |                37 | CLOSED          | Virginia       | Norfolk       | VA             |
+|     3919 | 2013-08-17         |                41 | PENDING_PAYMENT | Victoria       | Brooklyn      | NY             |
+|      253 | 2013-07-26         |                45 | COMPLETE        | Mary           | Denver        | CO             |
+|      916 | 2013-07-30         |                48 | PENDING         | Mary           | Strongsville  | OH             |
+|     3638 | 2013-08-15         |                51 | CLOSED          | Jessica        | Caguas        | PR             |
+|     1717 | 2013-08-02         |                51 | PROCESSING      | Jessica        | Caguas        | PR             |
++----------+--------------------+-------------------+-----------------+----------------+---------------+----------------+
+68909 rows in set (0.342 sec)
+
+
+
+
+
+
+
+
+
