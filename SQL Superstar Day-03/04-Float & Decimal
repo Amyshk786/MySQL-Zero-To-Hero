@@ -9,7 +9,7 @@ IMP Note -
 
 - Float Can Hold Upto 3 Decimal Values
 
-- Decimal Can Hold as much as we want we just have to mention that  [DECIMAL (20,7)] This means it will have 20 Total Digits,  It can hold up to 7 decimals & We can Increase  this as per our Requirements 
+- Decimal Can Hold as much as we want we just have to mention that  [DECIMAL (20,7)] This means it will have 20 Total Digits, 13 Before Decimal and  7 Digits After Decimal & We can Increase  this as per our Requirements 
 
 
 
