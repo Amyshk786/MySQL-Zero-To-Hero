@@ -34,6 +34,6 @@ DROP TABLE customers;
 
 
 - If we want to Only Delete the Information Inside the table then we can use the below Command
-DELETE TABLE employees;
+DELETE FROM employees;
 
 
