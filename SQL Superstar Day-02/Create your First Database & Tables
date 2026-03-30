@@ -69,6 +69,27 @@ customer_zipcode VARCHAR(45)
 
 
 
+## In Postgresql, Oracle has Something Called as "SCHEMA" which is Nothing but a Namespace 
+
+
+
+-> For Example 
+
+We have retail_db as our Database
+
+DEV, TEST & PROD Will be the Schema or Namespace [These are different Environments within an Org]
+
+Then we will have Tables Under Each Environment
+
+
+
+In a Nutshell
+
+DB -> SCHEMA -> TABLES  [This is the Hirerachy]
+
+
+
+
 
 
 
