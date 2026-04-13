@@ -15,3 +15,152 @@ DCL - Manages Permissions  [GRANT, REVOKE]
 
 
 TCL - Manages Transactions   [COMMIT, ROLLBACK, SAVE-POINT, SET TRANSACTION]
+
+
+
+
+
+
+===========================================================================================================================================================================================
+
+Data Control Language (DCL) 
+========================
+
+
+Data Control Language (DCL)  - This is related to a Database Administrator who has full access to  the Database and he has the authority  to Grant and Revoke the access.
+
+
+Example : If we want to Grant access to someone of the customers table (but we don’t want them to have access to phone_number, email, street address) & Grant Read-Only Access.
+
+
+# view is a structure on top of this table or view is a wrapper on top of our table. (If we have 10 Columns in our table in view we can have 6 Columns)
+
+
+
+
+1) Now we are Creating “VIEW” from our customers table in which we will have only the below mentioned columns
+
+create view customers_view as select customer_id, customer_fname, customer_lname, customer_city, customer_state, customer_zipcode from customers;
+
+
+
+Output - select * from customers_view;
+
++-------------+----------------+----------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | city        | state | pincode |
++-------------+----------------+----------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | Littleton   | CO    | 80126   |
+|           3 | Ann            | Smith          | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+-------------+-------+---------+
+
+
+- We are creating a User with name Amir and providing password to him.
+CREATE USER 'amir'@'localhost' IDENTIFIED BY 'amir786';
+
+
+
+- Now we will Grant Select Access to the user
+GRANT SELECT ON retail_db.customers_v TO 'amir'@'localhost';
+
+
+
+- Now we will Login as Amir User
+mysql -u amir -p
+
+
+
+- Now If we will Check which All Database we have
+
+show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| performance_schema |
+| retail_db          |
++--------------------+
+
+
+
+
+- use retail_db
+
+- show tables;
++---------------------+
+| Tables_in_retail_db |
++---------------------+
+| customers_v         |
++---------------------+
+
+
+
+
+- Now if we will Check using the Select Statement so we are able to see only the Records which we were Granted access to 
+
+select * from customers_v;
++-------------+----------------+----------------+-------------+-------+---------+
+| customer_id | customer_fname | customer_lname | city        | state | pincode |
++-------------+----------------+----------------+-------------+-------+---------+
+|           1 | Richard        | Hernandez      | Brownsville | TX    | 78521   |
+|           2 | Mary           | Barrett        | Littleton   | CO    | 80126   |
+|           3 | Ann            | Smith          | Caguas      | PR    | 00725   |
+|           4 | Mary           | Jones          | San Marcos  | CA    | 92069   |
+|           5 | Robert         | Hudson         | Caguas      | PR    | 00725   |
++-------------+----------------+----------------+-------------+-------+---------+
+
+
+
+
+
+
+
+- Now we will Revoke the Access for the User Amir
+
+REVOKE SELECT ON retail_db.customers_v FROM 'amir'@'localhost';
+
+
+
+
+- As the Access is Revoked we are Unable to use the Select Command
+
+select * from customers_v;
+ERROR 1142 (42000): SELECT command denied to user 'amir'@'localhost' for table 'customers_v'
+
+
+
+
+
+
+
+==========================================================================================================================================================================================
+
+Transaction Control Language (TCL)
+===================================
+
+
+- For Example we have a Employee table in which there are 100 employees record and we want to delete the 100th record as that employee is leaving the organization so we will use the below command.
+
+DELETE FROM employees WHERE employee_id = 100;
+
+
+
+
+1) Commit - If you Perform any DML Operation then the Transaction is in Open State (Insert, Update, Delete). So there are 2 Options in this State the Transaction Can be Committed or It Can be Rollback (going back to the previous state).
+
+
+
+2) Rollback - If you Perform any DDL Operation then the Transaction is Auto-Committed (Create, Alter, Truncate, Drop)
+
+
+
+IMP Note -
+===========
+
+-> If a Transaction is Committed It can't be Rolled back & If a Transaction is Rollbacked It can't be Committed.
+
+-> Commit & Rollback Only works when the Transaction is in OPEN State.
+
+-> If a DDL Operation is Performed after a DML Operation we Cannot do a Rollback as DDL Operations are Auto-Committed
