@@ -1,0 +1,60 @@
+Day-05 Alter Table Command in SQL with Multiple Realtime Scenarios
+===================================================================
+
+
+# Alter - Alter is used to Change the Structure of Existing Table
+
+- Drop a column
+
+- Change the datatype of a column
+
+- The requirement is to change order_date from date to datetime  [DATE AND DATETIME ARE COMPATIBLE TYPES]
+
+
+
+# How we can Use ALTER Command 
+=============================== 
+- How to add a new column
+- How to drop a existing column
+- How to change the datatype of existing column
+- How to rename an existing column
+- How to rename a table
+
+
+
+- This comes handy when we want to Add a New Column to our Table
+
+- Because If we Delete Our Existing Table for Adding a New Column we will loose the entire Data
+
+
+
+
+
+
+
+================================================================================================================================================================
+
+-> ALTER TABLE orders ADD COLUMN order_status VARCHAR(20);
+
+
+
+-> ALTER TABLE orders DROP COLUMN total_price; 
+
+
+
+-> ALTER TABLE orders MODIFY order_date DATETIME;
+
+
+
+-> ALTER TABLE orders RENAME COLUMN order_date TO order_time;
+
+
+
+
+
+
+
+
+
+
+
