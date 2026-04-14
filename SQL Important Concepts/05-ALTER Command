@@ -34,19 +34,26 @@ Day-05 Alter Table Command in SQL with Multiple Realtime Scenarios
 
 ================================================================================================================================================================
 
+1) If we want to Add a New Column
 -> ALTER TABLE orders ADD COLUMN order_status VARCHAR(20);
 
 
-
+2) If we want to Delete a Column
 -> ALTER TABLE orders DROP COLUMN total_price; 
 
 
-
+3) If we want to Change Datatype of a Column (INT to FLOAT, DATE to DATETIME)
 -> ALTER TABLE orders MODIFY order_date DATETIME;
 
 
-
+4) If we want to Rename a Column 
 -> ALTER TABLE orders RENAME COLUMN order_date TO order_time;
+
+
+
+5) If we want to Change the Name of the Table
+-> ALTER TABLE orders RENAME TO orders_with_status
+
 
 
 
