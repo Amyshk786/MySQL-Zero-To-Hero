@@ -1,0 +1,24 @@
+Day-06 Master SQL Check Constraints 
+====================================
+
+
+- We Can Define some Rules or Constraints which will Help us to have Quality Data.
+
+For Example we have a EMPLOYEE TABLE - AGE (INT) and there is Age Column which has INT as the Data Type. But this Integer can also have -5 as Age but we know it is Incorrect.  So we will have to Specify the Constraints at the time of table creation time (create table) OR later alter the table definition and add a constraint. So we can Define some Rules or Constraints which will help us to have Quality Data,  This Ensures the Accuracy and Reliability of Data.
+
+
+How to Add Constraints -
+==========================
+- Specify the Rules for Data in a table [Like Age Cannot be Negative, Joining date should not be a Future Date]
+
+- It Also Ensures the Accuracy and Reliability of the data
+
+
+
+
+When to specify these constraints -
+=====================================
+
+- At the time of Table Creation Time (create table)
+
+- We can Later Alter the table Definition and Add a Constraint
